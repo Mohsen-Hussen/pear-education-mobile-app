@@ -1,10 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+// import { NavigationContainer } from "@react-navigation/native";
+// import navigationTheme from "./navigation/navigationTheme";
+// import { navigationRef } from "./navigation/rootNavigation";
+
+import PearHomeScreen from "./screens/PearHomeScreen";
 
 const App = () => {
 	return (
 		<View style={styles.container}>
-			<Text>STARTED FROM HERE : PEAR EDUCATION MOBILE APP</Text>
+			<PearHomeScreen />
 			<StatusBar style="auto" />
 		</View>
 	);
