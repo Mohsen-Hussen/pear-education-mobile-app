@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
 	StyleSheet,
 	Text,
@@ -9,6 +9,7 @@ import {
 	Image,
 	Platform,
 	ScrollView,
+	LogBox,
 } from "react-native";
 import Constants from "expo-constants";
 
@@ -162,6 +163,9 @@ const teachersData = [
 ];
 
 const PearHomeScreen = () => {
+	useEffect(() => {
+		LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+	}, []);
 	return (
 		<SafeAreaView style={styles.container}>
 			{/* education section flatlist */}
@@ -206,7 +210,7 @@ const PearHomeScreen = () => {
 			</View>
 			{/* teachers section flatlist */}
 			<ScrollView style={styles.sectioContainer}>
-				<Text style={styles.text}>Our Teachers</Text>
+			<Text style={styles.text}>Our Teachers</Text>
 				<View style={styles.teachersCardContainer}>
 					<View style={styles.teacherCardStyle}>
 						<FlatList
@@ -281,6 +285,5 @@ const styles = StyleSheet.create({
 	},
 	teacherCardStyle: {
 		marginHorizontal: Platform.OS === "ios" ? 5 : 0,
-		// backgroundColor: "red",
 	},
 });
