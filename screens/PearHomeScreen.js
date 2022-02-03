@@ -210,7 +210,7 @@ const PearHomeScreen = () => {
 			</View>
 			{/* teachers section flatlist */}
 			<ScrollView style={styles.sectioContainer}>
-			<Text style={styles.text}>Our Teachers</Text>
+				<Text style={styles.text}>Our Teachers</Text>
 				<View style={styles.teachersCardContainer}>
 					<View style={styles.teacherCardStyle}>
 						<FlatList
