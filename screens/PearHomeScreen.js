@@ -10,8 +10,8 @@ import {
 	Platform,
 	ScrollView,
 	LogBox,
+	StatusBar,
 } from "react-native";
-import Constants from "expo-constants";
 
 import colors from "../config/pearColors";
 
@@ -160,12 +160,32 @@ const teachersData = [
 		image: require("../assets/pearImages/teacher_Default.png"),
 		title: "Ahmed",
 	},
+	{
+		id: 17,
+		image: require("../assets/pearImages/teacher_Default.png"),
+		title: "Ahmed",
+	},
+	{
+		id: 18,
+		image: require("../assets/pearImages/teacher_Default.png"),
+		title: "Ahmed",
+	},
+	{
+		id: 19,
+		image: require("../assets/pearImages/teacher_Default.png"),
+		title: "Ahmed",
+	},
+	{
+		id: 20,
+		image: require("../assets/pearImages/teacher_Default.png"),
+		title: "Ahmed",
+	},
 ];
 
 const PearHomeScreen = () => {
-	useEffect(() => {
-		LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-	}, []);
+	// useEffect(() => {
+	// 	LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+	// }, []);
 	return (
 		<SafeAreaView style={styles.container}>
 			{/* education section flatlist */}
@@ -209,32 +229,30 @@ const PearHomeScreen = () => {
 				</View>
 			</View>
 			{/* teachers section flatlist */}
-			<ScrollView style={styles.sectioContainer}>
-				<Text style={styles.text}>Our Teachers</Text>
-				<View style={styles.teachersCardContainer}>
-					<View style={styles.teacherCardStyle}>
-						<FlatList
-							data={teachersData}
-							keyExtractor={(item) => item.id}
-							numColumns={4}
-							renderItem={({ item }) => (
-								<TouchableOpacity
-									style={{
-										flex: 1,
-										justifyContent: "center",
-										alignItems: "center",
-									}}
-								>
-									<View style={{ marginVertical: 10 }}>
-										<Image source={item.image} />
-										<Text style={styles.title}>{item.title}</Text>
-									</View>
-								</TouchableOpacity>
-							)}
-						/>
-					</View>
-				</View>
-			</ScrollView>
+			<View style={styles.sectioContainer}>
+				<FlatList
+					ListHeaderComponent={() => (
+						<Text style={styles.text}>Our Teachers</Text>
+					)}
+					data={teachersData}
+					keyExtractor={(item) => item.id}
+					numColumns={4}
+					renderItem={({ item }) => (
+						<TouchableOpacity
+							style={{
+								flex: 1,
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							<View style={{ marginVertical: 10 }}>
+								<Image source={item.image} />
+								<Text style={styles.title}>{item.title}</Text>
+							</View>
+						</TouchableOpacity>
+					)}
+				/>
+			</View>
 		</SafeAreaView>
 	);
 };
@@ -246,7 +264,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: "#fff",
 		padding: 20,
-		paddingTop: Constants.statusBarHeight * 2,
+		paddingTop: StatusBar.currentHeight,
 	},
 	sectioContainer: {
 		width: "100%",
@@ -275,15 +293,5 @@ const styles = StyleSheet.create({
 		fontSize: 17,
 		color: colors.medium,
 		fontWeight: "500",
-	},
-	teachersCardContainer: {
-		// flexDirection: "row",
-		// justifyContent: "center",
-		// alignItems: "center",
-		width: "100%",
-		marginBottom: 20,
-	},
-	teacherCardStyle: {
-		marginHorizontal: Platform.OS === "ios" ? 5 : 0,
 	},
 });
