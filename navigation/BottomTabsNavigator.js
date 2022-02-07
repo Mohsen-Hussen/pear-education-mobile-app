@@ -6,13 +6,14 @@ import routes from "./routes";
 import colors from "../config/pearColors";
 
 import PearHomeScreen from "../screens/PearHomeScreen";
+import DnsHomeScreen from "../screens/DnsHomeScreen";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabsNavigator = () => {
 	return (
 		<Tab.Navigator
-			initialRouteName="PearHomeScreen"
+			initialRouteName="DnsHomeScreen"
 			screenOptions={{
 				tabBarActiveTintColor: colors.black,
 				tabBarInactiveTintColor: colors.inActive,
@@ -34,6 +35,22 @@ const BottomTabsNavigator = () => {
 							color={color}
 							size={35}
 							onPress={() => navigation.navigate(routes.PEAR_HOME_SCREEN)}
+						/>
+					),
+					title: "Home",
+					headerTitleAlign: "center",
+				})}
+			/>
+			<Tab.Screen
+				name="DnsHomeScreen"
+				component={DnsHomeScreen}
+				options={({ navigation }) => ({
+					tabBarIcon: ({ color, size }) => (
+						<MaterialCommunityIcons
+							name="home"
+							color={color}
+							size={35}
+							onPress={() => navigation.navigate(routes.DNS_HOME_SCREEN)}
 						/>
 					),
 					title: "Home",
