@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import routes from "./routes";
@@ -17,10 +17,6 @@ const BottomTabsNavigator = () => {
 				tabBarActiveTintColor: colors.black,
 				tabBarInactiveTintColor: colors.inActive,
 				tabBarStyle: {
-					// position: "absolute",
-					// justifyContent: "center",
-					// alignItems: "center",
-					// zIndex: 10,
 					backgroundColor: colors.light,
 				},
 				tabBarLabelStyle: {

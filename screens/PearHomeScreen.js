@@ -1,19 +1,8 @@
 import React, { useEffect } from "react";
-import {
-	StyleSheet,
-	Text,
-	View,
-	SafeAreaView,
-	FlatList,
-	TouchableOpacity,
-	Image,
-	Platform,
-	ScrollView,
-	LogBox,
-	StatusBar,
-} from "react-native";
+import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
 
-import colors from "../config/pearColors";
+import HomeSlider from "../components/PearHome/HomeSlider";
+import HomeFlatList from "../components/PearHome/HomeFlatList";
 
 const educationData = [
 	{
@@ -31,21 +20,6 @@ const educationData = [
 		image: require("../assets/pearImages/books.png"),
 		title: "University  Level",
 	},
-	// {
-	// 	id: 4,
-	// 	image: require("../assets/pearImages/books.png"),
-	// 	title: "University  Level",
-	// },
-	// {
-	// 	id: 5,
-	// 	image: require("../assets/pearImages/books.png"),
-	// 	title: "University  Level",
-	// },
-	// {
-	// 	id: 6,
-	// 	image: require("../assets/pearImages/books.png"),
-	// 	title: "University  Level",
-	// },
 ];
 const centersData = [
 	{
@@ -188,71 +162,9 @@ const PearHomeScreen = () => {
 	// }, []);
 	return (
 		<SafeAreaView style={styles.container}>
-			{/* education section flatlist */}
-			<View style={styles.sectioContainer}>
-				<Text style={styles.text}>All Education Level</Text>
-				<View style={styles.sectionAlign}>
-					<FlatList
-						showsHorizontalScrollIndicator={false}
-						horizontal
-						data={educationData}
-						keyExtractor={(item) => item.id}
-						renderItem={({ item }) => (
-							<TouchableOpacity>
-								<View style={styles.item}>
-									<Image source={item.image} style={styles.image} />
-									<Text style={styles.title}>{item.title}</Text>
-								</View>
-							</TouchableOpacity>
-						)}
-					/>
-				</View>
-			</View>
-			{/* centers section flatlist */}
-			<View style={styles.sectioContainer}>
-				<Text style={styles.text}>All Centers</Text>
-				<View style={styles.sectionAlign}>
-					<FlatList
-						showsHorizontalScrollIndicator={false}
-						horizontal
-						data={centersData}
-						keyExtractor={(item) => item.id}
-						renderItem={({ item }) => (
-							<TouchableOpacity>
-								<View style={styles.item}>
-									<Image source={item.image} style={styles.image} />
-									<Text style={styles.title}>{item.title}</Text>
-								</View>
-							</TouchableOpacity>
-						)}
-					/>
-				</View>
-			</View>
-			{/* teachers section flatlist */}
-			<View style={styles.sectioContainer}>
-				<FlatList
-					ListHeaderComponent={() => (
-						<Text style={styles.text}>Our Teachers</Text>
-					)}
-					data={teachersData}
-					keyExtractor={(item) => item.id}
-					numColumns={4}
-					renderItem={({ item }) => (
-						<TouchableOpacity
-							style={{
-								flex: 1,
-								justifyContent: "center",
-								alignItems: "center",
-							}}
-						>
-							<View style={{ marginVertical: 10 }}>
-								<Image source={item.image} />
-								<Text style={styles.title}>{item.title}</Text>
-							</View>
-						</TouchableOpacity>
-					)}
-				/>
-			</View>
+			<HomeSlider data={educationData} title="All Education Level" />
+			<HomeSlider data={centersData} title="All Centers" />
+			<HomeFlatList data={teachersData} title="Our Teachers" />
 		</SafeAreaView>
 	);
 };
@@ -265,33 +177,5 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff",
 		padding: 20,
 		paddingTop: StatusBar.currentHeight,
-	},
-	sectioContainer: {
-		width: "100%",
-		padding: Platform.OS === "android" ? 10 : 20,
-		marginBottom: 15,
-	},
-	text: {
-		width: "100%",
-		marginBottom: 20,
-		fontSize: 20,
-		fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-		fontWeight: "600",
-		color: colors.gray,
-	},
-	sectionAlign: {
-		justifyContent: "center",
-		alignItems: "center",
-	},
-	item: {
-		marginHorizontal: 10,
-		justifyContent: "center",
-		alignItems: "center",
-	},
-	image: { marginBottom: 5, height: 45 },
-	title: {
-		fontSize: 17,
-		color: colors.medium,
-		fontWeight: "500",
 	},
 });
