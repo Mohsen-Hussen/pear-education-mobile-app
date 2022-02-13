@@ -17,6 +17,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import colors from "../config/pearColors";
 import DnsSearchBar from "../components/DnsHome/DnsSearchBar";
 import CoursesFlatList from "../components/DnsHome/CoursesFlatList";
+import InstractourFlatList from "../components/DnsHome/InstractourFlatList";
 
 const Tab = createMaterialTopTabNavigator();
 const DnsHomeScreen = () => {
@@ -49,7 +50,7 @@ const DnsHomeScreen = () => {
 				</Tab.Navigator>
 			</View>
 			<Text style={[styles.text, { marginTop: 0 }]}>Our Top Instractours</Text>
-			
+			<InstractourFlatList />
 		</SafeAreaView>
 	);
 };
