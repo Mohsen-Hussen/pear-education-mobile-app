@@ -6,15 +6,15 @@ import {
 	FlatList,
 	TouchableOpacity,
 	ImageBackground,
+	useWindowDimensions,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import colors from "../../config/pearColors";
 
 const coursesData = [
 	{
 		id: 1,
-		image: {
-			uri: "../assets/pearImages/2.png",
-		},
+		uri: require("../../assets/pearImages/2.png"),
 		title: "Advanced - UI/UX Design",
 		duration: "2h 30min",
 		price: "120$",
@@ -22,9 +22,7 @@ const coursesData = [
 	},
 	{
 		id: 2,
-		image: {
-			uri: "../assets/pearImages/5.png",
-		},
+		uri: require("../../assets/pearImages/5.png"),
 		title: "Advanced - UI/UX Design",
 		duration: "2h 30min",
 		price: "120$",
@@ -32,9 +30,7 @@ const coursesData = [
 	},
 	{
 		id: 3,
-		image: {
-			uri: "../assets/pearImages/8.png",
-		},
+		uri: require("../../assets/pearImages/8.png"),
 		title: "Advanced - UI/UX Design",
 		duration: "2h 30min",
 		price: "120$",
@@ -42,9 +38,7 @@ const coursesData = [
 	},
 	{
 		id: 4,
-		image: {
-			uri: "../assets/pearImages/2.png",
-		},
+		uri: require("../../assets/pearImages/2.png"),
 		title: "Advanced - UI/UX Design",
 		duration: "2h 30min",
 		price: "120$",
@@ -52,9 +46,7 @@ const coursesData = [
 	},
 	{
 		id: 5,
-		image: {
-			uri: "../assets/pearImages/5.png",
-		},
+		uri: require("../../assets/pearImages/5.png"),
 		title: "Advanced - UI/UX Design",
 		duration: "2h 30min",
 		price: "120$",
@@ -62,9 +54,7 @@ const coursesData = [
 	},
 	{
 		id: 6,
-		image: {
-			uri: "../assets/pearImages/8.png",
-		},
+		uri: require("../../assets/pearImages/8.png"),
 		title: "Advanced - UI/UX Design",
 		duration: "2h 30min",
 		price: "120$",
@@ -73,8 +63,10 @@ const coursesData = [
 ];
 
 const CoursesFlatList = () => {
+	const window = useWindowDimensions();
+
 	return (
-		<View style={{ marginVertical: 10 }}>
+		<View style={styles.container}>
 			<FlatList
 				showsHorizontalScrollIndicator={false}
 				horizontal
@@ -82,32 +74,33 @@ const CoursesFlatList = () => {
 				keyExtractor={(item) => item.id}
 				renderItem={({ item }) => (
 					<TouchableOpacity>
-						<View style={{ margin: 10, width: 200, height: 200 }}>
+						<View
+							style={[
+								styles.TouchableOpacityContainer,
+								{ height: window.height / 3 },
+							]}
+						>
 							<ImageBackground
-								source={item.image}
+								source={item.uri}
 								resizeMode="cover"
-								style={{
-									borderColor: "#000",
-									borderWidth: 2,
-									borderRadius: 5,
-								}}
+								style={[
+									styles.ImageBackgroundContainer,
+									{ height: window.height / 4 },
+								]}
 							>
-								<View
-									style={{
-										paddingHorizontal: 10,
-										marginVertical: "30%",
-									}}
-								>
-									<Text>{item.title}</Text>
-									<Text style={{ marginVertical: 10 }}>
+								<View style={styles.viewAlign}>
+									<Text style={styles.textStyle}>{item.title}</Text>
+									<Text style={styles.container}>
 										<MaterialCommunityIcons
 											name="clock-outline"
 											size={15}
 											color="black"
 										/>
-										{item.duration} - {item.price}
+										<Text style={styles.fntSize}>
+											{item.duration} - {item.price}
+										</Text>
 									</Text>
-									<Text>{item.name}</Text>
+									<Text style={styles.fntSize}>{item.name}</Text>
 								</View>
 							</ImageBackground>
 						</View>
@@ -120,4 +113,27 @@ const CoursesFlatList = () => {
 
 export default CoursesFlatList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	container: {
+		marginVertical: 10,
+	},
+	fntSize: {
+		fontSize: 18,
+	},
+	TouchableOpacityContainer: {
+		margin: 10,
+		width: 200,
+	},
+	ImageBackgroundContainer: {
+		width: "100%",
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	viewAlign: {
+		paddingHorizontal: 10,
+	},
+	textStyle: {
+		fontSize: 22,
+		fontWeight: "600",
+	},
+});

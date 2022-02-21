@@ -10,6 +10,7 @@ import {
 	TouchableOpacity,
 	Dimensions,
 	Image,
+	useWindowDimensions,
 } from "react-native";
 import { MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -20,7 +21,10 @@ import CoursesFlatList from "../components/DnsHome/CoursesFlatList";
 import InstractourFlatList from "../components/DnsHome/InstractourFlatList";
 
 const Tab = createMaterialTopTabNavigator();
+
 const DnsHomeScreen = () => {
+	const window = useWindowDimensions();
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<DnsSearchBar
@@ -28,7 +32,11 @@ const DnsHomeScreen = () => {
 				placeholder="Search a course"
 			/>
 			<Text style={styles.text}>All Categories</Text>
-			<View style={{ height: "45%" }}>
+			<View
+				style={{
+					height: window.height / 3,
+				}}
+			>
 				<Tab.Navigator
 					screenOptions={{
 						tabBarLabelStyle: { fontSize: 17 },
@@ -50,7 +58,7 @@ const DnsHomeScreen = () => {
 				</Tab.Navigator>
 			</View>
 			<Text style={[styles.text, { marginTop: 0 }]}>Our Top Instractours</Text>
-			<InstractourFlatList />
+			{/* <InstractourFlatList /> */}
 		</SafeAreaView>
 	);
 };
