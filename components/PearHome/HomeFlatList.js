@@ -18,7 +18,7 @@ const HomeFlatList = ({ data, title }) => {
 			<View style={styles.sectioContainer}>
 				<FlatList
 					data={data}
-					keyExtractor={(item) => item.id}
+					keyExtractor={(item) => item.id.toString()}
 					numColumns={4}
 					renderItem={({ item }) => (
 						<TouchableOpacity style={styles.sectionAlign}>

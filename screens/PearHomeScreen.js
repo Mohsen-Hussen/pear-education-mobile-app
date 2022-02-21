@@ -157,9 +157,6 @@ const teachersData = [
 ];
 
 const PearHomeScreen = () => {
-	// useEffect(() => {
-	// 	LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-	// }, []);
 	return (
 		<SafeAreaView style={styles.container}>
 			<HomeSlider data={educationData} title="All Education Level" />

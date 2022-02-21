@@ -71,7 +71,7 @@ const CoursesFlatList = () => {
 				showsHorizontalScrollIndicator={false}
 				horizontal
 				data={coursesData}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
 					<TouchableOpacity>
 						<View
