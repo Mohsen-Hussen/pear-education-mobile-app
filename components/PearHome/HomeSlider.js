@@ -19,7 +19,7 @@ const HomeSlider = ({ data, title, width = 50 }) => {
 					showsHorizontalScrollIndicator={false}
 					horizontal
 					data={data}
-					keyExtractor={(item) => item.id}
+					keyExtractor={(item) => item.id.toString()}
 					renderItem={({ item }) => (
 						<TouchableOpacity>
 							<View style={styles.item}>

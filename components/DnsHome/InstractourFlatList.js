@@ -6,7 +6,9 @@ import {
 	FlatList,
 	TouchableOpacity,
 	Image,
+	useWindowDimensions,
 } from "react-native";
+import colors from "../../config/pearColors";
 
 const instractourData = [
 	{
@@ -36,13 +38,15 @@ const instractourData = [
 ];
 
 const InstractourFlatList = () => {
+	const window = useWindowDimensions();
+
 	return (
 		<View style={{ marginVertical: 10 }}>
 			<FlatList
 				showsHorizontalScrollIndicator={false}
 				horizontal
 				data={instractourData}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
 					<TouchableOpacity>
 						<View
@@ -53,8 +57,11 @@ const InstractourFlatList = () => {
 								borderColor: "#000",
 								borderWidth: 2,
 								borderRadius: 5,
-								// justifyContent: "center",
-								alignItems: "space-bettween",
+								justifyContent: "flex-start",
+								alignItems: "center",
+								backgroundColor: colors.light,
+								width: window.width / 1.5,
+								height: window.height / 8,
 							}}
 						>
 							<Image
@@ -63,13 +70,15 @@ const InstractourFlatList = () => {
 									borderColor: "#000",
 									borderWidth: 2,
 									borderRadius: 5,
+									height: "100%",
+									width: "30%",
+									padding: 10,
 								}}
 							/>
 							<View
 								style={{
 									paddingHorizontal: 10,
 									justifyContent: "center",
-									alignItems: "flex-end",
 									borderColor: "#000",
 									borderWidth: 2,
 									borderRadius: 5,

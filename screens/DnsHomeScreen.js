@@ -57,8 +57,8 @@ const DnsHomeScreen = () => {
 					<Tab.Screen name="DevOps" component={CoursesFlatList} />
 				</Tab.Navigator>
 			</View>
-			<Text style={[styles.text, { marginTop: 0 }]}>Our Top Instractours</Text>
-			{/* <InstractourFlatList /> */}
+			<Text style={styles.text}>Our Top Instractours</Text>
+			<InstractourFlatList />
 		</SafeAreaView>
 	);
 };
