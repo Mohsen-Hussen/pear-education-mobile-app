@@ -1,0 +1,25 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "files.autoSave": "afterDelay",
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.fontFamily": "Operator Mono, Consolas, 'Courier New', monospace",
+  "editor.fontWeight": "300",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "prettier.useTabs": true,
+  "react-native.packager.port": 19002,
+  "tabnine.experimentalAutoImports": true,
+  "editor.linkedEditing": true,
+  "workbench.colorTheme": "Night Wolf [gray]"
+}

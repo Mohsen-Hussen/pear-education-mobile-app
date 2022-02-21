@@ -7,13 +7,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import BottomTabsNavigator from "./navigation/BottomTabsNavigator";
 
 import PearHomeScreen from "./screens/PearHomeScreen";
+import WelcomeStackNav from "./navigation/WelcomeStackNav";
 
 const App = () => {
 	return (
 		<NavigationContainer>
-			<StatusBar style="auto" />
-			<BottomTabsNavigator />
+			<WelcomeStackNav />
 		</NavigationContainer>
+
+		// <NavigationContainer>
+		// 	<StatusBar style="auto" />
+		// 	<BottomTabsNavigator />
+		// </NavigationContainer>
+
 		// <View style={styles.container}>
 		// 	<BottomTabsNavigator></BottomTabsNavigator>
 		// 	<PearHomeScreen />

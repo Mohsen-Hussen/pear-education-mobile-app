@@ -9,4 +9,5 @@ export default {
 	danger: "#ff5252",
 	gray: "#0E0B0B",
 	inActive: "#B9B9B9",
+	primaryLight: "#00FF00",
 };
