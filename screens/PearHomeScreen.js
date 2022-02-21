@@ -165,7 +165,6 @@ const PearHomeScreen = () => {
 			<HomeSlider data={educationData} title="All Education Level" />
 			<HomeSlider data={centersData} title="All Centers" />
 			<HomeFlatList data={teachersData} title="Our Teachers" />
-			<h3>test</h3>
 		</SafeAreaView>
 	);
 };
