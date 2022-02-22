@@ -4,12 +4,12 @@ import pearColors from "../../config/pearColors";
 
 const SliderDots = ({
 	FirstWidth = 15,
-	FistColor = pearColors.primary,
+	FistColor = pearColors.inActive,
 	secondWidth = 15,
-	secondColor = pearColors.primary,
+	secondColor = pearColors.inActive,
 
 	thirdWidth = 15,
-	thirdColor = pearColors.primary,
+	thirdColor = pearColors.inActive,
 }) => {
 	return (
 		<View style={{ flexDirection: "row", marginVertical: 20 }}>
