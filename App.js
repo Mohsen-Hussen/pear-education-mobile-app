@@ -5,8 +5,8 @@ import BottomTabsNavigator from "./navigation/BottomTabsNavigator";
 import WelcomeStackNav from "./navigation/WelcomeStackNav";
 
 const Render = () => {
-	const [welcome, setWelcome] = useState(false);
-	if (welcome) {
+	const [loging, setLoging] = useState(false);
+	if (loging) {
 		return (
 			<NavigationContainer>
 				<WelcomeStackNav />
