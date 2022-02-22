@@ -11,19 +11,14 @@ import WelcomeStackNav from "./navigation/WelcomeStackNav";
 
 const App = () => {
 	return (
-		<NavigationContainer>
-			<WelcomeStackNav />
-		</NavigationContainer>
-
 		// <NavigationContainer>
-		// 	<StatusBar style="auto" />
-		// 	<BottomTabsNavigator />
+		// 	<WelcomeStackNav />
 		// </NavigationContainer>
 
-		// <View style={styles.container}>
-		// 	<BottomTabsNavigator></BottomTabsNavigator>
-		// 	<PearHomeScreen />
-		// </View>
+		<NavigationContainer>
+			<StatusBar style="auto" />
+			<BottomTabsNavigator />
+		</NavigationContainer>
 	);
 };
 

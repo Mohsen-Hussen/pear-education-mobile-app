@@ -9,6 +9,7 @@ import {
 	useWindowDimensions,
 } from "react-native";
 import colors from "../../config/pearColors";
+import AppText from "../General/AppText";
 
 const instractourData = [
 	{
@@ -41,7 +42,7 @@ const InstractourFlatList = () => {
 	const window = useWindowDimensions();
 
 	return (
-		<View style={{ marginVertical: 10 }}>
+		<View style={styles.sliderContainer}>
 			<FlatList
 				showsHorizontalScrollIndicator={false}
 				horizontal
@@ -50,42 +51,19 @@ const InstractourFlatList = () => {
 				renderItem={({ item }) => (
 					<TouchableOpacity>
 						<View
-							style={{
-								margin: 10,
-								width: 300,
-								flexDirection: "row",
-								borderColor: "#000",
-								borderWidth: 2,
-								borderRadius: 5,
-								justifyContent: "flex-start",
-								alignItems: "center",
-								backgroundColor: colors.light,
-								width: window.width / 1.5,
-								height: window.height / 8,
-							}}
+							style={[
+								styles.cardContainer,
+								{ width: window.width / 1.5, height: window.height / 8 },
+							]}
 						>
-							<Image
-								source={item.image}
-								style={{
-									borderColor: "#000",
-									borderWidth: 2,
-									borderRadius: 5,
-									height: "100%",
-									width: "30%",
-									padding: 10,
-								}}
-							/>
-							<View
-								style={{
-									paddingHorizontal: 10,
-									justifyContent: "center",
-									borderColor: "#000",
-									borderWidth: 2,
-									borderRadius: 5,
-								}}
-							>
-								<Text>{item.title}</Text>
-								<Text>{item.subtitle}</Text>
+							<Image source={item.image} style={styles.constractorAvatar} />
+							<View style={styles.textContainer}>
+								<AppText align="left" size="18">
+									{item.title}
+								</AppText>
+								<AppText align="left" size="15">
+									{item.subtitle}
+								</AppText>
 							</View>
 						</View>
 					</TouchableOpacity>
@@ -97,4 +75,25 @@ const InstractourFlatList = () => {
 
 export default InstractourFlatList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	sliderContainer: { marginVertical: 10 },
+	cardContainer: {
+		margin: 10,
+		width: 300,
+		flexDirection: "row",
+		borderColor: colors.grayLight,
+		borderWidth: 1,
+		borderRadius: 5,
+		justifyContent: "flex-start",
+		alignItems: "center",
+		backgroundColor: colors.light,
+	},
+	constractorAvatar: {
+		height: "100%",
+		width: "30%",
+		maxWidth: "100%",
+	},
+	textContainer: {
+		paddingHorizontal: 10,
+	},
+});
