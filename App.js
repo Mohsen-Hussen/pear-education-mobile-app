@@ -22,20 +22,7 @@ const Render = () => {
 	}
 };
 const App = () => {
-<<<<<<< HEAD
-	return (
-		// <NavigationContainer>
-		// 	<WelcomeStackNav />
-		// </NavigationContainer>
-
-		<NavigationContainer>
-			<StatusBar style="auto" />
-			<BottomTabsNavigator />
-		</NavigationContainer>
-	);
-=======
-	return <Render></Render>;
->>>>>>> b12447359e2633f74ceca4df7a1d668469e9dcd3
+	return <Render />;
 };
 
 export default App;
