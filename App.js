@@ -1,15 +1,28 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-// import { NavigationContainer } from "@react-navigation/native";
-// import navigationTheme from "./navigation/navigationTheme";
-// import { navigationRef } from "./navigation/rootNavigation";
+import { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTabsNavigator from "./navigation/BottomTabsNavigator";
-
-import PearHomeScreen from "./screens/PearHomeScreen";
 import WelcomeStackNav from "./navigation/WelcomeStackNav";
 
+const Render = () => {
+	const [loging, setLoging] = useState(false);
+	if (loging) {
+		return (
+			<NavigationContainer>
+				<WelcomeStackNav />
+			</NavigationContainer>
+		);
+	} else {
+		return (
+			<NavigationContainer>
+				<StatusBar style="auto" />
+				<BottomTabsNavigator />
+			</NavigationContainer>
+		);
+	}
+};
 const App = () => {
+<<<<<<< HEAD
 	return (
 		// <NavigationContainer>
 		// 	<WelcomeStackNav />
@@ -20,15 +33,9 @@ const App = () => {
 			<BottomTabsNavigator />
 		</NavigationContainer>
 	);
+=======
+	return <Render></Render>;
+>>>>>>> b12447359e2633f74ceca4df7a1d668469e9dcd3
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		// alignItems: "center",
-		// justifyContent: "center",
-	},
-});
 
 export default App;

@@ -48,15 +48,12 @@ function WelcomeScreenThird({ navigation }) {
 				}}
 			/>
 			<AppText align="center" size="30">
-				Connect with Everyone
+				Always Fascinated Learning
 			</AppText>
 			<AppText align="center">
 				Always Keep in touch with your tutor & friends. let's get connected!
 			</AppText>
-			<SliderDots
-				thirdWidth="40"
-				thirdColor={pearColors.primaryLight}
-			></SliderDots>
+			<SliderDots thirdWidth="40" thirdColor={pearColors.primary}></SliderDots>
 			<GeneralButton
 				title="Get Started"
 				onPress={() => GetStartedGandle({ navigation })}

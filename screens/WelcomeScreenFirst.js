@@ -29,10 +29,7 @@ function WelcomeScreenFirst({ navigation }) {
 			<AppText align="center">
 				Forget about a far of paper all knowledge in one learning !
 			</AppText>
-			<SliderDots
-				FirstWidth="40"
-				FistColor={pearColors.primaryLight}
-			></SliderDots>
+			<SliderDots FirstWidth="40" FistColor={pearColors.primary}></SliderDots>
 			<GeneralButton
 				title="Next"
 				onPress={() => navigation.navigate(routes.WELCOME_SECOND_SCREEN)}

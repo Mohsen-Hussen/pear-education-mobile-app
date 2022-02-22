@@ -31,7 +31,7 @@ function WelcomeScreenSecond({ navigation }) {
 			</AppText>
 			<SliderDots
 				secondWidth="40"
-				secondColor={pearColors.primaryLight}
+				secondColor={pearColors.primary}
 			></SliderDots>
 			<GeneralButton
 				title="Next"
