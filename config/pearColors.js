@@ -8,6 +8,7 @@ export default {
 	dark: "#0c0c0c",
 	danger: "#ff5252",
 	gray: "#0E0B0B",
+	grayLight: "#c5c4c4",
 	inActive: "#B9B9B9",
 	primaryLight: "#00FF00",
 };

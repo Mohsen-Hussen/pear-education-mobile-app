@@ -22,7 +22,7 @@ const Render = () => {
 	}
 };
 const App = () => {
-	return <Render></Render>;
+	return <Render />;
 };
 
 export default App;
