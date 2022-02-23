@@ -6,8 +6,9 @@ function AppText({
 	style,
 	size = "18",
 	align = "left",
-	...otherProps,
 	color = "red",
+	Weight = "normal",
+	...otherProps
 }) {
 	return (
 		<Text
@@ -15,7 +16,8 @@ function AppText({
 				styles.text,
 				{ textAlign: align },
 				{ fontSize: parseInt(size) },
-				{ color: color},
+				{ fontWeight: Weight },
+				{ color: color },
 			]}
 			{...otherProps}
 		>

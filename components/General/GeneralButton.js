@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import colors from "../../config/pearColors";
 
-function AppButton({ title, onPress, color = "primary", width = "85%" }) {
+function GeneralButton({ title, onPress, color = "primary", width = "85%" }) {
 	return (
 		<TouchableOpacity
 			style={[styles.button, { backgroundColor: colors[color], width: width }]}
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default AppButton;
+export default GeneralButton;
