@@ -13,7 +13,12 @@ import AppText from "../General/AppText";
 
 const HomeFlatList = ({ data, title }) => {
 	return (
-		<>
+		<View
+			style={{
+				flex: 1,
+				paddingHorizontal: Platform.OS === "android" ? 10 : 20,
+			}}
+		>
 			<AppText size={22} color={colors.black} align="left" Weight="bold">
 				{title}
 			</AppText>
@@ -34,7 +39,7 @@ const HomeFlatList = ({ data, title }) => {
 					)}
 				/>
 			</View>
-		</>
+		</View>
 	);
 };
 
@@ -43,7 +48,6 @@ export default HomeFlatList;
 const styles = StyleSheet.create({
 	sectioContainer: {
 		width: "100%",
-		padding: Platform.OS === "android" ? 10 : 20,
 		marginBottom: 15,
 	},
 	sectionAlign: {

@@ -40,13 +40,8 @@ const Render = () => {
 	}
 };
 const App = () => {
-<<<<<<< HEAD
 	// return <LoginScreen />;
 	return <Render />;
-=======
-	return <Render />;
-	// <LoginScreen />
->>>>>>> 42c061fac12f503de9541682d68e4200ab5c6b2e
 };
 
 export default App;

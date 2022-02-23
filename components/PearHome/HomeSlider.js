@@ -47,8 +47,7 @@ export default HomeSlider;
 const styles = StyleSheet.create({
 	sectioContainer: {
 		width: "100%",
-		padding: Platform.OS === "android" ? 10 : 20,
-		marginBottom: 15,
+		paddingHorizontal: Platform.OS === "android" ? 10 : 20,
 	},
 	sectionAlign: {
 		justifyContent: "center",

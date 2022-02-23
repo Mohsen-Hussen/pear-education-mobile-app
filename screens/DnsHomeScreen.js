@@ -22,7 +22,7 @@ const DnsHomeScreen = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<AppText size={22} color={colors.black} align="left">
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
 				Find a perfect course for you
 			</AppText>
 			<FilterBar
@@ -35,7 +35,7 @@ const DnsHomeScreen = () => {
 				filterIconSize={35}
 				filterIconColor="white"
 			/>
-			<AppText size={22} color={colors.black} align="left">
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
 				All Categories
 			</AppText>
 			<View
@@ -65,7 +65,7 @@ const DnsHomeScreen = () => {
 					<Tab.Screen name="DevOps" component={CoursesFlatList} />
 				</Tab.Navigator>
 			</View>
-			<AppText size={22} color={colors.black} align="left">
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
 				Our Top Instractours
 			</AppText>
 			<InstractourFlatList />
@@ -78,8 +78,10 @@ export default DnsHomeScreen;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		marginHorizontal: 10,
 		backgroundColor: colors.screenBackground,
 		padding: 20,
+		paddingHorizontal: Platform.OS === "android" ? 5 : 10,
 		paddingTop: StatusBar.currentHeight,
 	},
 });
