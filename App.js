@@ -40,8 +40,8 @@ const Render = () => {
 	}
 };
 const App = () => {
-	return <RegisterFirst />;
-	// return <Render />;
+	// return <RegisterFirst />;
+	return <Render />;
 	// <LoginScreen />
 };
 

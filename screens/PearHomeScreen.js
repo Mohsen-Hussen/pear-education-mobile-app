@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
 
+import colors from "../config/pearColors";
+
 import HomeSlider from "../components/PearHome/HomeSlider";
 import HomeFlatList from "../components/PearHome/HomeFlatList";
 
@@ -171,7 +173,7 @@ export default PearHomeScreen;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
+		backgroundColor: colors.screenBackground,
 		padding: 20,
 		paddingTop: StatusBar.currentHeight,
 	},

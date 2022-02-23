@@ -9,11 +9,14 @@ import {
 	Platform,
 } from "react-native";
 import colors from "../../config/pearColors";
+import AppText from "../General/AppText";
 
 const HomeSlider = ({ data, title, width = 50 }) => {
 	return (
 		<View style={styles.sectioContainer}>
-			<Text style={styles.text}>{title}</Text>
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
+				{title}
+			</AppText>
 			<View style={styles.sectionAlign}>
 				<FlatList
 					showsHorizontalScrollIndicator={false}
@@ -27,7 +30,9 @@ const HomeSlider = ({ data, title, width = 50 }) => {
 									source={item.image}
 									style={[styles.image, { width: width }]}
 								/>
-								<Text style={styles.title}>{item.title}</Text>
+								<AppText size={17} color={colors.black} align="center">
+									{item.title}
+								</AppText>
 							</View>
 						</TouchableOpacity>
 					)}
@@ -42,16 +47,7 @@ export default HomeSlider;
 const styles = StyleSheet.create({
 	sectioContainer: {
 		width: "100%",
-		padding: Platform.OS === "android" ? 10 : 20,
-		marginBottom: 15,
-	},
-	text: {
-		width: "100%",
-		marginBottom: 20,
-		fontSize: 20,
-		fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-		fontWeight: "600",
-		color: colors.gray,
+		paddingHorizontal: Platform.OS === "android" ? 10 : 20,
 	},
 	sectionAlign: {
 		justifyContent: "center",
@@ -63,9 +59,4 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	image: { marginBottom: 5, height: 45 },
-	title: {
-		fontSize: 17,
-		color: colors.medium,
-		fontWeight: "500",
-	},
 });

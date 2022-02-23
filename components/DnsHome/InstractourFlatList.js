@@ -79,13 +79,14 @@ const styles = StyleSheet.create({
 		justifyContent: "flex-start",
 		alignItems: "center",
 		backgroundColor: colors.white,
-		padding: 10,
+		padding: 8,
 	},
 	constractorAvatar: {
 		height: "100%",
 		width: "30%",
 		maxWidth: "100%",
-		borderRadius: 10,
+		borderRadius: 8,
+		resizeMode: "contain",
 	},
 	textContainer: {
 		paddingHorizontal: 10,

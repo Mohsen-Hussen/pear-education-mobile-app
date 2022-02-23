@@ -66,7 +66,7 @@ const CoursesFlatList = () => {
 	const window = useWindowDimensions();
 
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container]}>
 			<FlatList
 				showsHorizontalScrollIndicator={false}
 				horizontal

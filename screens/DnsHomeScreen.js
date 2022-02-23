@@ -1,7 +1,6 @@
 import React from "react";
 import {
 	StyleSheet,
-	Text,
 	View,
 	SafeAreaView,
 	StatusBar,
@@ -11,6 +10,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import colors from "../config/pearColors";
 import FilterBar from "../components/General/FilterBar";
+import AppText from "../components/General/AppText";
 
 import CoursesFlatList from "../components/DnsHome/CoursesFlatList";
 import InstractourFlatList from "../components/DnsHome/InstractourFlatList";
@@ -22,7 +22,9 @@ const DnsHomeScreen = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text style={styles.text}>Find a perfect course for you</Text>
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
+				Find a perfect course for you
+			</AppText>
 			<FilterBar
 				placeholder="Search a course"
 				placeholderColor="medium"
@@ -33,12 +35,13 @@ const DnsHomeScreen = () => {
 				filterIconSize={35}
 				filterIconColor="white"
 			/>
-			<Text style={[styles.text, { marginTop: 20 }]}>All Categories</Text>
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
+				All Categories
+			</AppText>
 			<View
 				style={{
 					height: window.height / 3,
 					flex: 1,
-					// backgroundColor: colors.screenBackground,
 				}}
 			>
 				<Tab.Navigator
@@ -53,7 +56,6 @@ const DnsHomeScreen = () => {
 						},
 						tabBarScrollEnabled: true,
 					}}
-					// sceneContainerStyle={{ backgroundColor: colors.screenBackground }}
 				>
 					<Tab.Screen name="Hr" component={CoursesFlatList} />
 					<Tab.Screen name="Design" component={CoursesFlatList} />
@@ -63,7 +65,9 @@ const DnsHomeScreen = () => {
 					<Tab.Screen name="DevOps" component={CoursesFlatList} />
 				</Tab.Navigator>
 			</View>
-			<Text style={styles.text}>Our Top Instractours</Text>
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
+				Our Top Instractours
+			</AppText>
 			<InstractourFlatList />
 		</SafeAreaView>
 	);
@@ -74,16 +78,10 @@ export default DnsHomeScreen;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		marginHorizontal: 10,
 		backgroundColor: colors.screenBackground,
 		padding: 20,
+		paddingHorizontal: Platform.OS === "android" ? 5 : 10,
 		paddingTop: StatusBar.currentHeight,
-	},
-	text: {
-		width: "100%",
-		marginBottom: 20,
-		fontSize: 21,
-		fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-		fontWeight: "600",
-		color: colors.gray,
 	},
 });
