@@ -7,14 +7,16 @@ import {
 	TouchableOpacity,
 	Image,
 	Platform,
-	ScrollView,
 } from "react-native";
 import colors from "../../config/pearColors";
+import AppText from "../General/AppText";
 
 const HomeFlatList = ({ data, title }) => {
 	return (
 		<>
-			<Text style={styles.text}>{title}</Text>
+			<AppText size={22} color={colors.black} align="left" Weight="bold">
+				{title}
+			</AppText>
 			<View style={styles.sectioContainer}>
 				<FlatList
 					data={data}
@@ -24,7 +26,9 @@ const HomeFlatList = ({ data, title }) => {
 						<TouchableOpacity style={styles.sectionAlign}>
 							<View style={styles.cardContainer}>
 								<Image source={item.image} />
-								<Text style={styles.title}>{item.title}</Text>
+								<AppText size={15} color={colors.black} align="center">
+									{item.title}
+								</AppText>
 							</View>
 						</TouchableOpacity>
 					)}
@@ -37,15 +41,6 @@ const HomeFlatList = ({ data, title }) => {
 export default HomeFlatList;
 
 const styles = StyleSheet.create({
-	text: {
-		width: "100%",
-		marginBottom: 20,
-		fontSize: 20,
-		fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-		fontWeight: "600",
-		color: colors.gray,
-		paddingHorizontal: Platform.OS === "android" ? 10 : 20,
-	},
 	sectioContainer: {
 		width: "100%",
 		padding: Platform.OS === "android" ? 10 : 20,
@@ -58,10 +53,5 @@ const styles = StyleSheet.create({
 	},
 	cardContainer: {
 		marginVertical: 10,
-	},
-	title: {
-		fontSize: 17,
-		color: colors.medium,
-		fontWeight: "500",
 	},
 });
