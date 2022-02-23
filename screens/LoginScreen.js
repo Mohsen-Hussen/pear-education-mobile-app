@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Image, View, TouchableOpacity } from "react-native";
 import * as Yup from "yup";
 
@@ -7,6 +7,7 @@ import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 import AppText from "../components/General/AppText";
 import pearColors from "../config/pearColors";
 import SignWith from "../components/LoginPage/SignWith";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().required().email().label("Email"),
@@ -14,6 +15,7 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginScreen(props) {
+	const [showPassword, setShowPassword] = useState(true);
 	return (
 		<Screen style={styles.container}>
 			<AppText align="center" Weight="bold">
@@ -77,28 +79,40 @@ function LoginScreen(props) {
 					autoCorrect={false}
 					icon="lock"
 					name="password"
-					placeholder="Password"
-					secureTextEntry
+					placeholder="password"
+					secureTextEntry={showPassword}
 					textContentType="password"
-				/>
+				>
+					<TouchableOpacity>
+						<MaterialCommunityIcons
+							name="eye"
+							size={40}
+							color={pearColors.primary}
+							onPress={() => setShowPassword(!showPassword)}
+						/>
+					</TouchableOpacity>
+				</AppFormField>
+
 				<View style={{ alignItems: "center" }}>
 					<SubmitButton title="Login" />
 					<TouchableOpacity>
 						<AppText>Forget Password ?</AppText>
 					</TouchableOpacity>
 				</View>
-				<TouchableOpacity
+				<View
 					style={{
 						flex: 1,
 						justifyContent: "flex-end",
 						alignItems: "center",
 					}}
 				>
-					<View style={{ flexDirection: "row" }}>
+					<TouchableOpacity style={{ flexDirection: "row" }}>
 						<AppText>Don't have an account ?</AppText>
-						<AppText>Register</AppText>
-					</View>
-				</TouchableOpacity>
+						<AppText Weight="bold" color={pearColors.primary}>
+							Register
+						</AppText>
+					</TouchableOpacity>
+				</View>
 			</AppForm>
 		</Screen>
 	);

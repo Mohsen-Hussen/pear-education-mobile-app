@@ -6,7 +6,7 @@ function AppText({
 	style,
 	size = "18",
 	align = "left",
-	color = "red",
+	color = "black",
 	Weight = "normal",
 	...otherProps
 }) {

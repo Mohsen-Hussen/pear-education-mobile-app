@@ -14,7 +14,12 @@ const Render = () => {
 
 	useEffect(() => {
 		AsyncStorage.getItem("isFirstTime").then((token) => {
-			setIsFirstTime(JSON.parse(token));
+			if (token === null) {
+				AsyncStorage.setItem("isFirstTime", JSON.stringify(true));
+				setIsFirstTime(true);
+			} else {
+				setIsFirstTime(JSON.parse(token));
+			}
 		});
 	}, []);
 
@@ -35,8 +40,13 @@ const Render = () => {
 	}
 };
 const App = () => {
+<<<<<<< HEAD
 	// return <LoginScreen />;
 	return <Render />;
+=======
+	return <Render />;
+	// <LoginScreen />
+>>>>>>> 42c061fac12f503de9541682d68e4200ab5c6b2e
 };
 
 export default App;
