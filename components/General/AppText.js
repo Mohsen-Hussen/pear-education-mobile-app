@@ -6,11 +6,17 @@ function AppText({
 	style,
 	size = "18",
 	align = "left",
+	Weight = "normal",
 	...otherProps
 }) {
 	return (
 		<Text
-			style={[styles.text, { textAlign: align }, { fontSize: parseInt(size) }]}
+			style={[
+				styles.text,
+				{ textAlign: align },
+				{ fontSize: parseInt(size) },
+				{ fontWeight: Weight },
+			]}
 			{...otherProps}
 		>
 			{children}
