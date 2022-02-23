@@ -13,26 +13,19 @@ import AppText from "../components/General/AppText";
 import pearColors from "../config/pearColors";
 import SliderDots from "../components/General/SliderDots";
 import routes from "../navigation/routes";
+import AppSettings from "../config/AppSettings";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const GetStartedGandle = async ({ navigation }) => {
 	try {
-		navigation.navigate(routes.WELCOME_SECOND_SCREEN);
-	} catch (e) {
-		// saving error
-	}
-};
-
-const SetStorage = async ({ navigation }) => {
-	try {
-		console.log("Set");
-	} catch (e) {
-		// saving error
-	}
-};
-const GetStorage = async ({ navigation }) => {
-	try {
-		console.log("Get");
+		// 1- Local Storage
+		await AsyncStorage.setItem("isFirstTime", JSON.stringify(false));
+		// 2- Navigate
+		if (AppSettings.ISDNS) {
+			navigation.navigate(routes.DNS_HOME_SCREEN);
+		} else {
+			navigation.navigate(routes.PEAR_HOME_SCREEN);
+		}
 	} catch (e) {
 		// saving error
 	}
@@ -58,14 +51,6 @@ function WelcomeScreenThird({ navigation }) {
 				title="Get Started"
 				onPress={() => GetStartedGandle({ navigation })}
 			></GeneralButton>
-			{/* <GeneralButton
-				title="Set"
-				onPress={() => SetStorage({ navigation })}
-			></GeneralButton>
-			<GeneralButton
-				title="Get "
-				onPress={() => GetStorage({ navigation })}
-			></GeneralButton> */}
 		</SafeAreaView>
 	);
 }
