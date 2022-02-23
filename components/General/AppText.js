@@ -6,8 +6,8 @@ function AppText({
 	style,
 	size = "18",
 	align = "left",
+	...otherProps,
 	color = "red",
-	...otherProps
 }) {
 	return (
 		<Text
