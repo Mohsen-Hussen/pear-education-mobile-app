@@ -6,11 +6,7 @@ import AppText from "../General/AppText";
 function ErrorMessage({ error, visible }) {
 	if (!visible || !error) return null;
 
-	return <AppText style={styles.error}>{error}</AppText>;
+	return <AppText color="red">{error}</AppText>;
 }
-
-const styles = StyleSheet.create({
-	error: { color: "red" },
-});
 
 export default ErrorMessage;
