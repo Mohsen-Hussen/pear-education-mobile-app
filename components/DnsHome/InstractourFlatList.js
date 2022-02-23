@@ -1,7 +1,6 @@
 import React from "react";
 import {
 	StyleSheet,
-	Text,
 	View,
 	FlatList,
 	TouchableOpacity,
@@ -50,18 +49,13 @@ const InstractourFlatList = () => {
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
 					<TouchableOpacity>
-						<View
-							style={[
-								styles.cardContainer,
-								{ width: window.width / 1.5, height: window.height / 8 },
-							]}
-						>
+						<View style={[styles.cardContainer, { width: window.width / 1.5 }]}>
 							<Image source={item.image} style={styles.constractorAvatar} />
 							<View style={styles.textContainer}>
-								<AppText align="left" size="18">
+								<AppText align="left" size="18" color={colors.black}>
 									{item.title}
 								</AppText>
-								<AppText align="left" size="15">
+								<AppText align="left" size="15" color={colors.medium}>
 									{item.subtitle}
 								</AppText>
 							</View>
@@ -81,17 +75,17 @@ const styles = StyleSheet.create({
 		margin: 10,
 		width: 300,
 		flexDirection: "row",
-		borderColor: colors.grayLight,
-		borderWidth: 1,
-		borderRadius: 5,
+		borderRadius: 10,
 		justifyContent: "flex-start",
 		alignItems: "center",
-		backgroundColor: colors.light,
+		backgroundColor: colors.white,
+		padding: 10,
 	},
 	constractorAvatar: {
 		height: "100%",
 		width: "30%",
 		maxWidth: "100%",
+		borderRadius: 10,
 	},
 	textContainer: {
 		paddingHorizontal: 10,

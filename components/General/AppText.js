@@ -6,11 +6,17 @@ function AppText({
 	style,
 	size = "18",
 	align = "left",
+	color = "red",
 	...otherProps
 }) {
 	return (
 		<Text
-			style={[styles.text, { textAlign: align }, { fontSize: parseInt(size) }]}
+			style={[
+				styles.text,
+				{ textAlign: align },
+				{ fontSize: parseInt(size) },
+				{ color: color},
+			]}
 			{...otherProps}
 		>
 			{children}
@@ -19,7 +25,6 @@ function AppText({
 }
 const styles = StyleSheet.create({
 	text: {
-		color: colors.dark,
 		fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
 		marginVertical: 10,
 	},

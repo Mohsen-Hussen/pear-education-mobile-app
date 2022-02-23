@@ -88,13 +88,14 @@ const CoursesFlatList = () => {
 									{ height: window.height / 4 },
 								]}
 							>
+								<View style={styles.overlayStyle}></View>
 								<View style={styles.viewAlign}>
 									<Text style={styles.textStyle}>{item.title}</Text>
 									<Text style={styles.container}>
 										<MaterialCommunityIcons
 											name="clock-outline"
-											size={15}
-											color="black"
+											size={18}
+											color="#fff"
 										/>
 										<Text style={styles.fntSize}>
 											{item.duration} - {item.price}
@@ -119,15 +120,24 @@ const styles = StyleSheet.create({
 	},
 	fntSize: {
 		fontSize: 18,
+		color: colors.white,
+		marginVertical: 7,
 	},
 	TouchableOpacityContainer: {
 		margin: 10,
 		width: 200,
 	},
 	ImageBackgroundContainer: {
-		width: "100%",
+		borderRadius: 10,
+		overflow: "hidden",
 		justifyContent: "center",
 		alignItems: "center",
+	},
+	overlayStyle: {
+		position: "absolute",
+		width: "100%",
+		height: "100%",
+		backgroundColor: colors.overlayColor,
 	},
 	viewAlign: {
 		paddingHorizontal: 10,
@@ -135,5 +145,7 @@ const styles = StyleSheet.create({
 	textStyle: {
 		fontSize: 22,
 		fontWeight: "600",
+		color: colors.white,
+		marginVertical: 7,
 	},
 });

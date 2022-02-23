@@ -11,4 +11,6 @@ export default {
 	grayLight: "#c5c4c4",
 	inActive: "#B9B9B9",
 	primaryLight: "#00FF00",
+	overlayColor: "#0E0B0B85",
+	screenBackground: "#A5C2390D",
 };
