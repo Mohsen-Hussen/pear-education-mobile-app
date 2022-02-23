@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
-import colors from "../../config/pearColors";
 function AppText({
 	children,
 	style,
@@ -8,6 +7,7 @@ function AppText({
 	align = "left",
 	color = "black",
 	Weight = "normal",
+	marginVertical = 10,
 	...otherProps
 }) {
 	return (
@@ -18,6 +18,7 @@ function AppText({
 				{ fontSize: parseInt(size) },
 				{ fontWeight: Weight },
 				{ color: color },
+				{ marginVertical: marginVertical },
 			]}
 			{...otherProps}
 		>
@@ -28,7 +29,6 @@ function AppText({
 const styles = StyleSheet.create({
 	text: {
 		fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
-		marginVertical: 10,
 	},
 });
 export default AppText;

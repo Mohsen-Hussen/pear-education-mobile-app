@@ -8,6 +8,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
 import { Alert } from "react-native";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterFirst from "./screens/RegisterFirst";
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
 
@@ -39,7 +40,8 @@ const Render = () => {
 	}
 };
 const App = () => {
-	return <Render />;
+	return <RegisterFirst />;
+	// return <Render />;
 	// <LoginScreen />
 };
 
