@@ -6,11 +6,7 @@ function AppText({
 	style,
 	size = "18",
 	align = "left",
-<<<<<<< HEAD
 	Weight = "normal",
-=======
-	color = "red",
->>>>>>> 9e211726db020a124d28f55ec17960135bb6119d
 	...otherProps
 }) {
 	return (
@@ -19,11 +15,7 @@ function AppText({
 				styles.text,
 				{ textAlign: align },
 				{ fontSize: parseInt(size) },
-<<<<<<< HEAD
 				{ fontWeight: Weight },
-=======
-				{ color: color},
->>>>>>> 9e211726db020a124d28f55ec17960135bb6119d
 			]}
 			{...otherProps}
 		>
