@@ -11,6 +11,7 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterFirst from "./screens/RegisterFirst";
 import RegisterSecond from "./screens/RegisterSecond";
 import RegisterStackNav from "./navigation/RegisterStackNav";
+import InstructorDetails from "./screens/InstructorDetails";
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
 
@@ -42,13 +43,14 @@ const Render = () => {
 	}
 };
 const App = () => {
-	return (
-		<NavigationContainer>
-			<RegisterStackNav />
-		</NavigationContainer>
-	);
+	// return <InstructorDetails />;
+	// return (
+	// 	<NavigationContainer>
+	// 		<RegisterStackNav />
+	// 	</NavigationContainer>
+	// );
 	// return <RegisterSecond />;
-	// return <Render />;
+	return <Render />;
 	// <LoginScreen />
 };
 
