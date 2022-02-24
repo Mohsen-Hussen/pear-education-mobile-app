@@ -8,13 +8,24 @@ import AppText from "../components/General/AppText";
 import pearColors from "../config/pearColors";
 import SignWith from "../components/LoginPage/SignWith";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import routes from "../navigation/routes";
+import AppSettings from "../config/AppSettings";
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().required().email().label("Email"),
 	password: Yup.string().required().min(4).label("Password"),
 });
 
-function LoginScreen(props) {
+const handleSubmit = (values, navigation) => {
+	console.log(values);
+	if (AppSettings.ISDNS) {
+		navigation.navigate(routes.DNS_HOME_SCREEN);
+	} else {
+		navigation.navigate(routes.PEAR_HOME_SCREEN);
+	}
+};
+
+function LoginScreen({ navigation }) {
 	const [showPassword, setShowPassword] = useState(true);
 	return (
 		<Screen style={styles.container}>
@@ -62,7 +73,7 @@ function LoginScreen(props) {
 
 			<AppForm
 				initialValues={{ email: "", password: "" }}
-				onSubmit={(values) => console.log(values)}
+				onSubmit={(values) => handleSubmit(values, navigation)}
 				validationSchema={validationSchema}
 			>
 				<AppFormField
@@ -106,7 +117,10 @@ function LoginScreen(props) {
 						alignItems: "center",
 					}}
 				>
-					<TouchableOpacity style={{ flexDirection: "row" }}>
+					<TouchableOpacity
+						style={{ flexDirection: "row" }}
+						onPress={() => navigation.navigate(routes.REGISTER_FIRST_SCREEN)}
+					>
 						<AppText>Don't have an account ?</AppText>
 						<AppText Weight="bold" color={pearColors.primary}>
 							Register

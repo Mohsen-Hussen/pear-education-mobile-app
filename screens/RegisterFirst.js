@@ -1,64 +1,47 @@
 import React, { useState } from "react";
-import {
-	StyleSheet,
-	Image,
-	View,
-	TouchableOpacity,
-	Text,
-	ScrollView,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/General/Screen";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 import AppText from "../components/General/AppText";
 import pearColors from "../config/pearColors";
-import SignWith from "../components/LoginPage/SignWith";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import CircleSteps from "../components/RegisterPage/CircleSteps";
+import routes from "../navigation/routes";
+const phoneRegExp = /^01[0125][0-9]{8}$/;
 
 const validationSchema = Yup.object().shape({
-	phone: Yup.string().required().label("PhoneNumber"),
+	phone: Yup.string().matches(
+		phoneRegExp,
+		"Phone number is not valid, allowed ones 010, 011, 012, 015"
+	),
 	username: Yup.string().required().label("Username"),
 	password: Yup.string().required().min(4).label("Password"),
-	confirmPassword: Yup.string().required().min(4).label("ConfirmPassword"),
+	confirmPassword: Yup.string()
+		.oneOf([Yup.ref("password"), null], "Passwords must match")
+		.required()
+		.label("ConfirmPassword"),
 });
+const handleSubmit = (values, navigation) => {
+	console.log(values);
+	navigation.navigate(routes.REGISTER_SECOND_SCREEN);
+};
 
-function RegisterFirst(props) {
+function RegisterFirst({ navigation }) {
 	const [showPassword, setShowPassword] = useState(true);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(true);
 	return (
 		<Screen style={styles.container}>
 			<ScrollView>
-				<AppText align="center" Weight="bold">
+				<AppText size="20" align="center" Weight="bold">
 					Sign Up as student
 				</AppText>
-
-				<View
-					style={{
-						flexDirection: "row",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<View
-						style={{
-							width: "40%",
-							backgroundColor: "black",
-							height: 2,
-							marginHorizontal: 5,
-						}}
-					></View>
-					<AppText>OR</AppText>
-					<View
-						style={{
-							width: "40%",
-							backgroundColor: "black",
-							height: 2,
-							marginHorizontal: 5,
-						}}
-					></View>
-				</View>
-
+				<CircleSteps
+					firstHeader="Phone Number"
+					secHeader="Profile"
+					secCircleColor={pearColors.inActive}
+				/>
 				<AppForm
 					initialValues={{
 						phone: "",
@@ -66,7 +49,7 @@ function RegisterFirst(props) {
 						password: "",
 						confirmPassword: "",
 					}}
-					onSubmit={(values) => console.log(values)}
+					onSubmit={(values) => handleSubmit(values, navigation)}
 					validationSchema={validationSchema}
 				>
 					<AppFormField
@@ -125,7 +108,7 @@ function RegisterFirst(props) {
 					</AppFormField>
 
 					<View style={{ alignItems: "center" }}>
-						<SubmitButton title="Login" />
+						<SubmitButton color={pearColors.inActive} title="Next" />
 					</View>
 					<AppText numberOfLines={2}>
 						<AppText size="17" marginVertical={0}>
@@ -159,7 +142,10 @@ function RegisterFirst(props) {
 							alignItems: "center",
 						}}
 					>
-						<TouchableOpacity style={{ flexDirection: "row" }}>
+						<TouchableOpacity
+							style={{ flexDirection: "row" }}
+							onPress={() => navigation.navigate(routes.LOGIN_SCREEN)}
+						>
 							<AppText>I have an account ! </AppText>
 							<AppText Weight="bold" color={pearColors.primary}>
 								Login

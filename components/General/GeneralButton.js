@@ -1,12 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import pearColors from "../../config/pearColors";
 
 import colors from "../../config/pearColors";
 
-function GeneralButton({ title, onPress, color = "primary", width = "85%" }) {
+function GeneralButton({
+	title,
+	onPress,
+	color = pearColors.primary,
+	width = "85%",
+}) {
 	return (
 		<TouchableOpacity
-			style={[styles.button, { backgroundColor: colors[color], width: width }]}
+			style={[styles.button, { backgroundColor: color, width: width }]}
 			onPress={onPress}
 		>
 			<Text style={styles.text}>{title}</Text>

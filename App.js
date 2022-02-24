@@ -9,9 +9,15 @@ import { useEffect } from "react";
 import { Alert } from "react-native";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterFirst from "./screens/RegisterFirst";
+<<<<<<< HEAD
 import CourseCard from "./components/Courses/CourseCard";
 import CourseCardsList from "./screens/CourseCardsListScreen";
 
+=======
+import RegisterSecond from "./screens/RegisterSecond";
+import RegisterStackNav from "./navigation/RegisterStackNav";
+import InstructorDetails from "./screens/InstructorDetails";
+>>>>>>> 94e9b3ce89ec7cdff8708fd05a7f038ee35c1666
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
 
@@ -52,6 +58,15 @@ const App = () => {
 			<CourseCardsList />
 		</>
 	);
+	// return <InstructorDetails />;
+	// return (
+	// 	<NavigationContainer>
+	// 		<RegisterStackNav />
+	// 	</NavigationContainer>
+	// );
+	// return <RegisterSecond />;
+	// return <Render />;
+	// <LoginScreen />
 };
 
 export default App;

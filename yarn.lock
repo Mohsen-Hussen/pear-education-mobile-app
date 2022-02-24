@@ -5200,6 +5200,11 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-dashed-border@^2.1.1":
+  "integrity" "sha1-E3ZkCA7UHeSacrgfH/yMDCtJZ0M="
+  "resolved" "https://registry.npmjs.org/react-native-dashed-border/-/react-native-dashed-border-2.1.1.tgz"
+  "version" "2.1.1"
+
 "react-native-gesture-handler@*", "react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@~2.1.0":
   "integrity" "sha512-1+qMhsXKKWTPAFi2ZY8rEhP/4xIevWNb1zLU9MzJkr7tRIEW4G+ipxjLyCw+7hQeqeeIbyZ8kkTyHAUuwTrHDA=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.1.1.tgz"
