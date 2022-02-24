@@ -9,6 +9,7 @@ const CircleSteps = ({
 	secCircleText = "2",
 	secHeader = "secHeader",
 	secCircleColor = pearColors.primary,
+	dotsColor = pearColors.inActive,
 }) => {
 	return (
 		<View
@@ -26,7 +27,7 @@ const CircleSteps = ({
 					left: "20%",
 				}}
 			>
-				<AppText size="20" Weight="bold" color={pearColors.inActive}>
+				<AppText color={dotsColor} size="20" Weight="bold">
 					- - - - - - - - - - - - - - -
 				</AppText>
 			</View>
