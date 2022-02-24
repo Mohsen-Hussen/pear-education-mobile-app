@@ -3,10 +3,17 @@ import { useFormikContext } from "formik";
 
 import GeneralButton from "../General/GeneralButton";
 
-function SubmitButton({ title }) {
+function SubmitButton({ title, color }) {
 	const { handleSubmit } = useFormikContext();
 
-	return <GeneralButton title={title} onPress={handleSubmit} align="center" />;
+	return (
+		<GeneralButton
+			color={color}
+			title={title}
+			onPress={handleSubmit}
+			align="center"
+		/>
+	);
 }
 
 export default SubmitButton;

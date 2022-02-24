@@ -1,20 +1,13 @@
 import React, { useState } from "react";
-import {
-	StyleSheet,
-	Image,
-	View,
-	TouchableOpacity,
-	Text,
-	ScrollView,
-} from "react-native";
+import { StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
 import * as Yup from "yup";
 
 import Screen from "../components/General/Screen";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
 import AppText from "../components/General/AppText";
 import pearColors from "../config/pearColors";
-import SignWith from "../components/LoginPage/SignWith";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import CircleSteps from "../components/RegisterPage/CircleSteps";
 
 const validationSchema = Yup.object().shape({
 	phone: Yup.string().required().label("PhoneNumber"),
@@ -29,36 +22,14 @@ function RegisterFirst(props) {
 	return (
 		<Screen style={styles.container}>
 			<ScrollView>
-				<AppText align="center" Weight="bold">
+				<AppText size="20" align="center" Weight="bold">
 					Sign Up as student
 				</AppText>
-
-				<View
-					style={{
-						flexDirection: "row",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<View
-						style={{
-							width: "40%",
-							backgroundColor: "black",
-							height: 2,
-							marginHorizontal: 5,
-						}}
-					></View>
-					<AppText>OR</AppText>
-					<View
-						style={{
-							width: "40%",
-							backgroundColor: "black",
-							height: 2,
-							marginHorizontal: 5,
-						}}
-					></View>
-				</View>
-
+				<CircleSteps
+					firstHeader="Phone Number"
+					secHeader="Profile"
+					secCircleColor={pearColors.inActive}
+				/>
 				<AppForm
 					initialValues={{
 						phone: "",
@@ -125,7 +96,7 @@ function RegisterFirst(props) {
 					</AppFormField>
 
 					<View style={{ alignItems: "center" }}>
-						<SubmitButton title="Login" />
+						<SubmitButton color={pearColors.inActive} title="Login" />
 					</View>
 					<AppText numberOfLines={2}>
 						<AppText size="17" marginVertical={0}>
