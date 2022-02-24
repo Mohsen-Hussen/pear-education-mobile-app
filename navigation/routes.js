@@ -4,4 +4,7 @@ export default Object.freeze({
 	WELCOME_FIRST_SCREEN: "WelcomeScreenFirst",
 	WELCOME_SECOND_SCREEN: "WelcomeScreensecond",
 	WELCOME_THIRD_SCREEN: "WelcomeScreenThird",
+	REGISTER_FIRST_SCREEN: "RegisterFirst",
+	REGISTER_SECOND_SCREEN: "RegisterSecond",
+	LOGIN_SCREEN: "LoginScreen",
 });

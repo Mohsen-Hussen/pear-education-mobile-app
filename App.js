@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import { Alert } from "react-native";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterFirst from "./screens/RegisterFirst";
+import RegisterSecond from "./screens/RegisterSecond";
+import RegisterStackNav from "./navigation/RegisterStackNav";
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
 
@@ -40,7 +42,12 @@ const Render = () => {
 	}
 };
 const App = () => {
-	return <RegisterFirst />;
+	return (
+		<NavigationContainer>
+			<RegisterStackNav />
+		</NavigationContainer>
+	);
+	// return <RegisterSecond />;
 	// return <Render />;
 	// <LoginScreen />
 };
