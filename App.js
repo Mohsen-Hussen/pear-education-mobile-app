@@ -1,5 +1,5 @@
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import React, { useState } from "react";
+import { StyleSheet, SafeAreaView, StatusBar, ScrollView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTabsNavigator from "./navigation/BottomTabsNavigator";
 import WelcomeStackNav from "./navigation/WelcomeStackNav";
@@ -9,6 +9,9 @@ import { useEffect } from "react";
 import { Alert } from "react-native";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterFirst from "./screens/RegisterFirst";
+import CourseCard from "./components/Courses/CourseCard";
+import CourseCardsList from "./screens/CourseCardsListScreen";
+
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
 
@@ -41,8 +44,14 @@ const Render = () => {
 };
 const App = () => {
 	// return <RegisterFirst />;
-	return <Render />;
-	// <LoginScreen />
+	// return <Render />;
+	// return <LoginScreen />
+	return (
+		<>
+			<StatusBar style="auto" />
+			<CourseCardsList />
+		</>
+	);
 };
 
 export default App;
