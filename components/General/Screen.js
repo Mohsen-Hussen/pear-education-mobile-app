@@ -12,13 +12,13 @@ function Screen({ children, style }) {
 
 const styles = StyleSheet.create({
 	screen: {
-		paddingTop: StatusBar.currentHeight,
 		flex: 1,
-		padding: 20,
 		backgroundColor: colors.screenBackground,
+		paddingTop: StatusBar.currentHeight,
 	},
 	view: {
 		flex: 1,
+		paddingHorizontal: 20,
 	},
 });
 
