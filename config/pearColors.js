@@ -13,4 +13,6 @@ export default {
 	primaryLight: "#00FF00",
 	overlayColor: "#0E0B0B85",
 	screenBackground: "#A5C2390D",
+	skillsBackground: "#FFEAA757",
+	skillsColor: "#FCC153FC",
 };
