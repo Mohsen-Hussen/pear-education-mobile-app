@@ -1,12 +1,10 @@
 import React from "react";
 import {
 	StyleSheet,
-	Text,
 	View,
 	FlatList,
 	TouchableOpacity,
 	Image,
-	Platform,
 } from "react-native";
 import colors from "../../config/pearColors";
 import AppText from "../General/AppText";
@@ -16,7 +14,6 @@ const HomeFlatList = ({ data, title }) => {
 		<View
 			style={{
 				flex: 1,
-				paddingHorizontal: Platform.OS === "android" ? 10 : 20,
 			}}
 		>
 			<AppText size={22} color={colors.black} align="left" Weight="bold">

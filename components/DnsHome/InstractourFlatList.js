@@ -5,7 +5,7 @@ import {
 	FlatList,
 	TouchableOpacity,
 	Image,
-	useWindowDimensions,
+	Dimensions,
 } from "react-native";
 import colors from "../../config/pearColors";
 import AppText from "../General/AppText";
@@ -37,9 +37,9 @@ const instractourData = [
 	},
 ];
 
-const InstractourFlatList = () => {
-	const window = useWindowDimensions();
+const windowWidth = Dimensions.get("window").width;
 
+const InstractourFlatList = () => {
 	return (
 		<View style={styles.sliderContainer}>
 			<FlatList
@@ -49,7 +49,7 @@ const InstractourFlatList = () => {
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
 					<TouchableOpacity>
-						<View style={[styles.cardContainer, { width: window.width / 1.5 }]}>
+						<View style={styles.cardContainer}>
 							<Image source={item.image} style={styles.constractorAvatar} />
 							<View style={styles.textContainer}>
 								<AppText align="left" size="18" color={colors.black}>
@@ -70,16 +70,19 @@ const InstractourFlatList = () => {
 export default InstractourFlatList;
 
 const styles = StyleSheet.create({
-	sliderContainer: { marginVertical: 10 },
+	sliderContainer: {
+		marginVertical: 10,
+	},
 	cardContainer: {
 		margin: 10,
-		width: 300,
+		// width: 300,
 		flexDirection: "row",
 		borderRadius: 10,
 		justifyContent: "flex-start",
 		alignItems: "center",
 		backgroundColor: colors.white,
 		padding: 8,
+		width: windowWidth / 1.5,
 	},
 	constractorAvatar: {
 		height: "100%",

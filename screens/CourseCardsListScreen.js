@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
 	StyleSheet,
 	View,
@@ -8,14 +8,21 @@ import {
 	Modal,
 	Pressable,
 	Text,
+	Dimensions,
+	ActivityIndicator,
 } from "react-native";
+import { useFormikContext } from "formik";
+import * as Yup from "yup";
+import { AntDesign } from "@expo/vector-icons";
+import colors from "../config/pearColors";
+import LottieView from "lottie-react-native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
-import colors from "../config/pearColors";
-import { AntDesign } from "@expo/vector-icons";
 import CourseCard from "../components/Courses/CourseCard";
-import CourseModal from "../components/Courses/CourseModal";
-
+import AppForm from "../components/forms/AppForm";
+import AppBounceyCheckBox from "../components/forms/AppBounceyCheckBox";
+import SubmitButton from "../components/forms/SubmitButton";
 const courseData = [
 	{
 		id: 1,
@@ -162,65 +169,146 @@ const courseData = [
 		courseDutation: "24 Hours",
 	},
 ];
+const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
+
+// const validationSchema = Yup.object().shape({
+// 	email: Yup.string().label("Email"),
+// 	password: Yup.string().required().min(4).label("Password"),
+// });
 
 const CourseCardsListScreen = () => {
 	const [modalVisible, setModalVisible] = useState(false);
+	const [loading, setLoading] = useState(true);
 
+	// flatlist pagnination example url
+	// https://snack.expo.dev/embedded/@aboutreact/react-native-flatlist-pagination-to-load-more-data-dynamically---infinite-list?preview=true&platform=ios&iframeId=ixkzpou2uw&theme=dark
+	const getData = () => {
+		console.log("getData");
+		setLoading(true);
+	};
+
+	const renderFooter = () => {
+		return (
+			//Footer View with Load More button
+			<View style={styles.footer}>
+				<TouchableOpacity
+					activeOpacity={0.9}
+					onPress={getData}
+					//On Click of button calling getData function to load more data
+					style={styles.loadMoreBtn}
+				>
+					<Text style={styles.btnText}>Load More</Text>
+					{loading ? (
+						<ActivityIndicator
+							color={colors.white}
+							size="large"
+							style={{ marginHorizontal: 8 }}
+						/>
+					) : null}
+				</TouchableOpacity>
+			</View>
+		);
+	};
+	useEffect(() => {
+		getData;
+	}, []);
 	return (
-		<Screen style={styles.container}>
+		<>
 			<Modal
 				animationType="slide"
-				transparent={true}
 				visible={modalVisible}
-				onRequestClose={() => {
-					Alert.alert("Modal has been closed.");
-					setModalVisible(!modalVisible);
-				}}
+				transparent={true}
+				onRequestClose={() => setModalVisible(false)}
 			>
 				<View style={styles.centeredView}>
 					<View style={styles.modalView}>
-						<Text style={styles.modalText}>Hello World!</Text>
-						<Pressable
-							style={[styles.button, styles.buttonClose]}
-							onPress={() => setModalVisible(!modalVisible)}
+						<AppForm
+							initialValues={{ custom: "", text: "" }}
+							onSubmit={(values) => console.log(values)}
+							// validationSchema={validationSchema}
 						>
-							<Text style={styles.textStyle}>Hide Modal</Text>
-						</Pressable>
+							{/* <BouncyCheckbox
+								size={25}
+								fillColor="red"
+								unfillColor="#FFFFFF"
+								text="Custom Checkbox"
+								iconStyle={{ borderColor: "red" }}
+								ref={checkboxRef}
+								// onPress={(isChecked) => {
+								// 	setIsChecked(!isChecked);
+								// 	console.log(isChecked);
+								// }}
+								onPress={(isChecked) => {
+									console.log("Custom Checkbox");
+								}}
+							/>
+							 */}
+							<AppBounceyCheckBox name="custom" />
+							<AppBounceyCheckBox name="text" />
+
+							<SubmitButton
+								title="Submit"
+								// onPress={(values) => {
+								// 	console.log(values);
+
+								// 	// setModalVisible(!modalVisible);
+								// 	// console.log("tapped");
+								// 	// console.log(checkboxRef.current.checked);
+								// 	// console.log(!isChecked);
+								// }}
+							/>
+							{/* <Pressable
+								style={[styles.button, styles.buttonClose]}
+								onPress={() => {
+									setModalVisible(!modalVisible);
+									console.log("tapped");
+									console.log(checkboxRef.current.checked);
+									// console.log(!isChecked);
+								}}
+							>
+								<Text style={styles.textStyle}>Apply Modal</Text>
+							</Pressable> */}
+						</AppForm>
+						{/* <Text style={styles.modalText}>Modal Content</Text> */}
 					</View>
 				</View>
 			</Modal>
-			<View style={styles.headerContainer}>
-				<AppText
-					size={20}
-					color={colors.black}
-					marginVertical={5}
-					Weight="bold"
-				>
-					All Courses
-				</AppText>
-				<TouchableOpacity onPress={() => setModalVisible(true)}>
-					<View style={styles.filterIconStyle}>
-						<AntDesign name="find" size={20} color={colors.white} />
-					</View>
-				</TouchableOpacity>
-			</View>
-			<View style={styles.flatListContainer}>
-				<FlatList
-					data={courseData}
-					keyExtractor={(item) => item.id.toString()}
-					initialNumToRender={5}
-					renderItem={({ item }) => (
-						<CourseCard
-							imgSource={item.image}
-							instractourName={item.instractourName}
-							courseName={item.courseName}
-							courseDescription={item.courseDescription}
-							courseDutation={item.courseDutation}
-						/>
-					)}
-				/>
-			</View>
-		</Screen>
+			<Screen style={styles.container}>
+				<View style={styles.headerContainer}>
+					<AppText
+						size={20}
+						color={colors.black}
+						marginVertical={5}
+						Weight="bold"
+					>
+						All Courses
+					</AppText>
+					<TouchableOpacity onPress={() => setModalVisible(true)}>
+						<View style={styles.filterIconStyle}>
+							<AntDesign name="find" size={20} color={colors.white} />
+						</View>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.flatListContainer}>
+					<FlatList
+						data={courseData}
+						keyExtractor={(item) => item.id.toString()}
+						enableEmptySections={true}
+						ListFooterComponent={renderFooter}
+						renderItem={({ item }) => (
+							<CourseCard
+								imgSource={item.image}
+								instractourName={item.instractourName}
+								courseName={item.courseName}
+								courseDescription={item.courseDescription}
+								courseDutation={item.courseDutation}
+							/>
+						)}
+					/>
+				</View>
+			</Screen>
+		</>
 	);
 };
 
@@ -244,48 +332,74 @@ const styles = StyleSheet.create({
 	//Modal style
 	centeredView: {
 		flex: 1,
-		justifyContent: "center",
+		justifyContent: "flex-end",
 		alignItems: "center",
 		marginTop: 22,
+		backgroundColor: "rgba(0,0,0,0.7)",
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
 	},
 	modalView: {
-		margin: 20,
+		// margin: 20,
 		backgroundColor: "white",
-		borderRadius: 20,
+		// borderRadius: 20,
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
 		padding: 35,
 		alignItems: "center",
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.25,
-		shadowRadius: 4,
-		elevation: 5,
+		width: windowWidth,
+		height: windowHeight / 1.5,
+		// shadowColor: "#000",
+		// shadowOffset: {
+		// 	width: 0,
+		// 	height: 2,
+		// },
+		// shadowOpacity: 0.25,
+		// shadowRadius: 4,
+		// elevation: 5,
 	},
 	button: {
 		borderRadius: 20,
 		padding: 10,
 		elevation: 2,
+		width: windowWidth / 2,
 	},
-	buttonOpen: {
-		backgroundColor: "#F194FF",
-	},
+	// buttonOpen: {
+	// 	backgroundColor: "#F194FF",
+	// },
 	buttonClose: {
-		backgroundColor: "#2196F3",
+		backgroundColor: colors.primary,
 	},
 	textStyle: {
-		color: "white",
+		color: colors.white,
 		fontWeight: "bold",
 		textAlign: "center",
+		fontSize: 20,
 	},
 	modalText: {
 		marginBottom: 15,
 		textAlign: "center",
 	},
-	filterIconStyle: {
-		backgroundColor: colors.primary,
+	// load more getDataFooter
+	footer: {
 		padding: 10,
-		borderRadius: 8,
+		justifyContent: "center",
+		alignItems: "center",
+		flexDirection: "row",
+	},
+	loadMoreBtn: {
+		padding: 10,
+		backgroundColor: colors.primary,
+		borderRadius: 20,
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+		flex: 1,
+	},
+	btnText: {
+		color: colors.white,
+		fontSize: 20,
+		fontWeight: "bold",
+		textAlign: "center",
 	},
 });

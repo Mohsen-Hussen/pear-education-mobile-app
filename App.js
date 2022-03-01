@@ -1,12 +1,17 @@
-import React, { useState } from "react";
-import { StyleSheet, SafeAreaView, StatusBar, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+	StyleSheet,
+	SafeAreaView,
+	StatusBar,
+	ScrollView,
+	Alert,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTabsNavigator from "./navigation/BottomTabsNavigator";
 import WelcomeStackNav from "./navigation/WelcomeStackNav";
 import AppSettings from "./config/AppSettings";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect } from "react";
-import { Alert } from "react-native";
+
 import LoginScreen from "./screens/LoginScreen";
 import RegisterFirst from "./screens/RegisterFirst";
 import CourseCard from "./components/Courses/CourseCard";
@@ -15,6 +20,7 @@ import CourseCardsList from "./screens/CourseCardsListScreen";
 import RegisterSecond from "./screens/RegisterSecond";
 import RegisterStackNav from "./navigation/RegisterStackNav";
 import InstructorDetails from "./screens/InstructorDetails";
+
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
 
@@ -63,7 +69,7 @@ const App = () => {
 	// );
 	// return <RegisterSecond />;
 	// return <Render />;
-	// <LoginScreen />
+	// return <LoginScreen />;
 };
 
 export default App;

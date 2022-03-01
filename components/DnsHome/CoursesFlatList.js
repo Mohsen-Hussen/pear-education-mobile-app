@@ -6,7 +6,7 @@ import {
 	FlatList,
 	TouchableOpacity,
 	ImageBackground,
-	useWindowDimensions,
+	Dimensions,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/pearColors";
@@ -62,9 +62,9 @@ const coursesData = [
 	},
 ];
 
-const CoursesFlatList = () => {
-	const window = useWindowDimensions();
+const windowHeight = Dimensions.get("window").height;
 
+const CoursesFlatList = () => {
 	return (
 		<View style={[styles.container]}>
 			<FlatList
@@ -74,19 +74,11 @@ const CoursesFlatList = () => {
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
 					<TouchableOpacity>
-						<View
-							style={[
-								styles.TouchableOpacityContainer,
-								{ height: window.height / 3 },
-							]}
-						>
+						<View style={[styles.TouchableOpacityContainer]}>
 							<ImageBackground
 								source={item.uri}
 								resizeMode="cover"
-								style={[
-									styles.ImageBackgroundContainer,
-									{ height: window.height / 4 },
-								]}
+								style={[styles.ImageBackgroundContainer]}
 							>
 								<View style={styles.overlayStyle}></View>
 								<View style={styles.viewAlign}>
@@ -132,6 +124,7 @@ const styles = StyleSheet.create({
 		overflow: "hidden",
 		justifyContent: "center",
 		alignItems: "center",
+		height: windowHeight / 4.2,
 	},
 	overlayStyle: {
 		position: "absolute",

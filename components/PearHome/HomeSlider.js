@@ -1,12 +1,10 @@
 import React from "react";
 import {
 	StyleSheet,
-	Text,
 	View,
 	FlatList,
 	TouchableOpacity,
 	Image,
-	Platform,
 } from "react-native";
 import colors from "../../config/pearColors";
 import AppText from "../General/AppText";
@@ -47,7 +45,6 @@ export default HomeSlider;
 const styles = StyleSheet.create({
 	sectioContainer: {
 		width: "100%",
-		paddingHorizontal: Platform.OS === "android" ? 10 : 20,
 	},
 	sectionAlign: {
 		justifyContent: "center",

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { StyleSheet, SafeAreaView, StatusBar } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-import colors from "../config/pearColors";
-
+import Screen from "../components/General/Screen";
 import HomeSlider from "../components/PearHome/HomeSlider";
 import HomeFlatList from "../components/PearHome/HomeFlatList";
 
@@ -160,11 +159,11 @@ const teachersData = [
 
 const PearHomeScreen = () => {
 	return (
-		<SafeAreaView style={styles.container}>
+		<Screen>
 			<HomeSlider data={educationData} title="All Education Level" />
 			<HomeSlider data={centersData} title="All Centers" />
 			<HomeFlatList data={teachersData} title="Our Teachers" />
-		</SafeAreaView>
+		</Screen>
 	);
 };
 
@@ -173,8 +172,5 @@ export default PearHomeScreen;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: colors.screenBackground,
-		padding: 20,
-		paddingTop: StatusBar.currentHeight,
 	},
 });
