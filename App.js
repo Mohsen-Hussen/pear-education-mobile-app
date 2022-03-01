@@ -53,14 +53,14 @@ const Render = () => {
 };
 const App = () => {
 	// return <RegisterFirst />;
-	// return <Render />;
+	return <Render />;
 	// return <LoginScreen />
-	return (
-		<>
-			<StatusBar style="auto" />
-			<CourseCardsList />
-		</>
-	);
+	// return (
+	// 	<>
+	// 		<StatusBar style="auto" />
+	// 		<CourseCardsList />
+	// 	</>
+	// );
 	// return <InstructorDetails />;
 	// return (
 	// 	<NavigationContainer>

@@ -1,82 +1,115 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+	FlatList,
+	Image,
+	StyleSheet,
+	Text,
+	TouchableHighlight,
+	TouchableOpacity,
+	View,
+} from "react-native";
 import React from "react";
 import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
 import pearColors from "../config/pearColors";
-
+import InstructorCard from "../components/Instructor/InstructorCard";
+import CourseCard from "../components/Courses/CourseCard";
+const courseData = [
+	{
+		id: 1,
+		image: require("../assets/pearImages/all-course-1.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+	{
+		id: 2,
+		image: require("../assets/pearImages/all-course-2.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+	{
+		id: 3,
+		image: require("../assets/pearImages/all-course-3.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+	{
+		id: 4,
+		image: require("../assets/pearImages/all-course-1.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+	{
+		id: 5,
+		image: require("../assets/pearImages/all-course-2.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+	{
+		id: 6,
+		image: require("../assets/pearImages/all-course-3.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+	{
+		id: 7,
+		image: require("../assets/pearImages/all-course-1.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+	{
+		id: 8,
+		image: require("../assets/pearImages/all-course-2.png"),
+		instractourName: "By Dr/Ahmec Selim",
+		courseName: "Supply Chain Mangement",
+		courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+		courseDutation: "24 Hours",
+	},
+];
 const InstructorDetails = () => {
 	return (
 		<Screen style={{ backgroundColor: pearColors.light }}>
-			<View
-				style={{
-					flexDirection: "row",
-					height: 100,
-					width: "100%",
-				}}
-			>
-				<View
-					style={{
-						width: "25%",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<Image
-						style={{ borderRadius: 50, width: 80, height: 80 }}
-						source={require("../assets/pearImages/stu-parent-03.png")}
-					/>
-				</View>
-				<View
-					style={{
-						width: "100%",
-						justifyContent: "center",
-					}}
-				>
-					<AppText marginVertical={3} Weight="bold">
-						Dr. Ahmed Selem
-					</AppText>
-					<AppText color={pearColors.inActive} marginVertical={3} size="14">
-						Developer and Lead Instructor
-					</AppText>
-				</View>
+			<InstructorCard
+				imageUri="https://reactjs.org/logo-og.png"
+				InstructorName="Dr. Ahmed Selem"
+				InstructorPosition="Developer and Lead Instructor"
+				totalStudents="874,487"
+				Reviews="120,021"
+				AboutMe="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+			></InstructorCard>
+
+			<AppText Weight="bold" size="20">
+				My Courses ({courseData.length})
+			</AppText>
+			<View style={{ flex: 1 }}>
+				<FlatList
+					data={courseData}
+					keyExtractor={(item) => item.id.toString()}
+					initialNumToRender={5}
+					renderItem={({ item }) => (
+						<CourseCard
+							imgSource={item.image}
+							instractourName={item.instractourName}
+							courseName={item.courseName}
+							courseDescription={item.courseDescription}
+							courseDutation={item.courseDutation}
+						/>
+					)}
+				/>
 			</View>
-			<View
-				style={{
-					flexDirection: "row",
-					height: 100,
-					width: "100%",
-				}}
-			>
-				<View
-					style={{
-						width: "30%",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<AppText color={pearColors.inActive} marginVertical={3} size="14">
-						Total Student
-					</AppText>
-					<AppText marginVertical={3} Weight="bold">
-						874,487
-					</AppText>
-				</View>
-				<View
-					style={{
-						width: "30%",
-						justifyContent: "center",
-						alignItems: "center",
-					}}
-				>
-					<AppText color={pearColors.inActive} marginVertical={3} size="14">
-						Reviews
-					</AppText>
-					<AppText marginVertical={3} Weight="bold">
-						120,021
-					</AppText>
-				</View>
-			</View>
-			<Text>InstructorDetails</Text>
 		</Screen>
 	);
 };
