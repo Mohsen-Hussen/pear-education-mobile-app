@@ -58,8 +58,10 @@ const App = () => {
 	// return <LoginScreen />
 	return (
 		<>
-			<StatusBar style="auto" />
-			<CoursesIntroScreen />
+			<NavigationContainer>
+				<CoursesIntroScreen />
+			</NavigationContainer>
+
 			{/* <CourseCardsList /> */}
 		</>
 	);

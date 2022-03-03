@@ -22,10 +22,10 @@ const CourseIntroDetails = ({
 	courseDescription,
 }) => {
 	return (
-		<View style={styles.container}>
-			<View style={styles.imgThubContainer}>
+		<View>
+			{/* <View style={styles.imgThubContainer}>
 				<Image source={imgSrc} style={styles.imgThub} />
-			</View>
+			</View> */}
 			<View style={styles.courseDetailesContainer}>
 				<TouchableOpacity
 					onPress={() => console.log("play icon tapped")}
@@ -36,26 +36,26 @@ const CourseIntroDetails = ({
 				</TouchableOpacity>
 				<View style={styles.courseDescriptionContainer}>
 					<View style={styles.categoryContainer}>
-						<AppText size={18} color={colors.skillsColor} Weight="bold">
+						<AppText size={16} color={colors.skillsColor} Weight="bold">
 							{categoryName}
 						</AppText>
 					</View>
 					<View>
-						<AppText size={19} Weight="bold">
+						<AppText size={17} Weight="bold">
 							{courseTitle}
 						</AppText>
-						<AppText size={15} color={colors.medium} marginVertical={0}>
+						<AppText size={13} color={colors.medium} marginVertical={0}>
 							{courseSubtitle}
 						</AppText>
 						<AppText
-							size={18}
+							size={16}
 							color={colors.black}
 							Weight="bold"
 							marginVertical={10}
 						>
 							About This Course
 						</AppText>
-						<AppText size={15} color={colors.medium} marginVertical={0}>
+						<AppText size={14} color={colors.medium} marginVertical={0}>
 							{courseDescription}
 						</AppText>
 					</View>
@@ -71,24 +71,23 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 	},
-	imgThubContainer: {
-		width: "100%",
-		height: windowHeight / 2.5,
-		borderTopLeftRadius: 10,
-		borderTopRightRadius: 10,
-		overflow: "hidden",
-	},
-	imgThub: {
-		maxWidth: "100%",
-		resizeMode: "cover",
-		maxHeight: "100%",
-	},
+	// imgThubContainer: {
+	// 	width: "100%",
+	// 	height: windowHeight / 2.5,
+	// 	borderTopLeftRadius: 10,
+	// 	borderTopRightRadius: 10,
+	// 	overflow: "hidden",
+	// },
+	// imgThub: {
+	// 	maxWidth: "100%",
+	// 	resizeMode: "cover",
+	// 	maxHeight: "100%",
+	// },
 	courseDetailesContainer: {
 		width: "100%",
-		borderTopLeftRadius: 10,
-		borderTopRightRadius: 10,
-		position: "relative",
-		top: -15,
+		borderTopLeftRadius: 25,
+		borderTopRightRadius: 25,
+		top: -20,
 		backgroundColor: colors.white,
 		padding: 8,
 	},
