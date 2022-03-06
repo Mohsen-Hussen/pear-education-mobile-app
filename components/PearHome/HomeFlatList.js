@@ -16,9 +16,22 @@ const HomeFlatList = ({ data, title }) => {
 				flex: 1,
 			}}
 		>
-			<AppText size={22} color={colors.black} align="left" Weight="bold">
-				{title}
-			</AppText>
+			<View
+				style={{
+					flexDirection: "row",
+					justifyContent: "space-between",
+					alignItems: "center",
+				}}
+			>
+				<AppText size={22} color={colors.black} align="left" Weight="bold">
+					{title}
+				</AppText>
+				<TouchableOpacity onPress={() => console.log("tapped")}>
+					<AppText size={18} color={colors.medium} align="right">
+						See All
+					</AppText>
+				</TouchableOpacity>
+			</View>
 			<View style={styles.sectioContainer}>
 				<FlatList
 					data={data}

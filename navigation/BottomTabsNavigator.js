@@ -69,10 +69,10 @@ const BottomTabsNavigator = () => {
 							name="account"
 							color={color}
 							size={35}
-							onPress={() => navigation.navigate(routes.INSTRUCTORDETAILS)}
+							onPress={() => navigation.navigate(routes.INSTRUCTOR_DETAILS)}
 						/>
 					),
-					title: "InstructorDetails",
+					title: "Instructor Details",
 					headerTitleAlign: "center",
 				})}
 			/>

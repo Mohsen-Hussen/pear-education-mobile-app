@@ -21,6 +21,7 @@ import RegisterSecond from "./screens/RegisterSecond";
 import RegisterStackNav from "./navigation/RegisterStackNav";
 import InstructorDetails from "./screens/InstructorDetails";
 import CoursesIntroScreen from "./screens/CoursesIntroScreen";
+import TeachersScreen from "./screens/TeachersScreen";
 
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
@@ -54,17 +55,16 @@ const Render = () => {
 };
 const App = () => {
 	// return <RegisterFirst />;
-	// return <Render />;
+	return <Render />;
 	// return <LoginScreen />
-	return (
-		<>
-			<NavigationContainer>
-				<CoursesIntroScreen />
-			</NavigationContainer>
-
-			{/* <CourseCardsList /> */}
-		</>
-	);
+	// return <TeachersScreen />;
+	// return (
+	// 	<>
+	// 		<NavigationContainer>
+	// 			<CoursesIntroScreen />
+	// 		</NavigationContainer>
+	// 	</>
+	// );
 	// return <InstructorDetails />;
 	// return (
 	// 	<NavigationContainer>

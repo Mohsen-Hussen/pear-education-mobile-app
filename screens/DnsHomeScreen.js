@@ -1,21 +1,29 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, ScrollView } from "react-native";
+import {
+	StyleSheet,
+	View,
+	Dimensions,
+	ScrollView,
+	TouchableOpacity,
+} from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import colors from "../config/pearColors";
+import routes from "../navigation/routes";
 import Screen from "../components/General/Screen";
 import FilterBar from "../components/General/FilterBar";
 import AppText from "../components/General/AppText";
 
 import CoursesFlatList from "../components/DnsHome/CoursesFlatList";
 import InstractourFlatList from "../components/DnsHome/InstractourFlatList";
+import TeachersScreen from "../screens/TeachersScreen";
 
 const Tab = createMaterialTopTabNavigator();
 const windowHeight = Dimensions.get("window").height;
 
-const DnsHomeScreen = () => {
+const DnsHomeScreen = ({ navigation }) => {
 	return (
-		<Screen style={styles.container}>
+		<Screen>
 			<ScrollView>
 				<AppText size={22} color={colors.black} align="left" Weight="bold">
 					Find a perfect course for you
@@ -59,15 +67,22 @@ const DnsHomeScreen = () => {
 						<Tab.Screen name="DevOps" component={CoursesFlatList} />
 					</Tab.Navigator>
 				</View>
-				<AppText
-					size={22}
-					color={colors.black}
-					align="left"
-					Weight="bold"
-					margin={0}
+				<View
+					style={{
+						flexDirection: "row",
+						justifyContent: "space-between",
+						alignItems: "center",
+					}}
 				>
-					Our Top Instractours
-				</AppText>
+					<AppText size={22} color={colors.black} align="left" Weight="bold">
+						Our Top Instractours
+					</AppText>
+					<TouchableOpacity onPress={() => console.log("tapped")}>
+						<AppText size={18} color={colors.medium} align="right">
+							See All
+						</AppText>
+					</TouchableOpacity>
+				</View>
 				<InstractourFlatList />
 			</ScrollView>
 		</Screen>
@@ -76,8 +91,4 @@ const DnsHomeScreen = () => {
 
 export default DnsHomeScreen;
 
-const styles = StyleSheet.create({
-	container: {
-		// flex: 1,
-	},
-});
+const styles = StyleSheet.create({});
