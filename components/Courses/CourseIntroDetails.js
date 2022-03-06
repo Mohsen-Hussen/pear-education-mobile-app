@@ -22,7 +22,7 @@ const CourseIntroDetails = ({
 	courseDescription,
 }) => {
 	return (
-		<View>
+		<View style={{ marginTop: -25 }}>
 			{/* <View style={styles.imgThubContainer}>
 				<Image source={imgSrc} style={styles.imgThub} />
 			</View> */}

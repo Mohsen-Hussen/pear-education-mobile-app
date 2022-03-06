@@ -15,4 +15,5 @@ export default {
 	screenBackground: "#A5C2390D",
 	skillsBackground: "#FFEAA757",
 	skillsColor: "#FCC153FC",
+	lessonsLock: "#A5C23973",
 };
