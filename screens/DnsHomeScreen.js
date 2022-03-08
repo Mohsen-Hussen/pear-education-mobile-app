@@ -6,7 +6,9 @@ import {
 	ScrollView,
 	TouchableOpacity,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import colors from "../config/pearColors";
 import routes from "../navigation/routes";
@@ -19,6 +21,8 @@ import InstractourFlatList from "../components/DnsHome/InstractourFlatList";
 import TeachersScreen from "../screens/TeachersScreen";
 
 const Tab = createMaterialTopTabNavigator();
+const Stack = createStackNavigator();
+
 const windowHeight = Dimensions.get("window").height;
 
 const DnsHomeScreen = ({ navigation }) => {

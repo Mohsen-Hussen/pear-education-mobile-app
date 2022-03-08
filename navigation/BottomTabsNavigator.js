@@ -17,7 +17,6 @@ const BottomTabsNavigator = () => {
 			initialRouteName="DnsHomeScreen"
 			screenOptions={{
 				tabBarShowLabel: false,
-
 				tabBarActiveTintColor: colors.black,
 				tabBarInactiveTintColor: colors.inActive,
 				tabBarStyle: {

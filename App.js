@@ -20,6 +20,7 @@ import CourseCardsList from "./screens/CourseCardsListScreen";
 import RegisterSecond from "./screens/RegisterSecond";
 import RegisterStackNav from "./navigation/RegisterStackNav";
 import InstructorDetails from "./screens/InstructorDetails";
+import CourseCardsListScreen from "./screens/CourseCardsListScreen";
 import CoursesIntroScreen from "./screens/CoursesIntroScreen";
 import TeachersScreen from "./screens/TeachersScreen";
 
@@ -55,9 +56,10 @@ const Render = () => {
 };
 const App = () => {
 	// return <RegisterFirst />;
-	return <Render />;
+	// return <Render />;
 	// return <LoginScreen />
-	// return <TeachersScreen />;
+	// return <CourseCardsListScreen />;
+	return <TeachersScreen />;
 	// return (
 	// 	<>
 	// 		<NavigationContainer>
