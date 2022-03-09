@@ -116,6 +116,18 @@ const DnsHomeScreen = ({ navigation }) => {
 					</TouchableOpacity>
 				</View>
 				<InstractourFlatList navigation={navigation} />
+				<View
+					style={{
+						flexDirection: "row",
+						justifyContent: "space-between",
+						alignItems: "center",
+					}}
+				>
+					<AppText size={22} color={colors.black} align="left" Weight="bold">
+						Feedback
+					</AppText>
+				</View>
+				<FeedbackFlatList />
 			</ScrollView>
 		</Screen>
 	);
