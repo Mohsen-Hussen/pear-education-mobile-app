@@ -157,12 +157,24 @@ const teachersData = [
 	},
 ];
 
-const PearHomeScreen = () => {
+const PearHomeScreen = ({ navigation }) => {
 	return (
 		<Screen>
-			<HomeSlider data={educationData} title="All Education Level" />
-			<HomeSlider data={centersData} title="All Centers" />
-			<HomeFlatList data={teachersData} title="Our Teachers" />
+			<HomeSlider
+				navigation={navigation}
+				data={educationData}
+				title="All Education Level"
+			/>
+			<HomeSlider
+				navigation={navigation}
+				data={centersData}
+				title="All Centers"
+			/>
+			<HomeFlatList
+				data={teachersData}
+				title="Our Teachers"
+				navigation={navigation}
+			/>
 		</Screen>
 	);
 };

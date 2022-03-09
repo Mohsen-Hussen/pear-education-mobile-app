@@ -5,6 +5,7 @@ import {
 	SafeAreaView,
 	Image,
 	Dimensions,
+	TouchableOpacity,
 } from "react-native";
 import colors from "../../config/pearColors";
 import AppText from "../General/AppText";
@@ -21,38 +22,40 @@ const CourseCard = ({
 }) => {
 	return (
 		<SafeAreaView style={styles.container}>
-			<View style={styles.cardContainer}>
-				<View style={styles.imageContainer}>
-					<Image style={styles.imageCardStyle} source={imgSource} />
-				</View>
-				<View style={styles.textCardContainer}>
-					<AppText size={12} color={colors.medium} marginVertical={3}>
-						{instractourName}
-					</AppText>
-					<AppText
-						size={17}
-						color={colors.black}
-						marginVertical={3}
-						Weight="bold"
-					>
-						{courseName}
-					</AppText>
-					<AppText size={13} color={colors.black} marginVertical={3}>
-						{courseDescription}
-					</AppText>
-					<View style={styles.durationContainer}>
-						<AntDesign
-							name="clockcircleo"
-							size={12}
-							color="black"
-							style={{ marginRight: 5 }}
-						/>
-						<AppText size={13} color={colors.medium}>
-							{courseDutation}
+			<TouchableOpacity onPress={() => console.log("Tapped")}>
+				<View style={styles.cardContainer}>
+					<View style={styles.imageContainer}>
+						<Image style={styles.imageCardStyle} source={imgSource} />
+					</View>
+					<View style={styles.textCardContainer}>
+						<AppText size={12} color={colors.medium} marginVertical={3}>
+							{instractourName}
 						</AppText>
+						<AppText
+							size={17}
+							color={colors.black}
+							marginVertical={3}
+							Weight="bold"
+						>
+							{courseName}
+						</AppText>
+						<AppText size={13} color={colors.black} marginVertical={3}>
+							{courseDescription}
+						</AppText>
+						<View style={styles.durationContainer}>
+							<AntDesign
+								name="clockcircleo"
+								size={12}
+								color="black"
+								style={{ marginRight: 5 }}
+							/>
+							<AppText size={13} color={colors.medium}>
+								{courseDutation}
+							</AppText>
+						</View>
 					</View>
 				</View>
-			</View>
+			</TouchableOpacity>
 		</SafeAreaView>
 	);
 };

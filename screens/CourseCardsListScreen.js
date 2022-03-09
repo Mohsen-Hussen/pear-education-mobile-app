@@ -177,7 +177,9 @@ const windowWidth = Dimensions.get("window").width;
 // 	password: Yup.string().required().min(4).label("Password"),
 // });
 
-const CourseCardsListScreen = () => {
+const CourseCardsListScreen = ({ route }) => {
+	const ParamsTitle = route.params != null ? route.params.Title : "";
+	const ParamsSearchText = route.params != null ? route.params.SearchText : "";
 	const [modalVisible, setModalVisible] = useState(false);
 	const [loading, setLoading] = useState(true);
 
@@ -284,12 +286,15 @@ const CourseCardsListScreen = () => {
 					>
 						All Courses
 					</AppText>
+
 					<TouchableOpacity onPress={() => setModalVisible(true)}>
 						<View style={styles.filterIconStyle}>
 							<AntDesign name="find" size={20} color={colors.white} />
 						</View>
 					</TouchableOpacity>
 				</View>
+				<Text> Selected Filter ={ParamsTitle}</Text>
+				<Text>Search Text = {ParamsSearchText}</Text>
 				<View style={styles.flatListContainer}>
 					<FlatList
 						data={courseData}

@@ -1,17 +1,19 @@
 import React from "react";
-import { StyleSheet, Image, ScrollView } from "react-native";
+import { StyleSheet, Image, ScrollView, Text } from "react-native";
 import colors from "../config/pearColors";
 import Screen from "../components/General/Screen";
 import CourseIntroDetails from "../components/Courses/CourseIntroDetails";
 import CourseCurriculum from "../components/Courses/CourseCurriculum";
 
-const CoursesIntroScreen = () => {
+const CoursesIntroScreen = ({ route }) => {
+	const itemSelectedId = route.params.itemID;
 	return (
 		<>
 			<Image
 				source={require("../assets/pearImages/course-intro-img.png")}
 				style={{ height: 250 }}
 			/>
+
 			<Screen style={{ backgroundColor: colors.white }}>
 				<CourseIntroDetails
 					// imgSrc={require("../assets/pearImages/course-intro-img.png")}
@@ -24,6 +26,8 @@ const CoursesIntroScreen = () => {
 						"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever "
 					}
 				/>
+				<Text> itemSelectedId= {itemSelectedId}</Text>
+
 				<CourseCurriculum />
 			</Screen>
 		</>

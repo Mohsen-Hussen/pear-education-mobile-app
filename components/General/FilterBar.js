@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../../config/pearColors";
+import routes from "../../navigation/routes";
 
 const FilterBar = ({
 	placeholder,
@@ -18,6 +19,7 @@ const FilterBar = ({
 	filterIconName,
 	filterIconSize,
 	filterIconColor,
+	navigation,
 }) => {
 	const [text, setText] = useState("");
 	return (
@@ -38,7 +40,13 @@ const FilterBar = ({
 					style={styles.input}
 				/>
 			</View>
-			<TouchableOpacity onPress={() => console.log(text)}>
+			<TouchableOpacity
+				onPress={() =>
+					navigation.navigate(routes.COURSES_SCREEN, {
+						SearchText: text,
+					})
+				}
+			>
 				<View style={styles.filterIconStyle}>
 					<AntDesign
 						name={filterIconName}

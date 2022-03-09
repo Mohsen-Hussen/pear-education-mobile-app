@@ -41,6 +41,7 @@ const DnsHomeScreen = ({ navigation }) => {
 					filterIconName="find"
 					filterIconSize={35}
 					filterIconColor="white"
+					navigation={navigation}
 				/>
 				<AppText size={22} color={colors.black} align="left" Weight="bold">
 					All Categories
@@ -63,12 +64,36 @@ const DnsHomeScreen = ({ navigation }) => {
 							tabBarScrollEnabled: true,
 						}}
 					>
-						<Tab.Screen name="Hr" component={CoursesFlatList} />
-						<Tab.Screen name="Design" component={CoursesFlatList} />
-						<Tab.Screen name="Development" component={CoursesFlatList} />
-						<Tab.Screen name="Marketing" component={CoursesFlatList} />
-						<Tab.Screen name="Sales" component={CoursesFlatList} />
-						<Tab.Screen name="DevOps" component={CoursesFlatList} />
+						<Tab.Screen
+							name="DevOps"
+							children={() => (
+								<CoursesFlatList navigation={navigation}></CoursesFlatList>
+							)}
+						/>
+						<Tab.Screen
+							name="Sales"
+							children={() => (
+								<CoursesFlatList navigation={navigation}></CoursesFlatList>
+							)}
+						/>
+						<Tab.Screen
+							name="Marketing"
+							children={() => (
+								<CoursesFlatList navigation={navigation}></CoursesFlatList>
+							)}
+						/>
+						<Tab.Screen
+							name="Development"
+							children={() => (
+								<CoursesFlatList navigation={navigation}></CoursesFlatList>
+							)}
+						/>
+						<Tab.Screen
+							name="Design"
+							children={() => (
+								<CoursesFlatList navigation={navigation}></CoursesFlatList>
+							)}
+						/>
 					</Tab.Navigator>
 				</View>
 				<View
@@ -81,13 +106,15 @@ const DnsHomeScreen = ({ navigation }) => {
 					<AppText size={22} color={colors.black} align="left" Weight="bold">
 						Our Top Instractours
 					</AppText>
-					<TouchableOpacity onPress={() => console.log("tapped")}>
+					<TouchableOpacity
+						onPress={() => navigation.navigate(routes.TEACHERS_SCREEN)}
+					>
 						<AppText size={18} color={colors.medium} align="right">
 							See All
 						</AppText>
 					</TouchableOpacity>
 				</View>
-				<InstractourFlatList />
+				<InstractourFlatList navigation={navigation} />
 			</ScrollView>
 		</Screen>
 	);

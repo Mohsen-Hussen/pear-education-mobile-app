@@ -1,12 +1,4 @@
-import {
-	FlatList,
-	Image,
-	StyleSheet,
-	Text,
-	TouchableHighlight,
-	TouchableOpacity,
-	View,
-} from "react-native";
+import { FlatList, StyleSheet, View, ScrollView } from "react-native";
 import React from "react";
 import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
@@ -79,37 +71,59 @@ const courseData = [
 		courseDutation: "24 Hours",
 	},
 ];
-const InstructorDetails = () => {
+const Instructor = {
+	imageUri: "https://reactjs.org/logo-og.png",
+	InstructorName: "Dr. Ahmed Selem",
+	InstructorPosition: "Developer and Lead Instructor",
+	totalStudents: "874,487",
+	Reviews: "120,021",
+	AboutMe:
+		"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
+};
+const InstructorDetails = ({ route }) => {
+	const selectedId = route.params.Id;
+	const renderItems = () => {
+		return courseData.map((item) => {
+			return (
+				<CourseCard
+					key={item.id}
+					imgSource={item.image}
+					instractourName={item.instractourName}
+					courseName={item.courseName}
+					courseDescription={item.courseDescription}
+					courseDutation={item.courseDutation}
+				/>
+			);
+		});
+	};
 	return (
 		<Screen style={{ backgroundColor: pearColors.light }}>
-			<InstructorCard
-				imageUri="https://reactjs.org/logo-og.png"
-				InstructorName="Dr. Ahmed Selem"
-				InstructorPosition="Developer and Lead Instructor"
-				totalStudents="874,487"
-				Reviews="120,021"
-				AboutMe="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
-			></InstructorCard>
-
-			<AppText Weight="bold" size="20">
-				My Courses ({courseData.length})
-			</AppText>
-			<View style={{ flex: 1 }}>
-				<FlatList
-					data={courseData}
-					keyExtractor={(item) => item.id.toString()}
-					initialNumToRender={5}
-					renderItem={({ item }) => (
-						<CourseCard
-							imgSource={item.image}
-							instractourName={item.instractourName}
-							courseName={item.courseName}
-							courseDescription={item.courseDescription}
-							courseDutation={item.courseDutation}
-						/>
-					)}
-				/>
-			</View>
+			<ScrollView>
+				<AppText Weight="bold" size="20">
+					Instructor Id = {selectedId}
+				</AppText>
+				<InstructorCard {...Instructor}></InstructorCard>
+				<AppText Weight="bold" size="20">
+					My Courses ({courseData.length})
+				</AppText>
+				<View style={{ flex: 1 }}>
+					{renderItems()}
+					{/* <FlatList
+						data={courseData}
+						keyExtractor={(item) => item.id.toString()}
+						initialNumToRender={5}
+						renderItem={({ item }) => (
+							<CourseCard
+								imgSource={item.image}
+								instractourName={item.instractourName}
+								courseName={item.courseName}
+								courseDescription={item.courseDescription}
+								courseDutation={item.courseDutation}
+							/>
+						)}
+					/> */}
+				</View>
+			</ScrollView>
 		</Screen>
 	);
 };

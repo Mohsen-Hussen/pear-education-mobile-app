@@ -1,5 +1,12 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import {
+	Image,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+	ScrollView,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import AppText from "../General/AppText";
 import pearColors from "../../config/pearColors";
 
@@ -11,6 +18,15 @@ const InstructorCard = ({
 	Reviews,
 	AboutMe,
 }) => {
+	const [showMore, setShowMore] = useState(false);
+	const renredShowMore = () => {
+		if (!showMore) {
+			return "Show More";
+		} else {
+			return "Show Less";
+		}
+	};
+
 	return (
 		<>
 			<View
@@ -89,16 +105,16 @@ const InstructorCard = ({
 				</AppText>
 
 				<AppText
+					{...(!showMore ? { numberOfLines: 3 } : {})}
 					marginVertical={5}
-					numberOfLines={5}
 					color={pearColors.inActive}
 					size="16"
 				>
 					{AboutMe}
 				</AppText>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => setShowMore(!showMore)}>
 					<AppText marginVertical={0} color={pearColors.primary}>
-						Show More
+						{renredShowMore()}
 					</AppText>
 				</TouchableOpacity>
 			</View>

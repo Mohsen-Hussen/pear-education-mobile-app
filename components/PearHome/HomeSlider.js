@@ -7,9 +7,10 @@ import {
 	Image,
 } from "react-native";
 import colors from "../../config/pearColors";
+import routes from "../../navigation/routes";
 import AppText from "../General/AppText";
 
-const HomeSlider = ({ data, title, width = 50 }) => {
+const HomeSlider = ({ data, title, width = 50, navigation, route }) => {
 	return (
 		<View style={styles.sectioContainer}>
 			<AppText size={22} color={colors.black} align="left" Weight="bold">
@@ -22,7 +23,13 @@ const HomeSlider = ({ data, title, width = 50 }) => {
 					data={data}
 					keyExtractor={(item) => item.id.toString()}
 					renderItem={({ item }) => (
-						<TouchableOpacity>
+						<TouchableOpacity
+							onPress={() =>
+								navigation.navigate(routes.COURSES_SCREEN, {
+									Title: item.title,
+								})
+							}
+						>
 							<View style={styles.item}>
 								<Image
 									source={item.image}

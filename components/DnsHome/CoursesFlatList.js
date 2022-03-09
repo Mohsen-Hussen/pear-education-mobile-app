@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/pearColors";
+import routes from "../../navigation/routes";
 
 const coursesData = [
 	{
@@ -64,7 +65,7 @@ const coursesData = [
 
 const windowHeight = Dimensions.get("window").height;
 
-const CoursesFlatList = () => {
+const CoursesFlatList = ({ navigation }) => {
 	return (
 		<View style={[styles.container]}>
 			<FlatList
@@ -73,7 +74,11 @@ const CoursesFlatList = () => {
 				data={coursesData}
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
-					<TouchableOpacity>
+					<TouchableOpacity
+						onPress={() =>
+							navigation.navigate(routes.COURSE_DETAILS, { itemID: item.id })
+						}
+					>
 						<View style={[styles.TouchableOpacityContainer]}>
 							<ImageBackground
 								source={item.uri}

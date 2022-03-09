@@ -8,6 +8,7 @@ import {
 	Dimensions,
 } from "react-native";
 import colors from "../../config/pearColors";
+import routes from "../../navigation/routes";
 import AppText from "../General/AppText";
 
 const instractourData = [
@@ -39,7 +40,7 @@ const instractourData = [
 
 const windowWidth = Dimensions.get("window").width;
 
-const InstractourFlatList = () => {
+const InstractourFlatList = ({ navigation }) => {
 	return (
 		<View style={styles.sliderContainer}>
 			<FlatList
@@ -48,7 +49,11 @@ const InstractourFlatList = () => {
 				data={instractourData}
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
-					<TouchableOpacity>
+					<TouchableOpacity
+						onPress={() =>
+							navigation.navigate(routes.INSTRUCTOR_DETAILS, { Id: item.id })
+						}
+					>
 						<View style={styles.cardContainer}>
 							<Image source={item.image} style={styles.constractorAvatar} />
 							<View style={styles.textContainer}>

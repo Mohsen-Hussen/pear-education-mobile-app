@@ -7,6 +7,9 @@ export default Object.freeze({
 	REGISTER_FIRST_SCREEN: "RegisterFirst",
 	REGISTER_SECOND_SCREEN: "RegisterSecond",
 	LOGIN_SCREEN: "LoginScreen",
-	INSTRUCTOR_DETAILS: "InstructorDetails",
+	INSTRUCTOR_DETAILS: "Instructor",
 	TEACHERS_SCREEN: "TeachersScreen",
+	COURSES_SCREEN: "CoursesScreen",
+	STACK_NAVIGATION: "StackNavigation",
+	COURSE_DETAILS: "CourseDetails",
 });
