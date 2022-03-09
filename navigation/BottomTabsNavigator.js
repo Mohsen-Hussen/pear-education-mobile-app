@@ -16,7 +16,7 @@ const BottomTabsNavigator = () => {
 		<Tab.Navigator
 			initialRouteName="DnsHomeScreen"
 			screenOptions={{
-				tabBarShowLabel: false,
+				tabBarShowLabel: true,
 				tabBarActiveTintColor: colors.black,
 				tabBarInactiveTintColor: colors.inActive,
 				tabBarStyle: {
@@ -41,6 +41,9 @@ const BottomTabsNavigator = () => {
 					),
 					title: "Home",
 					headerTitleAlign: "center",
+					headerStyle: {
+						backgroundColor: colors.screenBackground,
+					},
 				})}
 			/>
 			<Tab.Screen
@@ -57,6 +60,9 @@ const BottomTabsNavigator = () => {
 					),
 					title: "Home",
 					headerTitleAlign: "center",
+					headerStyle: {
+						backgroundColor: colors.screenBackground,
+					},
 				})}
 			/>
 			<Tab.Screen
@@ -71,8 +77,11 @@ const BottomTabsNavigator = () => {
 							onPress={() => navigation.navigate(routes.INSTRUCTOR_DETAILS)}
 						/>
 					),
-					title: "Instructor Details",
+					title: "Instructors",
 					headerTitleAlign: "center",
+					headerStyle: {
+						backgroundColor: colors.screenBackground,
+					},
 				})}
 			/>
 		</Tab.Navigator>

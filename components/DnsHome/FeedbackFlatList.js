@@ -47,6 +47,9 @@ const instractourData = [
 		rating: 5,
 	},
 ];
+// https://www.npmjs.com/package/react-native-ratings
+//https://github.com/Monte9/react-native-ratings
+
 const FeedbackFlatList = () => {
 	const [starCount, setStarCount] = useState(3);
 	const onStarRatingPress = (rating) => {

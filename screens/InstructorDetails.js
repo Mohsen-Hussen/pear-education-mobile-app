@@ -81,7 +81,7 @@ const courseData = [
 ];
 const InstructorDetails = () => {
 	return (
-		<Screen style={{ backgroundColor: pearColors.light }}>
+		<Screen style={{ backgroundColor: pearColors.screenBackground }}>
 			<InstructorCard
 				imageUri="https://reactjs.org/logo-og.png"
 				InstructorName="Dr. Ahmed Selem"
