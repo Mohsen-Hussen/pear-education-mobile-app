@@ -9,10 +9,11 @@ function GeneralButton({
 	onPress,
 	color = pearColors.primary,
 	width = "85%",
+	style,
 }) {
 	return (
 		<TouchableOpacity
-			style={[styles.button, { backgroundColor: color, width: width }]}
+			style={[styles.button, { backgroundColor: color, width: width }, style]}
 			onPress={onPress}
 		>
 			<Text style={styles.text}>{title}</Text>

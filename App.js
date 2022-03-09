@@ -63,6 +63,7 @@ const App = () => {
 	// return (
 	// 	<>
 	// 		<NavigationContainer>
+	// 			<StatusBar style="auto" />
 	// 			<CoursesIntroScreen />
 	// 		</NavigationContainer>
 	// 	</>

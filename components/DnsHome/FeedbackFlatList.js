@@ -20,7 +20,7 @@ const instractourData = [
 		title: "Student 1",
 		opnion:
 			"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-		rating: 2,
+		rating: 2.5,
 	},
 	{
 		id: 2,
@@ -51,10 +51,10 @@ const instractourData = [
 //https://github.com/Monte9/react-native-ratings
 
 const FeedbackFlatList = () => {
-	const [starCount, setStarCount] = useState(3);
-	const onStarRatingPress = (rating) => {
-		setStarCount(rating);
-	};
+	// const [starCount, setStarCount] = useState(3);
+	// const onStarRatingPress = (rating) => {
+	// 	setStarCount(rating);
+	// };
 	return (
 		<View style={styles.sliderContainer}>
 			<FlatList
@@ -73,7 +73,7 @@ const FeedbackFlatList = () => {
 								{item.opnion}
 							</AppText>
 							<StarRating
-								disabled={false}
+								disabled={true}
 								maxStars={5}
 								emptyStar={"star-o"}
 								fullStar={"star"}
@@ -81,12 +81,12 @@ const FeedbackFlatList = () => {
 								iconSet={"FontAwesome"}
 								fullStarColor={"#89A71A"}
 								starSize={30}
-								rating={starCount}
-								selectedStar={(rating) => {
-									onStarRatingPress(rating);
-									// console.log(rating);
-									// console.log(typeof rating);
-								}}
+								rating={item.rating}
+								// selectedStar={(rating) => {
+								// 	onStarRatingPress(rating);
+								// 	// console.log(rating);
+								// 	// console.log(typeof rating);
+								// }}
 							/>
 						</View>
 					</View>

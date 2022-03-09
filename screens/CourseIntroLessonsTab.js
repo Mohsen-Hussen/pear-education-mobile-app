@@ -149,11 +149,13 @@ const CourseIntroLessonsTab = () => {
 				style={{
 					justifyContent: "center",
 					alignItems: "center",
+					height: windowHeight / 12,
 				}}
 			>
 				<GeneralButton
 					title="Enroll Now"
 					onPress={() => console.log("enroll now button tapped")}
+					style={{ padding: 0 }}
 				/>
 			</View>
 		</>
