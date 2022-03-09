@@ -56,10 +56,10 @@ const Render = () => {
 };
 const App = () => {
 	// return <RegisterFirst />;
-	// return <Render />;
+	return <Render />;
 	// return <LoginScreen />
 	// return <CourseCardsListScreen />;
-	return <TeachersScreen />;
+	// return <TeachersScreen />;
 	// return (
 	// 	<>
 	// 		<NavigationContainer>

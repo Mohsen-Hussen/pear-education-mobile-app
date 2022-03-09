@@ -19,6 +19,7 @@ import AppText from "../components/General/AppText";
 import CoursesFlatList from "../components/DnsHome/CoursesFlatList";
 import InstractourFlatList from "../components/DnsHome/InstractourFlatList";
 import TeachersScreen from "../screens/TeachersScreen";
+import FeedbackFlatList from "../components/DnsHome/FeedbackFlatList";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
@@ -81,13 +82,25 @@ const DnsHomeScreen = ({ navigation }) => {
 					<AppText size={22} color={colors.black} align="left" Weight="bold">
 						Our Top Instractours
 					</AppText>
-					<TouchableOpacity onPress={() => console.log("tapped")}>
+					<TouchableOpacity onPress={() => console.log("instarctours tapped")}>
 						<AppText size={18} color={colors.medium} align="right">
 							See All
 						</AppText>
 					</TouchableOpacity>
 				</View>
 				<InstractourFlatList />
+				<View
+					style={{
+						flexDirection: "row",
+						justifyContent: "space-between",
+						alignItems: "center",
+					}}
+				>
+					<AppText size={22} color={colors.black} align="left" Weight="bold">
+						Feedback
+					</AppText>
+				</View>
+				<FeedbackFlatList />
 			</ScrollView>
 		</Screen>
 	);
