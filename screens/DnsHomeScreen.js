@@ -19,6 +19,7 @@ import AppText from "../components/General/AppText";
 import CoursesFlatList from "../components/DnsHome/CoursesFlatList";
 import InstractourFlatList from "../components/DnsHome/InstractourFlatList";
 import TeachersScreen from "../screens/TeachersScreen";
+import FeedbackFlatList from "../components/DnsHome/FeedbackFlatList";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();

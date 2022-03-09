@@ -9,14 +9,15 @@ const CoursesIntroScreen = ({ route }) => {
 	const itemSelectedId = route.params.itemID;
 	return (
 		<>
-			<Image
+			{/* <Image
 				source={require("../assets/pearImages/course-intro-img.png")}
 				style={{ height: 250 }}
 			/>
 
+			/> */}
 			<Screen style={{ backgroundColor: colors.white }}>
 				<CourseIntroDetails
-					// imgSrc={require("../assets/pearImages/course-intro-img.png")}
+					imgSrc={require("../assets/pearImages/course-intro-img.png")}
 					categoryName={"Soft Skills"}
 					courseTitle={
 						"Selling Skills-Selling Skills (Basic Selling Skills, Advanced Selling Skills)-Soft Skills"

@@ -22,10 +22,10 @@ const CourseIntroDetails = ({
 	courseDescription,
 }) => {
 	return (
-		<View style={{ marginTop: -25 }}>
-			{/* <View style={styles.imgThubContainer}>
+		<View style={{ marginTop: 0 }}>
+			<View style={styles.imgThubContainer}>
 				<Image source={imgSrc} style={styles.imgThub} />
-			</View> */}
+			</View>
 			<View style={styles.courseDetailesContainer}>
 				<TouchableOpacity
 					onPress={() => console.log("play icon tapped")}
@@ -71,18 +71,18 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 	},
-	// imgThubContainer: {
-	// 	width: "100%",
-	// 	height: windowHeight / 2.5,
-	// 	borderTopLeftRadius: 10,
-	// 	borderTopRightRadius: 10,
-	// 	overflow: "hidden",
-	// },
-	// imgThub: {
-	// 	maxWidth: "100%",
-	// 	resizeMode: "cover",
-	// 	maxHeight: "100%",
-	// },
+	imgThubContainer: {
+		width: "100%",
+		height: windowHeight / 5,
+		borderTopLeftRadius: 10,
+		borderTopRightRadius: 10,
+		overflow: "hidden",
+	},
+	imgThub: {
+		maxWidth: "100%",
+		resizeMode: "cover",
+		maxHeight: "100%",
+	},
 	courseDetailesContainer: {
 		width: "100%",
 		borderTopLeftRadius: 25,
