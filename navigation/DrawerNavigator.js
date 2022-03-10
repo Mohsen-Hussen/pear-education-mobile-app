@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import routes from "./routes";
 import colors from "../config/pearColors";
@@ -26,6 +26,18 @@ const DrawerNavigator = () => {
 			<Drawer.Screen
 				name={routes.BOTTOM_TAPS_NAVIGATOR}
 				component={BottomTabsNavigator}
+				options={{
+					headerTitle: (props) => ( // App Logo
+						<View style={{ justifyContent: "center", alignItems: "center", width: "100%", flexDirection: "row" }}>
+							<Image
+								style={{ width: 200, height: 50, }}
+								source={require('../assets/logopear.png')}
+								resizeMode='contain'
+							/>
+						</View>
+					),
+					headerTitleStyle: { flex: 1, textAlign: 'center' },
+				}}
 			/>
 			<Drawer.Screen
 				name={routes.REGISTER_SCREEN}

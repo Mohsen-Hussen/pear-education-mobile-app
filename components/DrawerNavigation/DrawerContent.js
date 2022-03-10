@@ -9,50 +9,50 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppText from "../General/AppText";
 
 const DrawerContent = ({ navigation }) => {
-	return (
-		<Screen style={{ justifyContent: "space-between" }}>
-			<View>
-				<View
-					style={{
-						alignItems: "center",
-						justifyContent: "center",
-						paddingBottom: 30,
-					}}
-				>
-					<Image source={require("../../assets/splash.png")} />
-				</View>
-				<DrawerTab
-					title="Home"
-					onPress={() => navigation.navigate(routes.BOTTOM_TAPS_NAVIGATOR)}
-				>
-					<AntDesign name="home" size={30} color={pearColors.primary} />
-				</DrawerTab>
-				<DrawerTab
-					title="Register"
-					onPress={() => navigation.navigate(routes.REGISTER_SCREEN)}
-				>
-					<MaterialCommunityIcons
-						name="account-plus"
-						size={30}
-						color={pearColors.primary}
-					/>
-				</DrawerTab>
-				<DrawerTab
-					title="Login"
-					onPress={() => navigation.navigate(routes.LOGIN_SCREEN)}
-				>
-					<AntDesign name="login" size={30} color={pearColors.primary} />
-				</DrawerTab>
-			</View>
-			<View
-				style={{
-					paddingBottom: 10,
-				}}
-			>
-				<AppText color={pearColors.primary}>Copy Rights Pearogram</AppText>
-			</View>
-		</Screen>
-	);
+  return (
+    <Screen style={{ justifyContent: "space-between" }}>
+      <View>
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            paddingBottom: 30,
+          }}
+        >
+          <Image source={require("../../assets/logopear.png")} />
+        </View>
+        <DrawerTab
+          title="Home"
+          onPress={() => navigation.navigate(routes.BOTTOM_TAPS_NAVIGATOR)}
+        >
+          <AntDesign name="home" size={30} color={pearColors.primary} />
+        </DrawerTab>
+        <DrawerTab
+          title="Register"
+          onPress={() => navigation.navigate(routes.REGISTER_SCREEN)}
+        >
+          <MaterialCommunityIcons
+            name="account-plus"
+            size={30}
+            color={pearColors.primary}
+          />
+        </DrawerTab>
+        <DrawerTab
+          title="Login"
+          onPress={() => navigation.navigate(routes.LOGIN_SCREEN)}
+        >
+          <AntDesign name="login" size={30} color={pearColors.primary} />
+        </DrawerTab>
+      </View>
+      <View
+        style={{
+          paddingBottom: 10,
+        }}
+      >
+        <AppText color={pearColors.primary}>Copy Rights Pearogram</AppText>
+      </View>
+    </Screen>
+  );
 };
 
 export default DrawerContent;
