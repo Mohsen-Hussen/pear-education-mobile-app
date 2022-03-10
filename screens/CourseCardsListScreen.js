@@ -181,40 +181,53 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 	const ParamsTitle = route.params != null ? route.params.Title : "";
 	const ParamsSearchText = route.params != null ? route.params.SearchText : "";
 	const [modalVisible, setModalVisible] = useState(false);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 
 	// flatlist pagnination example url
 	// https://snack.expo.dev/embedded/@aboutreact/react-native-flatlist-pagination-to-load-more-data-dynamically---infinite-list?preview=true&platform=ios&iframeId=ixkzpou2uw&theme=dark
 	const getData = () => {
-		console.log("getData");
 		setLoading(true);
+		// Get APi
+		console.log("getData");
+		// setLoading(false);
 	};
-
-	const renderFooter = () => {
-		return (
-			//Footer View with Load More button
-			<View style={styles.footer}>
-				<TouchableOpacity
-					activeOpacity={0.9}
-					onPress={getData}
-					//On Click of button calling getData function to load more data
-					style={styles.loadMoreBtn}
-				>
-					<Text style={styles.btnText}>Load More</Text>
-					{loading ? (
-						<ActivityIndicator
-							color={colors.white}
-							size="large"
-							style={{ marginHorizontal: 8 }}
-						/>
-					) : null}
-				</TouchableOpacity>
-			</View>
-		);
+	const renderLoading = () => {
+		if (loading) {
+			return (
+				<ActivityIndicator
+					color={colors.primary}
+					size="large"
+					style={{ marginHorizontal: 8 }}
+				/>
+			);
+		}
+		return null;
 	};
-	useEffect(() => {
-		getData;
-	}, []);
+	// const renderFooter = () => {
+	// 	return (
+	// 		//Footer View with Load More button
+	// 		<View style={styles.footer}>
+	// 			<TouchableOpacity
+	// 				activeOpacity={0.9}
+	// 				onPress={getData}
+	// 				//On Click of button calling getData function to load more data
+	// 				style={styles.loadMoreBtn}
+	// 			>
+	// 				<Text style={styles.btnText}>Load More</Text>
+	// 				{loading ? (
+	// 					<ActivityIndicator
+	// 						color={colors.white}
+	// 						size="large"
+	// 						style={{ marginHorizontal: 8 }}
+	// 					/>
+	// 				) : null}
+	// 			</TouchableOpacity>
+	// 		</View>
+	// 	);
+	// };
+	// useEffect(() => {
+	// 	getData;
+	// }, []);
 	return (
 		<>
 			<Modal
@@ -300,10 +313,10 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 						data={courseData}
 						keyExtractor={(item) => item.id.toString()}
 						enableEmptySections={true}
-						ListFooterComponent={renderFooter}
-						onScrollBeginDrag={() => console.log("onScrollBeginDrag")}
-						onEndReached={() => console.log("onEndReached")}
-						onEndReachedThreshold={0.1}
+						ListFooterComponent={renderLoading}
+						// onScrollBeginDrag={() => console.log("onScrollBeginDrag")}
+						onEndReached={() => getData()}
+						onEndReachedThreshold={0}
 						renderItem={({ item }) => (
 							<CourseCard
 								imgSource={item.image}
