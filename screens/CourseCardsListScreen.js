@@ -177,7 +177,7 @@ const windowWidth = Dimensions.get("window").width;
 // 	password: Yup.string().required().min(4).label("Password"),
 // });
 
-const CourseCardsListScreen = ({ route }) => {
+const CourseCardsListScreen = ({ navigation, route }) => {
 	const ParamsTitle = route.params != null ? route.params.Title : "";
 	const ParamsSearchText = route.params != null ? route.params.SearchText : "";
 	const [modalVisible, setModalVisible] = useState(false);
@@ -301,13 +301,18 @@ const CourseCardsListScreen = ({ route }) => {
 						keyExtractor={(item) => item.id.toString()}
 						enableEmptySections={true}
 						ListFooterComponent={renderFooter}
+						onScrollBeginDrag={() => console.log("onScrollBeginDrag")}
+						onEndReached={() => console.log("onEndReached")}
+						onEndReachedThreshold={0.1}
 						renderItem={({ item }) => (
 							<CourseCard
 								imgSource={item.image}
+								ID={item.id}
 								instractourName={item.instractourName}
 								courseName={item.courseName}
 								courseDescription={item.courseDescription}
 								courseDutation={item.courseDutation}
+								navigation={navigation}
 							/>
 						)}
 					/>

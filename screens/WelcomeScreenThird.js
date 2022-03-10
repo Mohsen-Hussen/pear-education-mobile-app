@@ -21,11 +21,12 @@ const GetStartedGandle = async ({ navigation }) => {
 		// 1- Local Storage
 		await AsyncStorage.setItem("isFirstTime", JSON.stringify(false));
 		// 2- Navigate
-		if (AppSettings.ISDNS) {
-			navigation.navigate(routes.DNS_HOME_SCREEN);
-		} else {
-			navigation.navigate(routes.PEAR_HOME_SCREEN);
-		}
+		navigation.navigate(routes.BOTTOM_TAPS_NAVIGATOR);
+
+		// if (AppSettings.ISDNS) {
+		// } else {
+		// 	navigation.navigate(routes.PEAR_HOME_SCREEN);
+		// }
 	} catch (e) {
 		// saving error
 	}

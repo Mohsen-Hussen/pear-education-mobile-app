@@ -43,42 +43,20 @@ const Render = () => {
 		return (
 			<NavigationContainer>
 				<StatusBar style="auto" />
-				<StackNavigation />
+				<WelcomeStackNav />
 			</NavigationContainer>
 		);
 	} else {
 		return (
 			<NavigationContainer>
 				<StatusBar style="auto" />
-
 				<BottomTabsNavigator />
 			</NavigationContainer>
 		);
 	}
 };
 const App = () => {
-	// return <RegisterFirst />;
 	return <Render />;
-	// return <LoginScreen />
-	// return <CourseCardsListScreen />;
-	// return <TeachersScreen />;
-	// return (
-	// 	<>
-	// 		<NavigationContainer>
-	// 			<StatusBar style="auto" />
-	// 			<CoursesIntroScreen />
-	// 		</NavigationContainer>
-	// 	</>
-	// );
-	// return <InstructorDetails />;
-	// return (
-	// 	<NavigationContainer>
-	// 		<RegisterStackNav />
-	// 	</NavigationContainer>
-	// );
-	// return <RegisterSecond />;
-	// return <Render />;
-	// return <LoginScreen />;
 };
 
 export default App;
