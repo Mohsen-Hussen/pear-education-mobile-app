@@ -227,6 +227,8 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 				onRequestClose={() => setModalVisible(false)}
 			>
 				<View style={styles.centeredView}>
+					<TouchableOpacity onPress={() => setModalVisible(false)} style={{ flex: 1, width: windowWidth }}>
+					</TouchableOpacity>
 					<View style={styles.modalView}>
 						<AppText size={20} color={colors.black} Weight="bold">Filter</AppText>
 						<AppText size={18} color={colors.medium} marginVertical={-5}>Pick The Filters To specify what you are looking for</AppText>
@@ -332,11 +334,12 @@ const FilterRate = ({ selected, value, selectedValue, onSetSelected }) => {
 			<View style={{
 				paddingHorizontal: 8,
 				borderRadius: 8,
-				borderWidth: 2,
-				borderColor: selectedVal ? colors.primary : colors.black,
+				borderWidth: 1,
+				borderColor: selectedVal ? colors.primary : colors.medium,
+				backgroundColor: selectedVal ? colors.primary : colors.white,
 				width: windowWidth / 7.5,
 			}}>
-				<Text style={{ color: selectedVal ? colors.primary : colors.black, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
+				<Text style={{ color: selectedVal ? colors.white : colors.medium, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
 			</View>
 		</TouchableOpacity >
 	);
@@ -359,11 +362,12 @@ const FilterCategory = ({ selected, value, selectedValue, onSetSelected }) => {
 			<View style={{
 				paddingHorizontal: 8,
 				borderRadius: 8,
-				borderWidth: 2,
-				borderColor: selectedVal ? colors.primary : colors.black,
+				borderWidth: 1,
+				borderColor: selectedVal ? colors.primary : colors.medium,
+				backgroundColor: selectedVal ? colors.primary : colors.white,
 				marginBottom: 5,
 			}}>
-				<Text style={{ color: selectedVal ? colors.primary : colors.black, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
+				<Text style={{ color: selectedVal ? colors.white : colors.medium, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
 			</View>
 		</TouchableOpacity >
 	);
@@ -386,12 +390,13 @@ const FilterPrice = ({ selected, value, selectedValue, onSetSelected }) => {
 			<View style={{
 				paddingHorizontal: 8,
 				borderRadius: 8,
-				borderWidth: 2,
-				borderColor: selectedVal ? colors.primary : colors.black,
+				borderWidth: 1,
+				borderColor: selectedVal ? colors.primary : colors.medium,
+				backgroundColor: selectedVal ? colors.primary : colors.white,
 				marginRight: 8,
 				marginBottom: 15,
 			}}>
-				<Text style={{ color: selectedVal ? colors.primary : colors.black, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
+				<Text style={{ color: selectedVal ? colors.white : colors.medium, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
 			</View>
 		</TouchableOpacity >
 	);
@@ -419,10 +424,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "flex-end",
 		alignItems: "center",
-		marginTop: 22,
 		backgroundColor: "rgba(0,0,0,0.7)",
-		borderTopLeftRadius: 20,
-		borderTopRightRadius: 20,
 	},
 	modalView: {
 		backgroundColor: "white",

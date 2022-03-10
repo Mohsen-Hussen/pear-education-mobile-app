@@ -24,9 +24,6 @@ const DrawerNavigator = () => {
 			screenOptions={{ headerShown: true }}
 		>
 			<Drawer.Screen
-				// options={{
-				// 	drawerItemStyle: { height: 0 },
-				// }}
 				name={routes.BOTTOM_TAPS_NAVIGATOR}
 				component={BottomTabsNavigator}
 			/>
