@@ -216,7 +216,7 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 	}, []);
 
 
-	const [filterDataSelected, setFilter] = useState([])
+	const [filterDataSelected, setFilter] = useState([]);
 	console.log({ filterDataSelected });
 	return (
 		<>
