@@ -10,19 +10,28 @@ import {
 import colors from "../../config/pearColors";
 import AppText from "../General/AppText";
 import { AntDesign } from "@expo/vector-icons";
+import routes from "../../navigation/routes";
 
 const windowHeight = Dimensions.get("window").height;
 
 const CourseCard = ({
+	ID,
 	imgSource,
 	instractourName,
 	courseName,
 	courseDescription,
 	courseDutation,
+	navigation,
 }) => {
 	return (
 		<SafeAreaView style={styles.container}>
-			<TouchableOpacity onPress={() => console.log("Tapped")}>
+			<TouchableOpacity
+				onPress={() =>
+					navigation.navigate(routes.COURSE_DETAILS, {
+						itemID: ID,
+					})
+				}
+			>
 				<View style={styles.cardContainer}>
 					<View style={styles.imageContainer}>
 						<Image style={styles.imageCardStyle} source={imgSource} />

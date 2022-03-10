@@ -1,4 +1,4 @@
 export default {
-	ISDNS: true,
+	ISDNS: false,
 	Domain: "Pearogram",
 };

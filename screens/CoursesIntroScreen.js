@@ -6,7 +6,8 @@ import CourseIntroDetails from "../components/Courses/CourseIntroDetails";
 import CourseCurriculum from "../components/Courses/CourseCurriculum";
 
 const CoursesIntroScreen = ({ route }) => {
-	const itemSelectedId = route.params.itemID;
+	const itemSelectedId = route.params != null ? route.params.itemID : "";
+
 	return (
 		<>
 			{/* <Image

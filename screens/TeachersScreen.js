@@ -17,7 +17,7 @@ import colors from "../config/pearColors";
 import FilterBar from "../components/General/FilterBar";
 import FilterIcon from "../components/General/FilterIcon";
 import GeneralButton from "../components/General/GeneralButton";
-
+import routes from "../navigation/routes";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -143,7 +143,7 @@ const teachersData = [
 		subject: "Math",
 	},
 ];
-const TeachersScreen = () => {
+const TeachersScreen = ({ navigation }) => {
 	const [modalVisible, setModalVisible] = useState(false);
 
 	return (
@@ -194,7 +194,13 @@ const TeachersScreen = () => {
 					numColumns={2}
 					renderItem={({ item }) => (
 						<View style={styles.teacherContainer}>
-							<TouchableOpacity onPress={() => console.log("teachers tapped")}>
+							<TouchableOpacity
+								onPress={() =>
+									navigation.navigate(routes.INSTRUCTOR_DETAILS, {
+										Id: item.id,
+									})
+								}
+							>
 								<View
 									style={{
 										justifyContent: "space-between",
