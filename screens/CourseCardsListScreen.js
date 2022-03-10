@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	StyleSheet,
 	View,
@@ -6,23 +6,18 @@ import {
 	TouchableOpacity,
 	Platform,
 	Modal,
-	Pressable,
 	Text,
 	Dimensions,
 	ActivityIndicator,
 } from "react-native";
-import { useFormikContext } from "formik";
-import * as Yup from "yup";
+
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../config/pearColors";
-import LottieView from "lottie-react-native";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
 import CourseCard from "../components/Courses/CourseCard";
-import AppForm from "../components/forms/AppForm";
-import AppBounceyCheckBox from "../components/forms/AppBounceyCheckBox";
-import SubmitButton from "../components/forms/SubmitButton";
+import GeneralButton from "../components/General/GeneralButton";
+
 const courseData = [
 	{
 		id: 1,
@@ -169,13 +164,26 @@ const courseData = [
 		courseDutation: "24 Hours",
 	},
 ];
+const rateFilterData = [
+	{ value: '0-1', selected: false },
+	{ value: '1-2', selected: false },
+	{ value: '2-3', selected: false },
+	{ value: '3-4', selected: false },
+	{ value: '4-5', selected: false },
+];
+const subcategoryData = [
+	{ value: 'HR', selected: false },
+	{ value: 'Pharmacy Management', selected: false },
+	{ value: 'PMP', selected: false },
+	{ value: 'Supply Chain Managment', selected: false },
+	{ value: 'Customer Management', selected: false },
+];
+const priceData = [
+	{ value: 'Paid', selected: false },
+	{ value: 'Free', selected: false },
+];
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
-
-// const validationSchema = Yup.object().shape({
-// 	email: Yup.string().label("Email"),
-// 	password: Yup.string().required().min(4).label("Password"),
-// });
 
 const CourseCardsListScreen = ({ route }) => {
 	const ParamsTitle = route.params != null ? route.params.Title : "";
@@ -215,6 +223,10 @@ const CourseCardsListScreen = ({ route }) => {
 	useEffect(() => {
 		getData;
 	}, []);
+
+
+	const [filterDataSelected, setFilter] = useState([])
+	console.log({ filterDataSelected });
 	return (
 		<>
 			<Modal
@@ -225,54 +237,44 @@ const CourseCardsListScreen = ({ route }) => {
 			>
 				<View style={styles.centeredView}>
 					<View style={styles.modalView}>
-						<AppForm
-							initialValues={{ custom: "", text: "" }}
-							onSubmit={(values) => console.log(values)}
-							// validationSchema={validationSchema}
-						>
-							{/* <BouncyCheckbox
-								size={25}
-								fillColor="red"
-								unfillColor="#FFFFFF"
-								text="Custom Checkbox"
-								iconStyle={{ borderColor: "red" }}
-								ref={checkboxRef}
-								// onPress={(isChecked) => {
-								// 	setIsChecked(!isChecked);
-								// 	console.log(isChecked);
-								// }}
-								onPress={(isChecked) => {
-									console.log("Custom Checkbox");
-								}}
-							/>
-							 */}
-							<AppBounceyCheckBox name="custom" />
-							<AppBounceyCheckBox name="text" />
-
-							<SubmitButton
-								title="Submit"
-								// onPress={(values) => {
-								// 	console.log(values);
-
-								// 	// setModalVisible(!modalVisible);
-								// 	// console.log("tapped");
-								// 	// console.log(checkboxRef.current.checked);
-								// 	// console.log(!isChecked);
-								// }}
-							/>
-							{/* <Pressable
-								style={[styles.button, styles.buttonClose]}
-								onPress={() => {
-									setModalVisible(!modalVisible);
-									console.log("tapped");
-									console.log(checkboxRef.current.checked);
-									// console.log(!isChecked);
-								}}
-							>
-								<Text style={styles.textStyle}>Apply Modal</Text>
-							</Pressable> */}
-						</AppForm>
-						{/* <Text style={styles.modalText}>Modal Content</Text> */}
+						<AppText size={20} color={colors.black} Weight="bold">Filter</AppText>
+						<AppText size={18} color={colors.medium} marginVertical={-5}>Pick The Filters To specify what you are looking for</AppText>
+						<AppText size={20} color={colors.black} Weight="bold">Rate</AppText>
+						<View style={{ flexDirection: 'row', justifyContent: "space-between" }} >
+							{rateFilterData.map((item, index) => <FilterRate
+								{...item}
+								key={index}
+								selectedValue={filterDataSelected}
+								onSetSelected={(i) => {
+									setFilter([...filterDataSelected, i])
+								}} />)}
+						</View>
+						<AppText size={20} color={colors.black} Weight="bold">Subcategory</AppText>
+						<View style={{ flexDirection: 'row', justifyContent: "space-between", flexWrap: "wrap" }} >
+							{subcategoryData.map((item, index) => <FilterCategory
+								{...item}
+								key={index}
+								selectedValue={filterDataSelected}
+								onSetSelected={(i) => {
+									setFilter([...filterDataSelected, i])
+								}} />)}
+						</View>
+						<AppText size={20} color={colors.black} Weight="bold">Price</AppText>
+						<View style={{ flexDirection: 'row' }} >
+							{priceData.map((item, index) => <FilterPrice
+								{...item}
+								key={index}
+								selectedValue={filterDataSelected}
+								onSetSelected={(i) => {
+									setFilter([...filterDataSelected, i])
+								}} />)}
+						</View>
+						<View style={{ justifyContent: "center", alignItems: "center" }}>
+							<GeneralButton title="Apply Filter" onPress={() => {
+								console.log("apply filter tapped");
+								setModalVisible(false);
+							}} />
+						</View>
 					</View>
 				</View>
 			</Modal>
@@ -286,7 +288,6 @@ const CourseCardsListScreen = ({ route }) => {
 					>
 						All Courses
 					</AppText>
-
 					<TouchableOpacity onPress={() => setModalVisible(true)}>
 						<View style={styles.filterIconStyle}>
 							<AntDesign name="find" size={20} color={colors.white} />
@@ -314,6 +315,89 @@ const CourseCardsListScreen = ({ route }) => {
 				</View>
 			</Screen>
 		</>
+	);
+};
+
+const FilterRate = ({ selected, value, selectedValue, onSetSelected }) => {
+	const [selectedVal, setSelected] = useState(selected);
+	return (
+		<TouchableOpacity onPress={() => {
+			if (selectedVal) {
+				const filtered = selectedValue.filter(item => item.value != value)
+				console.log(filtered);
+				setSelected(false)
+			} else {
+				setSelected(!selected)
+				onSetSelected({
+					selected, value,
+				})
+			}
+		}}>
+			<View style={{
+				paddingHorizontal: 8,
+				borderRadius: 8,
+				borderWidth: 2,
+				borderColor: selectedVal ? colors.primary : colors.black,
+				width: windowWidth / 7.5,
+			}}>
+				<Text style={{ color: selectedVal ? colors.primary : colors.black, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
+			</View>
+		</TouchableOpacity >
+	);
+};
+const FilterCategory = ({ selected, value, selectedValue, onSetSelected }) => {
+	const [selectedVal, setSelected] = useState(selected);
+	return (
+		<TouchableOpacity onPress={() => {
+			if (selectedVal) {
+				const filtered = selectedValue.filter(item => item.value != value)
+				console.log(filtered);
+				setSelected(false)
+			} else {
+				setSelected(!selected)
+				onSetSelected({
+					selected, value,
+				})
+			}
+		}}>
+			<View style={{
+				paddingHorizontal: 8,
+				borderRadius: 8,
+				borderWidth: 2,
+				borderColor: selectedVal ? colors.primary : colors.black,
+				marginBottom: 5,
+			}}>
+				<Text style={{ color: selectedVal ? colors.primary : colors.black, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
+			</View>
+		</TouchableOpacity >
+	);
+};
+const FilterPrice = ({ selected, value, selectedValue, onSetSelected }) => {
+	const [selectedVal, setSelected] = useState(selected);
+	return (
+		<TouchableOpacity onPress={() => {
+			if (selectedVal) {
+				const filtered = selectedValue.filter(item => item.value != value)
+				console.log(filtered);
+				setSelected(false)
+			} else {
+				setSelected(!selected)
+				onSetSelected({
+					selected, value,
+				})
+			}
+		}}>
+			<View style={{
+				paddingHorizontal: 8,
+				borderRadius: 8,
+				borderWidth: 2,
+				borderColor: selectedVal ? colors.primary : colors.black,
+				marginRight: 8,
+				marginBottom: 15,
+			}}>
+				<Text style={{ color: selectedVal ? colors.primary : colors.black, textAlign: "center", alignItems: "center", fontSize: 18 }}>{value}</Text>
+			</View>
+		</TouchableOpacity >
 	);
 };
 
@@ -345,45 +429,12 @@ const styles = StyleSheet.create({
 		borderTopRightRadius: 20,
 	},
 	modalView: {
-		// margin: 20,
 		backgroundColor: "white",
-		// borderRadius: 20,
 		borderTopLeftRadius: 20,
 		borderTopRightRadius: 20,
-		padding: 35,
-		alignItems: "center",
+		padding: 30,
 		width: windowWidth,
-		height: windowHeight / 1.5,
-		// shadowColor: "#000",
-		// shadowOffset: {
-		// 	width: 0,
-		// 	height: 2,
-		// },
-		// shadowOpacity: 0.25,
-		// shadowRadius: 4,
-		// elevation: 5,
-	},
-	button: {
-		borderRadius: 20,
-		padding: 10,
-		elevation: 2,
-		width: windowWidth / 2,
-	},
-	// buttonOpen: {
-	// 	backgroundColor: "#F194FF",
-	// },
-	buttonClose: {
-		backgroundColor: colors.primary,
-	},
-	textStyle: {
-		color: colors.white,
-		fontWeight: "bold",
-		textAlign: "center",
-		fontSize: 20,
-	},
-	modalText: {
-		marginBottom: 15,
-		textAlign: "center",
+		height: windowHeight / 1.4,
 	},
 	// load more getDataFooter
 	footer: {
