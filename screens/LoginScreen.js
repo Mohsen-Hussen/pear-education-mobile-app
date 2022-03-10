@@ -18,11 +18,13 @@ const validationSchema = Yup.object().shape({
 
 const handleSubmit = (values, navigation) => {
 	console.log(values);
-	if (AppSettings.ISDNS) {
-		navigation.navigate(routes.DNS_HOME_SCREEN);
-	} else {
-		navigation.navigate(routes.PEAR_HOME_SCREEN);
-	}
+	navigation.navigate(routes.BOTTOM_TAPS_NAVIGATOR);
+
+	// if (AppSettings.ISDNS) {
+	// 	navigation.navigate(routes.DNS_HOME_SCREEN);
+	// } else {
+	// 	navigation.navigate(routes.PEAR_HOME_SCREEN);
+	// }
 };
 
 function LoginScreen({ navigation }) {

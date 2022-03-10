@@ -24,6 +24,7 @@ import CourseCardsListScreen from "./screens/CourseCardsListScreen";
 import CoursesIntroScreen from "./screens/CoursesIntroScreen";
 import TeachersScreen from "./screens/TeachersScreen";
 import StackNavigation from "./navigation/StackNavigation";
+import DrawerNavigator from "./navigation/DrawerNavigator";
 
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
@@ -43,20 +44,47 @@ const Render = () => {
 		return (
 			<NavigationContainer>
 				<StatusBar style="auto" />
-				<WelcomeStackNav />
+				<StackNavigation />
 			</NavigationContainer>
 		);
 	} else {
 		return (
 			<NavigationContainer>
 				<StatusBar style="auto" />
+
 				<BottomTabsNavigator />
 			</NavigationContainer>
 		);
 	}
 };
 const App = () => {
-	return <Render />;
+	// return <RegisterFirst />;
+	// return <Render />;
+	return (
+		<NavigationContainer>
+			<DrawerNavigator />
+		</NavigationContainer>
+	);
+	// return <LoginScreen />
+	// return <CourseCardsListScreen />;
+	// return <TeachersScreen />;
+	// return (
+	// 	<>
+	// 		<NavigationContainer>
+	// 			<StatusBar style="auto" />
+	// 			<CoursesIntroScreen />
+	// 		</NavigationContainer>
+	// 	</>
+	// );
+	// return <InstructorDetails />;
+	// return (
+	// 	<NavigationContainer>
+	// 		<RegisterStackNav />
+	// 	</NavigationContainer>
+	// );
+	// return <RegisterSecond />;
+	// return <Render />;
+	// return <LoginScreen />;
 };
 
 export default App;

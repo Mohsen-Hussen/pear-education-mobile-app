@@ -12,5 +12,6 @@ export default Object.freeze({
 	COURSES_SCREEN: "CoursesScreen",
 	STACK_NAVIGATION: "StackNavigation",
 	COURSE_DETAILS: "CourseDetails",
-	BOTTOM_TAPS_NAVIGATOR: "BottomTabsNavigator",
+	BOTTOM_TAPS_NAVIGATOR: "Home",
+	REGISTER_SCREEN: "Register",
 });

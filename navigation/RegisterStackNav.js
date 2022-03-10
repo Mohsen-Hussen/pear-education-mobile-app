@@ -5,6 +5,7 @@ import loginScreen from "../screens/LoginScreen";
 import DnsHomeScreen from "../screens/DnsHomeScreen";
 import PearHomeScreen from "../screens/PearHomeScreen";
 import routes from "./routes";
+import BottomTabsNavigator from "./BottomTabsNavigator";
 const Stack = createStackNavigator();
 
 function RegisterStackNav() {
@@ -21,9 +22,13 @@ function RegisterStackNav() {
 				name={routes.REGISTER_SECOND_SCREEN}
 				component={RegisterSecond}
 			/>
-			<Stack.Screen name={routes.LOGIN_SCREEN} component={loginScreen} />
-			<Stack.Screen name={routes.DNS_HOME_SCREEN} component={DnsHomeScreen} />
-			<Stack.Screen name={routes.PEAR_HOME_SCREEN} component={PearHomeScreen} />
+			{/* <Stack.Screen name={routes.LOGIN_SCREEN} component={loginScreen} /> */}
+			{/* <Stack.Screen
+				name={routes.BOTTOM_TAPS_NAVIGATOR}
+				component={BottomTabsNavigator}
+			/> */}
+			{/* <Stack.Screen name={routes.DNS_HOME_SCREEN} component={DnsHomeScreen} />
+			<Stack.Screen name={routes.PEAR_HOME_SCREEN} component={PearHomeScreen} /> */}
 		</Stack.Navigator>
 	);
 }
