@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
 	StyleSheet,
 	View,
@@ -11,36 +12,11 @@ import colors from "../../config/pearColors";
 import routes from "../../navigation/routes";
 import AppText from "../General/AppText";
 
-const instractourData = [
-	{
-		id: 1,
-		image: require("../../assets/pearImages/teacher_Default.png"),
-		title: "Dr/Ahmed Mokhtar",
-		subtitle: "Hr Manager",
-	},
-	{
-		id: 2,
-		image: require("../../assets/pearImages/stu-parent-03.png"),
-		title: "Dr/Ahmed Mokhtar",
-		subtitle: "Hr Manager",
-	},
-	{
-		id: 3,
-		image: require("../../assets/pearImages/teacher_Default.png"),
-		title: "Dr/Ahmed Mokhtar",
-		subtitle: "Hr Manager",
-	},
-	{
-		id: 4,
-		image: require("../../assets/pearImages/stu-parent-03.png"),
-		title: "Dr/Ahmed Mokhtar",
-		subtitle: "Hr Manager",
-	},
-];
-
 const windowWidth = Dimensions.get("window").width;
 
 const InstractourFlatList = ({ navigation }) => {
+	const globalState = useSelector((state) => state.instractourInfo);
+	const instractourData = globalState.instractourData;
 	return (
 		<View style={styles.sliderContainer}>
 			<FlatList
