@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import {
 	StyleSheet,
 	View,
 	FlatList,
-	TouchableOpacity,
 	Image,
 	Dimensions,
 } from "react-native";
@@ -13,54 +13,20 @@ import colors from "../../config/pearColors";
 
 const windowWidth = Dimensions.get("window").width;
 
-const instractourData = [
-	{
-		id: 1,
-		image: require("../../assets/pearImages/teacher_Default.png"),
-		title: "Student 1",
-		opnion:
-			"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-		rating: 2.5,
-	},
-	{
-		id: 2,
-		image: require("../../assets/pearImages/stu-parent-03.png"),
-		title: "Student 2",
-		opnion:
-			"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-		rating: 3,
-	},
-	{
-		id: 3,
-		image: require("../../assets/pearImages/teacher_Default.png"),
-		title: "Student 3",
-		opnion:
-			"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-		rating: 4,
-	},
-	{
-		id: 4,
-		image: require("../../assets/pearImages/stu-parent-03.png"),
-		title: "Student 4",
-		opnion:
-			"lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
-		rating: 5,
-	},
-];
+// rating library that i used
 // https://www.npmjs.com/package/react-native-ratings
 //https://github.com/Monte9/react-native-ratings
 
 const FeedbackFlatList = () => {
-	// const [starCount, setStarCount] = useState(3);
-	// const onStarRatingPress = (rating) => {
-	// 	setStarCount(rating);
-	// };
+	const globalState = useSelector((state) => state.courseFeedback);
+	const ratingData = globalState.ratingData;
+
 	return (
 		<View style={styles.sliderContainer}>
 			<FlatList
 				showsHorizontalScrollIndicator={false}
 				horizontal
-				data={instractourData}
+				data={ratingData}
 				keyExtractor={(item) => item.id.toString()}
 				renderItem={({ item }) => (
 					<View style={styles.cardContainer}>
@@ -82,11 +48,6 @@ const FeedbackFlatList = () => {
 								fullStarColor={"#89A71A"}
 								starSize={30}
 								rating={item.rating}
-								// selectedStar={(rating) => {
-								// 	onStarRatingPress(rating);
-								// 	// console.log(rating);
-								// 	// console.log(typeof rating);
-								// }}
 							/>
 						</View>
 					</View>
@@ -112,11 +73,7 @@ const styles = StyleSheet.create({
 		width: windowWidth / 1.5,
 	},
 	constractorAvatar: {
-		// height: "100%",
-		// width: "30%",
-		// maxWidth: "100%",
 		borderRadius: 50,
-		// resizeMode: "contain",
 	},
 	textContainer: {
 		paddingHorizontal: 10,

@@ -59,6 +59,6 @@ const dnsCoursesInfoSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { id } = dnsCoursesInfoSlice.actions;
+// export const { id } = dnsCoursesInfoSlice.actions;
 
 export default dnsCoursesInfoSlice.reducer;
