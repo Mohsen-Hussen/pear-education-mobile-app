@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {
 	StyleSheet,
 	Text,
@@ -12,60 +13,12 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/pearColors";
 import routes from "../../navigation/routes";
 
-const coursesData = [
-	{
-		id: 1,
-		uri: require("../../assets/pearImages/2.png"),
-		title: "Advanced - UI/UX Design",
-		duration: "2h 30min",
-		price: "120$",
-		name: "Ahmed Selem",
-	},
-	{
-		id: 2,
-		uri: require("../../assets/pearImages/5.png"),
-		title: "Advanced - UI/UX Design",
-		duration: "2h 30min",
-		price: "120$",
-		name: "Ahmed Selem",
-	},
-	{
-		id: 3,
-		uri: require("../../assets/pearImages/8.png"),
-		title: "Advanced - UI/UX Design",
-		duration: "2h 30min",
-		price: "120$",
-		name: "Ahmed Selem",
-	},
-	{
-		id: 4,
-		uri: require("../../assets/pearImages/2.png"),
-		title: "Advanced - UI/UX Design",
-		duration: "2h 30min",
-		price: "120$",
-		name: "Ahmed Selem",
-	},
-	{
-		id: 5,
-		uri: require("../../assets/pearImages/5.png"),
-		title: "Advanced - UI/UX Design",
-		duration: "2h 30min",
-		price: "120$",
-		name: "Ahmed Selem",
-	},
-	{
-		id: 6,
-		uri: require("../../assets/pearImages/8.png"),
-		title: "Advanced - UI/UX Design",
-		duration: "2h 30min",
-		price: "120$",
-		name: "Ahmed Selem",
-	},
-];
-
 const windowHeight = Dimensions.get("window").height;
 
 const CoursesFlatList = ({ navigation }) => {
+	const globalState = useSelector((state) => state.dnsCoursesInfo);
+	const coursesData = globalState.coursesData;
+
 	return (
 		<View style={[styles.container]}>
 			<FlatList

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Provider } from "react-redux";
 import {
 	StyleSheet,
 	SafeAreaView,
@@ -6,6 +7,7 @@ import {
 	ScrollView,
 	Alert,
 } from "react-native";
+import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import BottomTabsNavigator from "./navigation/BottomTabsNavigator";
 import WelcomeStackNav from "./navigation/WelcomeStackNav";
@@ -51,7 +53,6 @@ const Render = () => {
 		return (
 			<NavigationContainer>
 				<StatusBar style="auto" />
-
 				<BottomTabsNavigator />
 			</NavigationContainer>
 		);
@@ -61,9 +62,11 @@ const App = () => {
 	// return <RegisterFirst />;
 	// return <Render />;
 	return (
-		<NavigationContainer>
-			<DrawerNavigator />
-		</NavigationContainer>
+		<Provider store={store}>
+			<NavigationContainer>
+				<DrawerNavigator />
+			</NavigationContainer>
+		</Provider>
 	);
 	// return <LoginScreen />
 	// return <CourseCardsListScreen />;
