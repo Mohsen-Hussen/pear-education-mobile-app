@@ -4,6 +4,7 @@ import courseFeedbackReducer from "./courseFeedbackSlice";
 import instractourInfoReducer from "./instractourInfoSlice";
 import teachersInfoReducer from "./teachersInfoSlice";
 import courseCardInfoReducer from "./courseCardInfoSlice";
+import loadingReducer from "./loadingSlice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     instractourInfo: instractourInfoReducer,
     teachersInfo: teachersInfoReducer,
     courseCardInfo: courseCardInfoReducer,
+    loading: loadingReducer,
   },
 });
 

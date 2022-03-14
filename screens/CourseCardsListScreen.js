@@ -41,6 +41,7 @@ const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
 const CourseCardsListScreen = ({ navigation, route }) => {
+	//get course card info from redux
 	const globalState = useSelector((state) => state.courseCardInfo);
 	const courseData = globalState.courseData;
 	const ParamsTitle = route.params != null ? route.params.Title : "";
@@ -74,7 +75,26 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 
 
 	const [filterDataSelected, setFilter] = useState([]);
+
+	const [selectedValue, setSelectedValue] = useState(rateFilterData);
 	console.log({ filterDataSelected });
+	const onSelectMulti = () => {
+		const index = selectedValue.indexOf(value);
+
+		let newValue;
+		if (index === -1) {
+			// add
+			newValue = [...selectedValue, value];
+		} else {
+			// remove
+			newValue = [
+				...selectedValue.slice(0, index),
+				...selectedValue.slice(index + 1),
+			];
+		}
+
+		setSelectedValue(newValue);
+	}
 	return (
 		<>
 			<Modal
@@ -91,9 +111,10 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 						<AppText size={18} color={colors.medium} marginVertical={-5}>Pick The Filters To specify what you are looking for</AppText>
 						<AppText size={20} color={colors.black} Weight="bold">Rate</AppText>
 						<View style={{ flexDirection: 'row', justifyContent: "space-between" }} >
-							{rateFilterData.map((item, index) => <FilterRate
+							{selectedValue.map((item, index) => <FilterRate
 								{...item}
 								key={index}
+								onPress={onSelectMulti}
 								selectedValue={filterDataSelected}
 								onSetSelected={(i) => {
 									setFilter([...filterDataSelected, i])
@@ -173,21 +194,34 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 	);
 };
 
-const FilterRate = ({ selected, value, selectedValue, onSetSelected }) => {
+const FilterRate = ({ selected, value, selectedValue, onSetSelected, onPress }) => {
 	const [selectedVal, setSelected] = useState(selected);
+
+
+
+
+
+
+
 	return (
-		<TouchableOpacity onPress={() => {
-			if (selectedVal) {
-				const filtered = selectedValue.filter(item => item.value != value)
-				console.log(filtered);
-				setSelected(false)
-			} else {
-				setSelected(!selected)
-				onSetSelected({
-					selected, value,
-				})
-			}
-		}}>
+		<TouchableOpacity
+			onPress={() => {
+				if (onPress) {
+					onPress(value)
+					return
+				}
+				if (selectedVal) {
+					const filtered = selectedValue.filter(item => item.value != value)
+					console.log(filtered);
+					setSelected(false)
+				} else {
+					setSelected(!selected)
+					onSetSelected({
+						selected, value,
+					})
+				}
+			}}
+		>
 			<View style={{
 				paddingHorizontal: 8,
 				borderRadius: 8,
