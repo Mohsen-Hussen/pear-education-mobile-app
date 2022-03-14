@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import {
 	StyleSheet,
 	Image,
@@ -21,131 +22,132 @@ import routes from "../navigation/routes";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-const teachersData = [
-	{
-		id: 1,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 2,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 3,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 4,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 5,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 6,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 7,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 8,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 9,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 10,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 11,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 12,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 13,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 14,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 15,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 16,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 17,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 18,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 19,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-	{
-		id: 20,
-		image: require("../assets/pearImages/teacher_Default.png"),
-		title: "Mr.Mohamed Enab",
-		subject: "Math",
-	},
-];
+// const teachersData = [
+// 	{
+// 		id: 1,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 2,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 3,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 4,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 5,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 6,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 7,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 8,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 9,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 10,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 11,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 12,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 13,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 14,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 15,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 16,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 17,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 18,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 19,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// 	{
+// 		id: 20,
+// 		image: require("../assets/pearImages/teacher_Default.png"),
+// 		title: "Mr.Mohamed Enab",
+// 		subject: "Math",
+// 	},
+// ];
 const TeachersScreen = ({ navigation }) => {
+	const globalState = useSelector((state) => state.teachersInfo);
+	const teachersData = globalState.teachersData;
 	const [modalVisible, setModalVisible] = useState(false);
-
 	return (
 		<>
 			<Modal

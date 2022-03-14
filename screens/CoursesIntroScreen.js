@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image, ScrollView, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import colors from "../config/pearColors";
 import Screen from "../components/General/Screen";
 import CourseIntroDetails from "../components/Courses/CourseIntroDetails";
