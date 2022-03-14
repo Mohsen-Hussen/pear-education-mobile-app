@@ -1,0 +1,160 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const courseData = [
+  {
+    id: 1,
+    image: require("../assets/pearImages/all-course-1.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 2,
+    image: require("../assets/pearImages/all-course-2.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 3,
+    image: require("../assets/pearImages/all-course-3.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 4,
+    image: require("../assets/pearImages/all-course-1.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 5,
+    image: require("../assets/pearImages/all-course-2.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 6,
+    image: require("../assets/pearImages/all-course-3.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 7,
+    image: require("../assets/pearImages/all-course-1.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 8,
+    image: require("../assets/pearImages/all-course-2.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 9,
+    image: require("../assets/pearImages/all-course-3.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 10,
+    image: require("../assets/pearImages/all-course-1.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 11,
+    image: require("../assets/pearImages/all-course-2.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 12,
+    image: require("../assets/pearImages/all-course-3.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 13,
+    image: require("../assets/pearImages/all-course-1.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 14,
+    image: require("../assets/pearImages/all-course-2.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 15,
+    image: require("../assets/pearImages/all-course-3.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 16,
+    image: require("../assets/pearImages/all-course-1.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 17,
+    image: require("../assets/pearImages/all-course-2.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+  {
+    id: 18,
+    image: require("../assets/pearImages/all-course-3.png"),
+    instractourName: "By Dr/Ahmec Selim",
+    courseName: "Supply Chain Mangement",
+    courseDescription: "HR-Human Rescores Management Lorem Aps Leand",
+    courseDutation: "24 Hours",
+  },
+];
+
+const initState = { courseData };
+const courseCardInfoSlice = createSlice({
+  name: "courseCardInfo",
+  initialState: initState,
+  reducers: {},
+});
+
+// Action creators are generated for each case reducer function
+// export const { id } = courseCardInfoSlice.actions;
+
+export default courseCardInfoSlice.reducer;
