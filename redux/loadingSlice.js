@@ -1,13 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// const loading = [{ status: false }]
-// const initState = { status:false };
+
+const initialState = {
+  loading: false,
+};
 const loadingSlice = createSlice({
   name: "loading",
-  initialState: false,
+  initialState: initialState,
   reducers: {
-    loadingTrue: (state) => { state.initialState = true },
-    loadingFalse: (state) => { state.initialState = false }
+    loadingFalse(state) { state.loading = false },
+    loadingTrue(state) {
+      state.loading = true;
+    },
+
   },
 });
 

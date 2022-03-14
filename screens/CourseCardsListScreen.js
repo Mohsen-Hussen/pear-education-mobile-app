@@ -18,6 +18,8 @@ import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
 import CourseCard from "../components/Courses/CourseCard";
 import GeneralButton from "../components/General/GeneralButton";
+import { useDispatch } from "react-redux";
+import { loadingTrue } from "../redux";
 
 const rateFilterData = [
 	{ value: '0-1', selected: false },
@@ -43,10 +45,15 @@ const windowWidth = Dimensions.get("window").width;
 const CourseCardsListScreen = ({ navigation, route }) => {
 	//get course card info from redux
 	const globalState = useSelector((state) => state.courseCardInfo);
+
 	const courseData = globalState.courseData;
 	const ParamsTitle = route.params != null ? route.params.Title : "";
 	const ParamsSearchText = route.params != null ? route.params.SearchText : "";
 	const [modalVisible, setModalVisible] = useState(false);
+
+	const dispatch = useDispatch()
+
+
 	const [loading, setLoading] = useState(false);
 
 	// flatlist pagnination example url
@@ -57,6 +64,12 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 		console.log("getData");
 		// setLoading(false);
 	};
+
+	useEffect(() => {
+		// its how to use useDispatch with connected function 
+		// dispatch(loadingTrue())
+
+	}, [])
 	const renderLoading = () => {
 		if (loading) {
 			return (
@@ -74,13 +87,10 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 	}, []);
 
 
-	const [filterDataSelected, setFilter] = useState([]);
 
-	const [selectedValue, setSelectedValue] = useState(rateFilterData);
-	console.log({ filterDataSelected });
-	const onSelectMulti = () => {
+	const [selectedValue, setSelectedValue] = useState([]);
+	const onSelectMulti = (value) => {
 		const index = selectedValue.indexOf(value);
-
 		let newValue;
 		if (index === -1) {
 			// add
@@ -94,6 +104,41 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 		}
 
 		setSelectedValue(newValue);
+	}
+
+	const [selectedCategory, setSelectedCategory] = useState([]);
+	const onSelectMultiCategory = (value) => {
+		const index = selectedCategory.indexOf(value);
+		let newValue;
+		if (index === -1) {
+			// add
+			newValue = [...selectedCategory, value];
+		} else {
+			// remove
+			newValue = [
+				...selectedCategory.slice(0, index),
+				...selectedCategory.slice(index + 1),
+			];
+		}
+
+		setSelectedCategory(newValue);
+	}
+	const [selectedPrice, setSelectedPrice] = useState([]);
+	const onSelectMultiPrice = (value) => {
+		const index = selectedPrice.indexOf(value);
+		let newValue;
+		if (index === -1) {
+			// add
+			newValue = [...selectedPrice, value];
+		} else {
+			// remove
+			newValue = [
+				...selectedPrice.slice(0, index),
+				...selectedPrice.slice(index + 1),
+			];
+		}
+
+		setSelectedPrice(newValue);
 	}
 	return (
 		<>
@@ -111,39 +156,37 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 						<AppText size={18} color={colors.medium} marginVertical={-5}>Pick The Filters To specify what you are looking for</AppText>
 						<AppText size={20} color={colors.black} Weight="bold">Rate</AppText>
 						<View style={{ flexDirection: 'row', justifyContent: "space-between" }} >
-							{selectedValue.map((item, index) => <FilterRate
+							{rateFilterData.map((item, index) => <FilterRate
 								{...item}
 								key={index}
 								onPress={onSelectMulti}
-								selectedValue={filterDataSelected}
-								onSetSelected={(i) => {
-									setFilter([...filterDataSelected, i])
-								}} />)}
+							/>)}
 						</View>
 						<AppText size={20} color={colors.black} Weight="bold">Subcategory</AppText>
 						<View style={{ flexDirection: 'row', justifyContent: "space-between", flexWrap: "wrap" }} >
 							{subcategoryData.map((item, index) => <FilterCategory
 								{...item}
 								key={index}
-								selectedValue={filterDataSelected}
-								onSetSelected={(i) => {
-									setFilter([...filterDataSelected, i])
-								}} />)}
+								onPress={onSelectMultiCategory} />)}
 						</View>
 						<AppText size={20} color={colors.black} Weight="bold">Price</AppText>
 						<View style={{ flexDirection: 'row' }} >
 							{priceData.map((item, index) => <FilterPrice
 								{...item}
 								key={index}
-								selectedValue={filterDataSelected}
-								onSetSelected={(i) => {
-									setFilter([...filterDataSelected, i])
-								}} />)}
+								onPress={onSelectMultiPrice} />)}
 						</View>
 						<View style={{ justifyContent: "center", alignItems: "center" }}>
 							<GeneralButton title="Apply Filter" onPress={() => {
-								console.log("apply filter tapped");
+
+								console.log({ selectedValue });
+								console.log({ selectedCategory });
+								console.log({ selectedPrice });
 								setModalVisible(false);
+
+								setSelectedCategory([])
+								setSelectedPrice([])
+								setSelectedValue([])
 							}} />
 						</View>
 					</View>
@@ -194,32 +237,15 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 	);
 };
 
-const FilterRate = ({ selected, value, selectedValue, onSetSelected, onPress }) => {
-	const [selectedVal, setSelected] = useState(selected);
-
-
-
-
-
-
+const FilterRate = ({ value, onPress, }) => {
+	const [selectedVal, setSelected] = useState(false);
 
 	return (
 		<TouchableOpacity
 			onPress={() => {
-				if (onPress) {
-					onPress(value)
-					return
-				}
-				if (selectedVal) {
-					const filtered = selectedValue.filter(item => item.value != value)
-					console.log(filtered);
-					setSelected(false)
-				} else {
-					setSelected(!selected)
-					onSetSelected({
-						selected, value,
-					})
-				}
+				setSelected(!selectedVal)
+				onPress(value)
+
 			}}
 		>
 			<View style={{
@@ -235,20 +261,12 @@ const FilterRate = ({ selected, value, selectedValue, onSetSelected, onPress }) 
 		</TouchableOpacity >
 	);
 };
-const FilterCategory = ({ selected, value, selectedValue, onSetSelected }) => {
-	const [selectedVal, setSelected] = useState(selected);
+const FilterCategory = ({ onPress, value, }) => {
+	const [selectedVal, setSelected] = useState(false);
 	return (
 		<TouchableOpacity onPress={() => {
-			if (selectedVal) {
-				const filtered = selectedValue.filter(item => item.value != value)
-				console.log(filtered);
-				setSelected(false)
-			} else {
-				setSelected(!selected)
-				onSetSelected({
-					selected, value,
-				})
-			}
+			setSelected(!selectedVal)
+			onPress(value)
 		}}>
 			<View style={{
 				paddingHorizontal: 8,
@@ -263,20 +281,12 @@ const FilterCategory = ({ selected, value, selectedValue, onSetSelected }) => {
 		</TouchableOpacity >
 	);
 };
-const FilterPrice = ({ selected, value, selectedValue, onSetSelected }) => {
-	const [selectedVal, setSelected] = useState(selected);
+const FilterPrice = ({ value, onPress }) => {
+	const [selectedVal, setSelected] = useState(false);
 	return (
 		<TouchableOpacity onPress={() => {
-			if (selectedVal) {
-				const filtered = selectedValue.filter(item => item.value != value)
-				console.log(filtered);
-				setSelected(false)
-			} else {
-				setSelected(!selected)
-				onSetSelected({
-					selected, value,
-				})
-			}
+			setSelected(!selectedVal)
+			onPress(value)
 		}}>
 			<View style={{
 				paddingHorizontal: 8,
