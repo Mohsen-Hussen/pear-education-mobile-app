@@ -18,8 +18,6 @@ import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
 import CourseCard from "../components/Courses/CourseCard";
 import GeneralButton from "../components/General/GeneralButton";
-import { useDispatch } from "react-redux";
-import { loadingTrue } from "../redux";
 
 const rateFilterData = [
 	{ value: '0-1', selected: false },
@@ -45,15 +43,11 @@ const windowWidth = Dimensions.get("window").width;
 const CourseCardsListScreen = ({ navigation, route }) => {
 	//get course card info from redux
 	const globalState = useSelector((state) => state.courseCardInfo);
-
 	const courseData = globalState.courseData;
+
 	const ParamsTitle = route.params != null ? route.params.Title : "";
 	const ParamsSearchText = route.params != null ? route.params.SearchText : "";
 	const [modalVisible, setModalVisible] = useState(false);
-
-	const dispatch = useDispatch()
-
-
 	const [loading, setLoading] = useState(false);
 
 	// flatlist pagnination example url
@@ -86,8 +80,6 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 		getData;
 	}, []);
 
-
-
 	const [selectedValue, setSelectedValue] = useState([]);
 	const onSelectMulti = (value) => {
 		const index = selectedValue.indexOf(value);
@@ -102,7 +94,6 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 				...selectedValue.slice(index + 1),
 			];
 		}
-
 		setSelectedValue(newValue);
 	}
 
@@ -120,9 +111,9 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 				...selectedCategory.slice(index + 1),
 			];
 		}
-
 		setSelectedCategory(newValue);
 	}
+
 	const [selectedPrice, setSelectedPrice] = useState([]);
 	const onSelectMultiPrice = (value) => {
 		const index = selectedPrice.indexOf(value);
@@ -137,9 +128,9 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 				...selectedPrice.slice(index + 1),
 			];
 		}
-
 		setSelectedPrice(newValue);
 	}
+
 	return (
 		<>
 			<Modal
@@ -178,12 +169,10 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 						</View>
 						<View style={{ justifyContent: "center", alignItems: "center" }}>
 							<GeneralButton title="Apply Filter" onPress={() => {
-
 								console.log({ selectedValue });
 								console.log({ selectedCategory });
 								console.log({ selectedPrice });
 								setModalVisible(false);
-
 								setSelectedCategory([])
 								setSelectedPrice([])
 								setSelectedValue([])
@@ -239,13 +228,11 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 
 const FilterRate = ({ value, onPress, }) => {
 	const [selectedVal, setSelected] = useState(false);
-
 	return (
 		<TouchableOpacity
 			onPress={() => {
 				setSelected(!selectedVal)
 				onPress(value)
-
 			}}
 		>
 			<View style={{
@@ -261,6 +248,7 @@ const FilterRate = ({ value, onPress, }) => {
 		</TouchableOpacity >
 	);
 };
+
 const FilterCategory = ({ onPress, value, }) => {
 	const [selectedVal, setSelected] = useState(false);
 	return (
@@ -281,6 +269,7 @@ const FilterCategory = ({ onPress, value, }) => {
 		</TouchableOpacity >
 	);
 };
+
 const FilterPrice = ({ value, onPress }) => {
 	const [selectedVal, setSelected] = useState(false);
 	return (

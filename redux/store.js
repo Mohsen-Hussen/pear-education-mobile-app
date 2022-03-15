@@ -5,6 +5,7 @@ import instractourInfoReducer from "./instractourInfoSlice";
 import teachersInfoReducer from "./teachersInfoSlice";
 import courseCardInfoReducer from "./courseCardInfoSlice";
 import loadingReducer from "./loadingSlice";
+import loginReducer from "./loadingSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     teachersInfo: teachersInfoReducer,
     courseCardInfo: courseCardInfoReducer,
     loading: loadingReducer,
+    login: loginReducer,
   },
 });
 
