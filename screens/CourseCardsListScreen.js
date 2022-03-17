@@ -205,7 +205,6 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 						keyExtractor={(item) => item.id.toString()}
 						enableEmptySections={true}
 						ListFooterComponent={renderLoading}
-						// onScrollBeginDrag={() => console.log("onScrollBeginDrag")}
 						onEndReached={() => getData()}
 						onEndReachedThreshold={0}
 						renderItem={({ item }) => (

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
 	StyleSheet,
 	View,
@@ -6,6 +7,7 @@ import {
 	ScrollView,
 	TouchableOpacity,
 } from "react-native";
+import { loginFalse, loginTrue } from "../redux/userLoginStatus"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import colors from "../config/pearColors";
@@ -23,6 +25,18 @@ const Tab = createMaterialTopTabNavigator();
 const windowHeight = Dimensions.get("window").height;
 
 const DnsHomeScreen = ({ navigation }) => {
+	const login = useSelector((state) => state.login);
+	const dispatch = useDispatch();
+	// useDispatch inside useEeffect
+	// useEffect(() => {
+	// 	dispatch(loginFalse());
+	// 	console.log("first time", login);
+	// 	dispatch(loginTrue());
+	// 	console.log("afterdispatch", login);
+	// 	dispatch(loginFalse());
+	// 	console.log("final time", login);
+	// }, [login.loginStatus])
+
 	return (
 		<Screen>
 			<ScrollView>
@@ -124,8 +138,14 @@ const DnsHomeScreen = ({ navigation }) => {
 					</AppText>
 				</View>
 				<FeedbackFlatList />
+				{/* <TouchableOpacity onPress={() => {
+					dispatch(loginTrue());
+					console.log(login);
+				}}>
+					<AppText>test</AppText>
+				</TouchableOpacity> */}
 			</ScrollView>
-		</Screen>
+		</Screen >
 	);
 };
 
