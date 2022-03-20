@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	imgThubContainer: {
+
 		width: "100%",
 		height: windowHeight / 5,
 		borderTopLeftRadius: 10,
@@ -79,9 +80,8 @@ const styles = StyleSheet.create({
 		overflow: "hidden",
 	},
 	imgThub: {
-		maxWidth: "100%",
+		width: windowWidth,
 		resizeMode: "cover",
-		maxHeight: "100%",
 	},
 	courseDetailesContainer: {
 		width: "100%",
