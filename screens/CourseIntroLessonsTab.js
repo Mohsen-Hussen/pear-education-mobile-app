@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux"
 import {
-	ScrollView,
 	StyleSheet,
-	FlatList,
 	View,
 	TouchableOpacity,
-	Text,
 	Dimensions,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-
 import colors from "../config/pearColors";
 import AppText from "../components/General/AppText";
-
-import Screen from "../components/General/Screen";
-import GeneralButton from "../components/General/GeneralButton";
 
 const lessonsData = [
 	{
@@ -60,55 +54,35 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const CourseIntroLessonsTab = () => {
-	const [isEnrolled, setIsEnrolled] = useState(true);
+	//get enrolled status from redux
+	const globalState = useSelector((state) => state.enrolled);
+	const isEnrolled = globalState.enrolledStatus;
+	// function to toggle icon lesson from play to lock 
+	const ToggleIcon = () => {
+		if (isEnrolled) {
+			return (
+				<View>
+					<AntDesign name="play" size={45} color={colors.primary} />
+				</View >
+			)
+		} else {
+			return (
+				<View style={styles.lockIconContainer}>
+					<FontAwesome5 name="lock" size={30} color={colors.medium} />
+				</View>
+			)
+		}
+	}
 	return (
 		<>
-			{isEnrolled ? (
-				<>
-					{lessonsData.map((item) => (
-						<TouchableOpacity
-							key={item.id}
-							style={{ marginBottom: 15 }}
-							onPress={() => console.log("video lesson tapped")}
-						>
-							<View style={styles.lessonContainer}>
-								<View>
-									<AntDesign name="play" size={45} color={colors.primary} />
-								</View>
-								<View
-									style={{
-										width: windowWidth / 1.9,
-									}}
-								>
-									<AppText
-										size={21}
-										Weight="bold"
-										marginVertical={0}
-										color={colors.black}
-									>
-										{item.title}
-									</AppText>
-									<AppText size={15} marginVertical={0} color={colors.medium}>
-										{item.subTitle}
-									</AppText>
-									<View style={styles.lessonDivider}></View>
-								</View>
-								<View>
-									<AppText size={15} marginVertical={0} color={colors.medium}>
-										{item.duration}
-									</AppText>
-								</View>
-							</View>
-						</TouchableOpacity>
-					)
-					)}
-				</>
-			) : <>
-				{lessonsData.map((item) => (
+			{lessonsData.map((item) => (
+				<TouchableOpacity
+					key={item.id}
+					style={{ marginBottom: 15 }}
+					onPress={() => console.log("video lesson tapped")}
+				>
 					<View style={styles.lessonContainer}>
-						<View style={styles.lockIconContainer}>
-							<FontAwesome5 name="lock" size={30} color={colors.medium} />
-						</View>
+						{ToggleIcon()}
 						<View
 							style={{
 								width: windowWidth / 1.9,
@@ -118,19 +92,14 @@ const CourseIntroLessonsTab = () => {
 								size={21}
 								Weight="bold"
 								marginVertical={0}
-								color={colors.medium}
+								color={colors.black}
 							>
 								{item.title}
 							</AppText>
 							<AppText size={15} marginVertical={0} color={colors.medium}>
 								{item.subTitle}
 							</AppText>
-							<View
-								style={[
-									styles.lessonDivider,
-									{ backgroundColor: colors.medium },
-								]}
-							></View>
+							<View style={[styles.lessonDivider, { backgroundColor: isEnrolled ? colors.primary : colors.grayLight,}]}></View>
 						</View>
 						<View>
 							<AppText size={15} marginVertical={0} color={colors.medium}>
@@ -138,104 +107,9 @@ const CourseIntroLessonsTab = () => {
 							</AppText>
 						</View>
 					</View>
-				)
-				)}
-			</>}
-			{/* {isEnrolled ? (
-				<FlatList
-					data={lessonsData}
-					keyExtractor={(item) => item.id.toString()}
-					renderItem={({ item }) => (
-						<TouchableOpacity
-							style={{ marginBottom: 15 }}
-							onPress={() => console.log("video lesson tapped")}
-						>
-							<View style={styles.lessonContainer}>
-								<View>
-									<AntDesign name="play" size={45} color={colors.primary} />
-								</View>
-								<View
-									style={{
-										width: windowWidth / 1.9,
-									}}
-								>
-									<AppText
-										size={21}
-										Weight="bold"
-										marginVertical={0}
-										color={colors.black}
-									>
-										{item.title}
-									</AppText>
-									<AppText size={15} marginVertical={0} color={colors.medium}>
-										{item.subTitle}
-									</AppText>
-									<View style={styles.lessonDivider}></View>
-								</View>
-								<View>
-									<AppText size={15} marginVertical={0} color={colors.medium}>
-										{item.duration}
-									</AppText>
-								</View>
-							</View>
-						</TouchableOpacity>
-					)}
-				/>
-			) : (
-				<FlatList
-					data={lessonsData}
-					keyExtractor={(item) => item.id.toString()}
-					renderItem={({ item }) => (
-						<View style={styles.lessonContainer}>
-							<View style={styles.lockIconContainer}>
-								<FontAwesome5 name="lock" size={30} color={colors.medium} />
-							</View>
-							<View
-								style={{
-									width: windowWidth / 1.9,
-								}}
-							>
-								<AppText
-									size={21}
-									Weight="bold"
-									marginVertical={0}
-									color={colors.medium}
-								>
-									{item.title}
-								</AppText>
-								<AppText size={15} marginVertical={0} color={colors.medium}>
-									{item.subTitle}
-								</AppText>
-								<View
-									style={[
-										styles.lessonDivider,
-										{ backgroundColor: colors.medium },
-									]}
-								></View>
-							</View>
-							<View>
-								<AppText size={15} marginVertical={0} color={colors.medium}>
-									{item.duration}
-								</AppText>
-							</View>
-						</View>
-					)}
-				/>
-			)} */}
-
-			{/* <View
-				style={{
-					justifyContent: "center",
-					alignItems: "center",
-					height: windowHeight / 12,
-				}}
-			>
-				<GeneralButton
-					title="Enroll Now"
-					onPress={() => console.log("enroll now button tapped")}
-					style={{ padding: 0 }}
-				/>
-			</View> */}
+				</TouchableOpacity>
+			)
+			)}
 		</>
 	);
 };
@@ -251,7 +125,7 @@ const styles = StyleSheet.create({
 	lessonDivider: {
 		width: "100%",
 		height: 5,
-		backgroundColor: colors.primary,
+
 		borderRadius: 10,
 		marginBottom: 20,
 	},

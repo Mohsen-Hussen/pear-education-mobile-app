@@ -5,7 +5,6 @@ import {
 	Image,
 	Dimensions,
 	TouchableOpacity,
-	ScrollView,
 } from "react-native";
 import AppText from "../../components/General/AppText";
 import colors from "../../config/pearColors";
