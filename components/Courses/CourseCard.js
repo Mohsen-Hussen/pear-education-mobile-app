@@ -85,12 +85,8 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.white,
 		borderRadius: 10,
 		padding: 8,
-		// borderColor: "red",
-		// borderWidth: 2,
 	},
 	imageContainer: {
-		// borderColor: "#000",
-		// borderWidth: 2,
 		width: "35%",
 		height: windowHeight / 5,
 		borderRadius: 10,
@@ -101,8 +97,6 @@ const styles = StyleSheet.create({
 		maxHeight: "100%",
 	},
 	textCardContainer: {
-		// borderColor: "#000",
-		// borderWidth: 2,
 		width: "65%",
 		justifyContent: "center",
 		alignItems: "flex-start",

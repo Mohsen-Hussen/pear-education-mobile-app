@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import colors from "../config/pearColors";
 import Screen from "../components/General/Screen";
 import CourseIntroDetails from "../components/Courses/CourseIntroDetails";
 import CourseCurriculum from "../components/Courses/CourseCurriculum";
+import GeneralButton from "../components/General/GeneralButton";
 
 const CoursesIntroScreen = ({ route }) => {
 	const itemSelectedId = route.params != null ? route.params.itemID : "";
@@ -25,6 +26,13 @@ const CoursesIntroScreen = ({ route }) => {
 			/>
 			<Text> itemSelectedId= {itemSelectedId}</Text>
 			<CourseCurriculum />
+			<View style={{ justifyContent: "flex-end", alignItems: "center" }}>
+				<GeneralButton
+					title="Enroll Now"
+					onPress={() => console.log("enroll now button tapped")}
+					style={{ padding: 0 }}
+				/>
+			</View>
 		</Screen>
 	);
 };

@@ -64,6 +64,84 @@ const CourseIntroLessonsTab = () => {
 	return (
 		<>
 			{isEnrolled ? (
+				<>
+					{lessonsData.map((item) => (
+						<TouchableOpacity
+							key={item.id}
+							style={{ marginBottom: 15 }}
+							onPress={() => console.log("video lesson tapped")}
+						>
+							<View style={styles.lessonContainer}>
+								<View>
+									<AntDesign name="play" size={45} color={colors.primary} />
+								</View>
+								<View
+									style={{
+										width: windowWidth / 1.9,
+									}}
+								>
+									<AppText
+										size={21}
+										Weight="bold"
+										marginVertical={0}
+										color={colors.black}
+									>
+										{item.title}
+									</AppText>
+									<AppText size={15} marginVertical={0} color={colors.medium}>
+										{item.subTitle}
+									</AppText>
+									<View style={styles.lessonDivider}></View>
+								</View>
+								<View>
+									<AppText size={15} marginVertical={0} color={colors.medium}>
+										{item.duration}
+									</AppText>
+								</View>
+							</View>
+						</TouchableOpacity>
+					)
+					)}
+				</>
+			) : <>
+				{lessonsData.map((item) => (
+					<View style={styles.lessonContainer}>
+						<View style={styles.lockIconContainer}>
+							<FontAwesome5 name="lock" size={30} color={colors.medium} />
+						</View>
+						<View
+							style={{
+								width: windowWidth / 1.9,
+							}}
+						>
+							<AppText
+								size={21}
+								Weight="bold"
+								marginVertical={0}
+								color={colors.medium}
+							>
+								{item.title}
+							</AppText>
+							<AppText size={15} marginVertical={0} color={colors.medium}>
+								{item.subTitle}
+							</AppText>
+							<View
+								style={[
+									styles.lessonDivider,
+									{ backgroundColor: colors.medium },
+								]}
+							></View>
+						</View>
+						<View>
+							<AppText size={15} marginVertical={0} color={colors.medium}>
+								{item.duration}
+							</AppText>
+						</View>
+					</View>
+				)
+				)}
+			</>}
+			{/* {isEnrolled ? (
 				<FlatList
 					data={lessonsData}
 					keyExtractor={(item) => item.id.toString()}
@@ -143,9 +221,9 @@ const CourseIntroLessonsTab = () => {
 						</View>
 					)}
 				/>
-			)}
+			)} */}
 
-			<View
+			{/* <View
 				style={{
 					justifyContent: "center",
 					alignItems: "center",
@@ -157,7 +235,7 @@ const CourseIntroLessonsTab = () => {
 					onPress={() => console.log("enroll now button tapped")}
 					style={{ padding: 0 }}
 				/>
-			</View>
+			</View> */}
 		</>
 	);
 };

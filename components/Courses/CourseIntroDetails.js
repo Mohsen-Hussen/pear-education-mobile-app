@@ -36,26 +36,26 @@ const CourseIntroDetails = ({
 				</TouchableOpacity>
 				<View style={styles.courseDescriptionContainer}>
 					<View style={styles.categoryContainer}>
-						<AppText size={16} color={colors.skillsColor} Weight="bold">
+						<AppText size={16} color={colors.skillsColor} Weight="bold" marginVertical={3}>
 							{categoryName}
 						</AppText>
 					</View>
 					<View>
-						<AppText size={17} Weight="bold">
+						<AppText size={17} Weight="bold" marginVertical={3}>
 							{courseTitle}
 						</AppText>
-						<AppText size={13} color={colors.medium} marginVertical={0}>
+						<AppText size={13} color={colors.medium} marginVertical={3}>
 							{courseSubtitle}
 						</AppText>
 						<AppText
 							size={16}
 							color={colors.black}
 							Weight="bold"
-							marginVertical={10}
+							marginVertical={3}
 						>
 							About This Course
 						</AppText>
-						<AppText size={14} color={colors.medium} marginVertical={0}>
+						<AppText size={14} color={colors.medium} marginVertical={3}>
 							{courseDescription}
 						</AppText>
 					</View>
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 	},
 	imgThubContainer: {
-
 		width: "100%",
 		height: windowHeight / 5,
 		borderTopLeftRadius: 10,
@@ -85,11 +84,12 @@ const styles = StyleSheet.create({
 	},
 	courseDetailesContainer: {
 		width: "100%",
-		borderTopLeftRadius: 25,
-		borderTopRightRadius: 25,
+		borderTopLeftRadius: 20,
+		borderTopRightRadius: 20,
 		top: -20,
 		backgroundColor: colors.white,
-		padding: 8,
+		height: "29%",
+		padding: 8
 	},
 	iconContainer: {
 		width: 60,
