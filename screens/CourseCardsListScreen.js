@@ -19,6 +19,7 @@ import AppText from "../components/General/AppText";
 import CourseCard from "../components/Courses/CourseCard";
 import GeneralButton from "../components/General/GeneralButton";
 
+//modal filter data
 const rateFilterData = [
 	{ value: '0-1', selected: false },
 	{ value: '1-2', selected: false },
