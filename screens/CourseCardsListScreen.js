@@ -18,6 +18,7 @@ import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
 import CourseCard from "../components/Courses/CourseCard";
 import GeneralButton from "../components/General/GeneralButton";
+import SearchFilterBar from "../components/General/SearchFilterBar"
 
 //modal filter data
 const rateFilterData = [
@@ -183,21 +184,23 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 				</View>
 			</Modal>
 			<Screen style={styles.container}>
-				<View style={styles.headerContainer}>
-					<AppText
-						size={20}
-						color={colors.black}
-						marginVertical={5}
-						Weight="bold"
-					>
-						All Courses
-					</AppText>
-					<TouchableOpacity onPress={() => setModalVisible(true)}>
-						<View style={styles.filterIconStyle}>
-							<AntDesign name="find" size={20} color={colors.white} />
-						</View>
-					</TouchableOpacity>
-				</View>
+				<SearchFilterBar
+					placeholder="Search a course"
+					placeholderColor="medium"
+					searchIconName="search1"
+					searchIconsize={30}
+					searchIconColor="medium"
+					compassIconName="find"
+					compassIconSize={20}
+					compassIconColor="white"
+					filterIconName="filter"
+					filterIconSize={20}
+					filterIconColor="white"
+					onPress={() => {
+						console.log("filter tapped");
+						setModalVisible(true);
+					}}
+				/>
 				<Text> Selected Filter ={ParamsTitle}</Text>
 				<Text>Search Text = {ParamsSearchText}</Text>
 				<View style={styles.flatListContainer}>

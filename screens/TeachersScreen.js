@@ -15,10 +15,11 @@ import {
 import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
 import colors from "../config/pearColors";
+import routes from "../navigation/routes";
+import GeneralButton from "../components/General/GeneralButton";
+import SearchFilterBar from "../components/General/SearchFilterBar";
 import FilterBar from "../components/General/FilterBar";
 import FilterIcon from "../components/General/FilterIcon";
-import GeneralButton from "../components/General/GeneralButton";
-import routes from "../navigation/routes";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -158,7 +159,7 @@ const TeachersScreen = ({ navigation }) => {
 			</Modal>
 			<Screen style={{ backgroundColor: colors.screenBackground }}>
 				<StatusBar style="auto" />
-				<FilterBar
+				{/* <FilterBar
 					placeholder="Search a course"
 					placeholderColor="medium"
 					searchIconName="search1"
@@ -172,6 +173,23 @@ const TeachersScreen = ({ navigation }) => {
 					head="Filter"
 					headSize={22}
 					FilterIconSize={35}
+					onPress={() => {
+						console.log("filter tapped");
+						setModalVisible(true);
+					}}
+				/> */}
+				<SearchFilterBar
+					placeholder="Search a course"
+					placeholderColor="medium"
+					searchIconName="search1"
+					searchIconsize={30}
+					searchIconColor="medium"
+					compassIconName="find"
+					compassIconSize={20}
+					compassIconColor="white"
+					filterIconName="filter"
+					filterIconSize={20}
+					filterIconColor="white"
 					onPress={() => {
 						console.log("filter tapped");
 						setModalVisible(true);
