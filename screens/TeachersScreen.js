@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
 	StyleSheet,
-	Image,
 	View,
 	StatusBar,
 	TouchableOpacity,
@@ -11,15 +10,13 @@ import {
 	Modal,
 	Text,
 } from "react-native";
-
 import Screen from "../components/General/Screen";
 import AppText from "../components/General/AppText";
 import colors from "../config/pearColors";
 import routes from "../navigation/routes";
 import GeneralButton from "../components/General/GeneralButton";
 import SearchFilterBar from "../components/General/SearchFilterBar";
-import FilterBar from "../components/General/FilterBar";
-import FilterIcon from "../components/General/FilterIcon";
+import TeacherCard from "../components/Instructor/TeacherCard"
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
@@ -107,6 +104,7 @@ const TeachersScreen = ({ navigation }) => {
 		}
 		setSelectedPrice(newValue);
 	}
+
 	return (
 		<>
 			<Modal
@@ -159,80 +157,40 @@ const TeachersScreen = ({ navigation }) => {
 			</Modal>
 			<Screen style={{ backgroundColor: colors.screenBackground }}>
 				<StatusBar style="auto" />
-				{/* <FilterBar
-					placeholder="Search a course"
-					placeholderColor="medium"
-					searchIconName="search1"
-					searchIconsize={37}
-					searchIconColor="medium"
-					filterIconName="find"
-					filterIconSize={35}
-					filterIconColor="white"
-				/>
-				<FilterIcon
-					head="Filter"
-					headSize={22}
-					FilterIconSize={35}
-					onPress={() => {
-						console.log("filter tapped");
-						setModalVisible(true);
-					}}
-				/> */}
-				<SearchFilterBar
-					placeholder="Search a course"
-					placeholderColor="medium"
-					searchIconName="search1"
-					searchIconsize={30}
-					searchIconColor="medium"
-					compassIconName="find"
-					compassIconSize={20}
-					compassIconColor="white"
-					filterIconName="filter"
-					filterIconSize={20}
-					filterIconColor="white"
-					onPress={() => {
-						console.log("filter tapped");
-						setModalVisible(true);
-					}}
-				/>
+				<View style={{ marginBottom: 8 }}>
+					<SearchFilterBar
+						placeholder="Search a course"
+						placeholderColor="medium"
+						searchIconName="search1"
+						searchIconsize={30}
+						searchIconColor="medium"
+						compassIconName="find"
+						compassIconSize={20}
+						compassIconColor="white"
+						filterIconName="filter"
+						filterIconSize={20}
+						filterIconColor="white"
+						onPress={() => {
+							console.log("filter tapped");
+							setModalVisible(true);
+						}}
+					/>
+				</View>
 				<FlatList
 					data={teachersData}
 					keyExtractor={(item) => item.id.toString()}
-					numColumns={2}
 					renderItem={({ item }) => (
 						<View style={styles.teacherContainer}>
-							<TouchableOpacity
-								onPress={() =>
-									navigation.navigate(routes.INSTRUCTOR_DETAILS, {
-										Id: item.id,
-									})
-								}
-							>
-								<View
-									style={{
-										justifyContent: "space-between",
-										alignItems: "center",
-									}}
-								>
-									<Image source={item.image} />
-									<AppText
-										size={17}
-										color={colors.primary}
-										Weight="bold"
-										align="center"
-									>
-										{item.title}
-									</AppText>
-									<AppText
-										size={15}
-										color={colors.medium}
-										align="center"
-										marginVertical={0}
-									>
-										Subject:{item.subject}
-									</AppText>
-								</View>
-							</TouchableOpacity>
+							<TeacherCard
+								imgSource={item.image}
+								ID={item.id}
+								teacherName={item.name}
+								subjects={item.subject}
+								numOfStudents={item.numOfStudents}
+								numOfCourses={item.numOfCourses}
+								rating={item.rating}
+								navigation={navigation}
+							/>
 						</View>
 					)}
 				/>
@@ -311,14 +269,10 @@ export default TeachersScreen;
 
 const styles = StyleSheet.create({
 	teacherContainer: {
-		justifyContent: "space-between",
-		alignItems: "center",
 		borderRadius: 10,
-		width: windowWidth / 3,
 		backgroundColor: colors.white,
-		paddingVertical: 15,
+		paddingVertical: 10,
 		marginVertical: 10,
-		marginHorizontal: 5,
 		flex: 1,
 	},
 	//Modal style
