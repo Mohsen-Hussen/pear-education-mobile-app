@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
 	StyleSheet,
 	Text,
@@ -12,13 +12,18 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../../config/pearColors";
 import routes from "../../navigation/routes";
+import { fetchDnsCourses } from "../../redux/dnsCoursesInfoSlice";
 
 const windowHeight = Dimensions.get("window").height;
 
 const CoursesFlatList = ({ navigation }) => {
+	const dispatch = useDispatch();
 	const globalState = useSelector((state) => state.dnsCoursesInfo);
 	const coursesData = globalState.coursesData;
-
+	// console.log(coursesData.DataResultsList[0].GroupName);
+	useEffect(() => {
+		// dispatch(fetchDnsCourses());
+	}, [])
 	return (
 		<View style={[styles.container]}>
 			<FlatList

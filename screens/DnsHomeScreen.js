@@ -8,7 +8,6 @@ import {
 	TouchableOpacity,
 } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-
 import colors from "../config/pearColors";
 import routes from "../navigation/routes";
 import Screen from "../components/General/Screen";

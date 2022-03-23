@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
 	StyleSheet,
 	View,
@@ -6,13 +6,23 @@ import {
 	Dimensions,
 	TouchableOpacity,
 } from "react-native";
+import Video from 'react-native-video';
 import AppText from "../../components/General/AppText";
 import colors from "../../config/pearColors";
 import { Ionicons } from "@expo/vector-icons";
-
+const parkVideo = require("../../assets/pearImages/sample-10s.mp4");
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
+const introVideo = () => {
+	return (
+		<Video
+			source={{ uri: parkVideo }}
+			style={{ flex: 1 }}
+			controls={true}
+		/>
+	)
+}
 const CourseIntroDetails = ({
 	imgSrc,
 	categoryName,
@@ -20,6 +30,8 @@ const CourseIntroDetails = ({
 	courseSubtitle,
 	courseDescription,
 }) => {
+	const myRef = useRef();
+	const videoRef = myRef.current;
 	return (
 		<View style={{ marginTop: 0 }}>
 			<View style={styles.imgThubContainer}>
@@ -27,7 +39,24 @@ const CourseIntroDetails = ({
 			</View>
 			<View style={styles.courseDetailesContainer}>
 				<TouchableOpacity
-					onPress={() => console.log("play icon tapped")}
+					onPress={() => {
+						console.log("play icon tapped");
+						return (
+							<View style={{ borderWidth: 2, borderColor: "#000", width: "100%", height: "100%" }}>
+								<Video
+									source={parkVideo}
+									style={{
+										flex: 1,
+										position: 'absolute',
+										top: 0,
+										left: 0,
+										bottom: 0,
+										right: 0,
+									}}
+								></Video>
+							</View>
+						)
+					}}
 					activeOpacity={0.8}
 					style={styles.iconContainer}
 				>
