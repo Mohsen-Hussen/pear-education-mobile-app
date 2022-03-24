@@ -22,7 +22,6 @@ const InstractourFlatList = ({ navigation }) => {
 	useEffect(() => {
 		dispatch(fetchInstractourInfo());
 	}, [dispatch])
-	console.log(instractourData.length)
 
 	return (
 		<View style={styles.sliderContainer}>
