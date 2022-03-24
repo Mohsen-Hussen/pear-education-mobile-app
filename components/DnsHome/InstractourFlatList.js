@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
 	StyleSheet,
 	View,
@@ -11,33 +11,45 @@ import {
 import colors from "../../config/pearColors";
 import routes from "../../navigation/routes";
 import AppText from "../General/AppText";
+import { fetchInstractourInfo } from "../../redux/instractourInfoSlice";
 
 const windowWidth = Dimensions.get("window").width;
 
 const InstractourFlatList = ({ navigation }) => {
+	const dispatch = useDispatch();
 	const globalState = useSelector((state) => state.instractourInfo);
 	const instractourData = globalState.instractourData;
+	useEffect(() => {
+		dispatch(fetchInstractourInfo());
+	}, [dispatch])
+	console.log(instractourData.length)
+
 	return (
 		<View style={styles.sliderContainer}>
 			<FlatList
 				showsHorizontalScrollIndicator={false}
 				horizontal
 				data={instractourData}
-				keyExtractor={(item) => item.id.toString()}
+				keyExtractor={(item) => item.ID.toString()}
 				renderItem={({ item }) => (
 					<TouchableOpacity
 						onPress={() =>
-							navigation.navigate(routes.INSTRUCTOR_DETAILS, { Id: item.id })
+							navigation.navigate(routes.INSTRUCTOR_DETAILS, { Id: item.ID })
 						}
 					>
 						<View style={styles.cardContainer}>
-							<Image source={item.image} style={styles.constractorAvatar} />
+							<Image
+								style={{ borderRadius: 50, width: 80, height: 80 }}
+								source={{ uri: "https://reactjs.org/logo-og.png" }}
+							// source={item.Img}
+							// style={styles.constractorAvatar}
+							/>
 							<View style={styles.textContainer}>
 								<AppText align="left" size="18" color={colors.black}>
-									{item.title}
+									{item.Name}
 								</AppText>
 								<AppText align="left" size="15" color={colors.medium}>
-									{item.subtitle}
+									{item.SchoolName}
 								</AppText>
 							</View>
 						</View>
