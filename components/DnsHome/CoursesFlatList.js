@@ -19,10 +19,10 @@ const windowHeight = Dimensions.get("window").height;
 const CoursesFlatList = ({ navigation }) => {
 	const dispatch = useDispatch();
 	const globalState = useSelector((state) => state.dnsCoursesInfo);
-	const coursesData = globalState.coursesData;
-	// console.log(coursesData.DataResultsList[0].GroupName);
+	const coursesData = globalState.coursesData.DataResultsList;
+	// console.log("data after dispatch", coursesData);
 	useEffect(() => {
-		// dispatch(fetchDnsCourses());
+		dispatch(fetchDnsCourses());
 	}, [])
 	return (
 		<View style={[styles.container]}>
@@ -30,7 +30,7 @@ const CoursesFlatList = ({ navigation }) => {
 				showsHorizontalScrollIndicator={false}
 				horizontal
 				data={coursesData}
-				keyExtractor={(item) => item.id.toString()}
+				keyExtractor={(item) => item.ID.toString()}
 				renderItem={({ item }) => (
 					<TouchableOpacity
 						onPress={() =>
@@ -39,13 +39,13 @@ const CoursesFlatList = ({ navigation }) => {
 					>
 						<View style={[styles.TouchableOpacityContainer]}>
 							<ImageBackground
-								source={item.uri}
+								source={{ uri: "http://timeline.pearogram.com/customs/images/logo-time-line-2.png" }}
 								resizeMode="cover"
 								style={[styles.ImageBackgroundContainer]}
 							>
 								<View style={styles.overlayStyle}></View>
 								<View style={styles.viewAlign}>
-									<Text style={styles.textStyle}>{item.title}</Text>
+									<Text style={styles.textStyle}>{item.TeacherName}</Text>
 									<Text style={styles.container}>
 										<MaterialCommunityIcons
 											name="clock-outline"
@@ -53,7 +53,7 @@ const CoursesFlatList = ({ navigation }) => {
 											color="#fff"
 										/>
 										<Text style={styles.fntSize}>
-											{item.duration} - {item.price}
+											{item.GroupName} - {item.GroupPath}
 										</Text>
 									</Text>
 									<Text style={styles.fntSize}>{item.name}</Text>

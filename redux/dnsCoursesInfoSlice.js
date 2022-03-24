@@ -6,6 +6,32 @@ export const fetchDnsCourses = createAsyncThunk("dnsCoursesInfo/fetchDnsCourses"
   return response.data;
 });
 
+const initState = { coursesData: [], status: null };
+const dnsCoursesInfoSlice = createSlice({
+  name: "dnsCoursesInfo",
+  initialState: initState,
+  reducers: {},
+  extraReducers: {
+    [fetchDnsCourses.fulfilled]: (state, action) => {
+      state.coursesData = action.payload;
+      state.status = "success";
+    },
+    [fetchDnsCourses.pending]: (state) => {
+      state.status = "loading";
+    },
+    [fetchDnsCourses.rejected]: (state) => {
+      state.status = "failed";
+    },
+  },
+});
+
+// Action creators are generated for each case reducer function
+// export const { id } = dnsCoursesInfoSlice.actions;
+
+export default dnsCoursesInfoSlice.reducer;
+
+// import { createSlice } from "@reduxjs/toolkit";
+
 // const coursesData = [
 //   {
 //     id: 1,
@@ -57,26 +83,14 @@ export const fetchDnsCourses = createAsyncThunk("dnsCoursesInfo/fetchDnsCourses"
 //   },
 // ];
 
-const initState = { coursesData: [], status: null };
-const dnsCoursesInfoSlice = createSlice({
-  name: "dnsCoursesInfo",
-  initialState: initState,
-  reducers: {},
-  extraReducers: {
-    [fetchDnsCourses.fulfilled]: (state, action) => {
-      state.coursesData = action.payload;
-      state.status = "success";
-    },
-    [fetchDnsCourses.pending]: (state) => {
-      state.status = "loading";
-    },
-    [fetchDnsCourses.rejected]: (state) => {
-      state.status = "failed";
-    },
-  },
-});
+// const initState = { coursesData };
+// const dnsCoursesInfoSlice = createSlice({
+//   name: "dnsCoursesInfo",
+//   initialState: initState,
+//   reducers: {},
+// });
 
-// Action creators are generated for each case reducer function
-// export const { id } = dnsCoursesInfoSlice.actions;
+// // Action creators are generated for each case reducer function
+// // export const { } = dnsCoursesInfoSlice.actions;
 
-export default dnsCoursesInfoSlice.reducer;
+// export default dnsCoursesInfoSlice.reducer;
