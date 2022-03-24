@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 export const fetchInstractourInfo = createAsyncThunk("instractourInfo/fetchInstractourInfo", async () => {
-  const response = await axios.get("https://api.pear-education.com//GetCourseInstractors?StudentId=&CurrentLang=1&UserNameOrPhone=&DeviceID=&token=");
+  const response = await axios.get("https://asapi.pear-education.com//GetCourseInstractors?StudentId=&CurrentLang=1&UserNameOrPhone=&DeviceID=&token=");
   return response.data.DataResultsList.slice(0, 5);
 });
 

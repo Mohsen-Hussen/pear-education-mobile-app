@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	StyleSheet,
 	View,
@@ -6,23 +6,17 @@ import {
 	Dimensions,
 	TouchableOpacity,
 } from "react-native";
-import Video from 'react-native-video';
 import AppText from "../../components/General/AppText";
 import colors from "../../config/pearColors";
 import { Ionicons } from "@expo/vector-icons";
 const parkVideo = require("../../assets/pearImages/sample-10s.mp4");
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
+import { Video, AVPlaybackStatus } from 'expo-av';
+import pearColors from "../../config/pearColors";
+import VideoPlayer from "../General/VideoPlayer";
 
-const introVideo = () => {
-	return (
-		<Video
-			source={{ uri: parkVideo }}
-			style={{ flex: 1 }}
-			controls={true}
-		/>
-	)
-}
+
 const CourseIntroDetails = ({
 	imgSrc,
 	categoryName,
@@ -30,32 +24,44 @@ const CourseIntroDetails = ({
 	courseSubtitle,
 	courseDescription,
 }) => {
-	const myRef = useRef();
-	const videoRef = myRef.current;
+	const [open, setOpen] = useState(false)
+	// const VideoPlayer = () => {
+	// 	if (open) {
+	// 		return (
+	// 			<View style={styles.containerV}>
+	// 				<TouchableOpacity style={{ width: "100%", height: "33%" }} onPress={() => setOpen(false)}></TouchableOpacity>
+	// 				<Video
+	// 					style={styles.video}
+	// 					source={{
+	// 						uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+	// 					}}
+	// 					useNativeControls
+	// 					resizeMode="contain"
+	// 					isLooping
+	// 				/>
+	// 				<TouchableOpacity style={{ width: "100%", height: "33%" }} onPress={() => setOpen(false)}></TouchableOpacity>
+
+	// 			</View>
+
+	// 		)
+	// 	}
+	// 	return null;
+
+	// }
 	return (
 		<View style={{ marginTop: 0 }}>
+			{open ? <VideoPlayer url="http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" onPress={() => { setOpen(false) }} /> : null}
+			{/* {open ? <VideoPlayer vidurl={require("../../assets/pearImages/abotreka.mp4")} onPress={() => { setOpen(false) }} /> : null} */}
+
+
+
 			<View style={styles.imgThubContainer}>
 				<Image source={imgSrc} style={styles.imgThub} />
 			</View>
 			<View style={styles.courseDetailesContainer}>
 				<TouchableOpacity
 					onPress={() => {
-						console.log("play icon tapped");
-						return (
-							<View style={{ borderWidth: 2, borderColor: "#000", width: "100%", height: "100%" }}>
-								<Video
-									source={parkVideo}
-									style={{
-										flex: 1,
-										position: 'absolute',
-										top: 0,
-										left: 0,
-										bottom: 0,
-										right: 0,
-									}}
-								></Video>
-							</View>
-						)
+						setOpen(true)
 					}}
 					activeOpacity={0.8}
 					style={styles.iconContainer}
@@ -89,7 +95,7 @@ const CourseIntroDetails = ({
 					</View>
 				</View>
 			</View>
-		</View>
+		</View >
 	);
 };
 
@@ -145,4 +151,6 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
+
+
 });

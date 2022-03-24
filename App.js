@@ -28,6 +28,7 @@ import TeachersScreen from "./screens/TeachersScreen";
 import StackNavigation from "./navigation/StackNavigation";
 import DrawerNavigator from "./navigation/DrawerNavigator";
 
+
 const Render = () => {
 	const [isFirstTime, setIsFirstTime] = useState();
 
@@ -59,8 +60,24 @@ const Render = () => {
 	}
 };
 const App = () => {
-	// return <RegisterFirst />;
-	// return <Render />;
+
+	// return (
+	// 	<View style={styles.container}>
+	// 		<Video
+	// 			style={styles.video}
+	// 			source={{
+	// 				uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+	// 			}}
+	// 			useNativeControls
+	// 			resizeMode="contain"
+	// 			isLooping
+	// 		/>
+	// 		<View style={styles.buttons}>
+
+	// 		</View>
+	// 	</View>
+	// );
+
 	return (
 		<Provider store={store}>
 			<NavigationContainer>
@@ -68,26 +85,25 @@ const App = () => {
 			</NavigationContainer>
 		</Provider>
 	);
-	// return <LoginScreen />
-	// return <CourseCardsListScreen />;
-	// return <TeachersScreen />;
-	// return (
-	// 	<>
-	// 		<NavigationContainer>
-	// 			<StatusBar style="auto" />
-	// 			<CoursesIntroScreen />
-	// 		</NavigationContainer>
-	// 	</>
-	// );
-	// return <InstructorDetails />;
-	// return (
-	// 	<NavigationContainer>
-	// 		<RegisterStackNav />
-	// 	</NavigationContainer>
-	// );
-	// return <RegisterSecond />;
-	// return <Render />;
-	// return <LoginScreen />;
+
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+		backgroundColor: 'red',
+	},
+	video: {
+		alignSelf: 'center',
+		width: "100%",
+		height: "100%",
+	},
+	buttons: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+});

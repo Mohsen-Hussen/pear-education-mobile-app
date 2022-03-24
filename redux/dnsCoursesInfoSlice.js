@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchDnsCourses = createAsyncThunk("dnsCoursesInfo/fetchDnsCourses", async () => {
-  const response = await axios.get("https://api.pear-education.com/GetCoursesByEducSub?StudentId=&CurrentLang=1&UserNameOrPhone=&DeviceID=&token=&EducationSubID=382");
+  const response = await axios.get("https://adpi.pear-education.com/GetCoursesByEducSub?StudentId=&CurrentLang=1&UserNameOrPhone=&DeviceID=&token=&EducationSubID=382");
   return response.data;
 });
 

@@ -12,9 +12,9 @@ const CoursesIntroScreen = ({ route }) => {
 	const itemSelectedId = route.params != null ? route.params.itemID : "";
 	const globalState = useSelector((state) => state.courseCardInfo);
 	const courseData = globalState.courseData.find(course => course.id === itemSelectedId);
-	console.log(courseData);
-	console.log(courseData.id);
-	console.log(itemSelectedId);
+	// console.log(courseData);
+	// console.log(courseData.id);
+	// console.log(itemSelectedId);
 	const dispatch = useDispatch();
 	const enrolledState = useSelector((state) => state.enrolled);
 	const isEnrolled = enrolledState.enrolledStatus;
