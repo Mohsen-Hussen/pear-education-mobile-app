@@ -30,15 +30,15 @@ export default VideoPlayer
 
 const styles = StyleSheet.create({
   containerV: {
-    flex: 1,
     position: "absolute",
     top: 0,
     bottom: 0,
-    zIndex: 10,
-    width: "100%",
+    left: -20,
+    zIndex: 100,
+    width: windowWidth,
     height: windowHeight / 1.2,
     alignItems: 'center',
-    backgroundColor: 'rgba(52, 52, 52, 0.8)'
+    backgroundColor: 'rgba(52, 52, 52, 0.2)'
 
 
   },

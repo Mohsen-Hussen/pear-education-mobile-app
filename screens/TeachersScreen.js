@@ -157,9 +157,9 @@ const TeachersScreen = ({ navigation }) => {
 			</Modal>
 			<Screen style={{ backgroundColor: colors.screenBackground }}>
 				<StatusBar style="auto" />
-				<View style={{ marginBottom: 8 }}>
+				<View >
 					<SearchFilterBar
-						placeholder="Search a course"
+						placeholder="Search a Instructor"
 						placeholderColor="medium"
 						searchIconName="search1"
 						searchIconsize={30}

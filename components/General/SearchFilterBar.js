@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   wrapperContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginVertical: 18
   },
   searchInputContainer: {
     flexDirection: "row",

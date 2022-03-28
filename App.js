@@ -6,6 +6,7 @@ import {
 	StatusBar,
 	ScrollView,
 	Alert,
+	Text,
 } from "react-native";
 import store from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
@@ -78,8 +79,10 @@ const App = () => {
 	// 	</View>
 	// );
 
+
+
 	return (
-		<Provider store={store}>
+		<Provider store={store} >
 			<NavigationContainer>
 				<DrawerNavigator />
 			</NavigationContainer>

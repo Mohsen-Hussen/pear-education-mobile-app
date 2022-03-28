@@ -183,7 +183,7 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 					</View>
 				</View>
 			</Modal>
-			<Screen style={styles.container}>
+			<Screen >
 				<SearchFilterBar
 					placeholder="Search a course"
 					placeholderColor="medium"
@@ -201,8 +201,8 @@ const CourseCardsListScreen = ({ navigation, route }) => {
 						setModalVisible(true);
 					}}
 				/>
-				<Text> Selected Filter ={ParamsTitle}</Text>
-				<Text>Search Text = {ParamsSearchText}</Text>
+				{/* <Text> Selected Filter ={ParamsTitle}</Text>
+				<Text>Search Text = {ParamsSearchText}</Text> */}
 				<View style={styles.flatListContainer}>
 					<FlatList
 						data={courseData}

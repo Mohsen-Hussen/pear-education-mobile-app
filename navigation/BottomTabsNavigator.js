@@ -72,7 +72,7 @@ const BottomTabsNavigator = () => {
 								<MaterialCommunityIcons
 									name="home"
 									color={color}
-									size={35}
+									size={size}
 									onPress={() => navigation.navigate(routes.STACK_NAVIGATION)}
 								/>
 							),
@@ -89,7 +89,7 @@ const BottomTabsNavigator = () => {
 								<MaterialCommunityIcons
 									name="nature-people"
 									color={color}
-									size={35}
+									size={size}
 									onPress={() => navigation.navigate(routes.TEACHERS_SCREEN)}
 								/>
 							),
@@ -105,7 +105,7 @@ const BottomTabsNavigator = () => {
 								<MaterialCommunityIcons
 									name="microsoft-onenote"
 									color={color}
-									size={35}
+									size={size}
 									onPress={() => navigation.navigate(routes.COURSES_SCREEN)}
 								/>
 							),
@@ -126,7 +126,7 @@ const BottomTabsNavigator = () => {
 								<MaterialCommunityIcons
 									name="home"
 									color={color}
-									size={35}
+									size={30}
 									onPress={() => navigation.navigate(routes.STACK_NAVIGATION)}
 								/>
 							),

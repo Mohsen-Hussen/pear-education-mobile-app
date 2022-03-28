@@ -25,31 +25,9 @@ const CourseIntroDetails = ({
 	courseDescription,
 }) => {
 	const [open, setOpen] = useState(false)
-	// const VideoPlayer = () => {
-	// 	if (open) {
-	// 		return (
-	// 			<View style={styles.containerV}>
-	// 				<TouchableOpacity style={{ width: "100%", height: "33%" }} onPress={() => setOpen(false)}></TouchableOpacity>
-	// 				<Video
-	// 					style={styles.video}
-	// 					source={{
-	// 						uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-	// 					}}
-	// 					useNativeControls
-	// 					resizeMode="contain"
-	// 					isLooping
-	// 				/>
-	// 				<TouchableOpacity style={{ width: "100%", height: "33%" }} onPress={() => setOpen(false)}></TouchableOpacity>
 
-	// 			</View>
-
-	// 		)
-	// 	}
-	// 	return null;
-
-	// }
 	return (
-		<View style={{ marginTop: 0 }}>
+		<View >
 			{open ? <VideoPlayer url="http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" onPress={() => { setOpen(false) }} /> : null}
 			{/* {open ? <VideoPlayer vidurl={require("../../assets/pearImages/abotreka.mp4")} onPress={() => { setOpen(false) }} /> : null} */}
 
@@ -107,10 +85,11 @@ const styles = StyleSheet.create({
 	},
 	imgThubContainer: {
 		width: "100%",
-		height: windowHeight / 5,
+		height: windowHeight / 6,
 		borderTopLeftRadius: 10,
 		borderTopRightRadius: 10,
 		overflow: "hidden",
+
 	},
 	imgThub: {
 		width: windowWidth,
@@ -120,10 +99,12 @@ const styles = StyleSheet.create({
 		width: "100%",
 		borderTopLeftRadius: 20,
 		borderTopRightRadius: 20,
-		top: -20,
 		backgroundColor: colors.white,
-		height: "29%",
-		padding: 8
+		paddingHorizontal: 8,
+		position: 'relative',
+		top: -10,
+
+
 	},
 	iconContainer: {
 		width: 60,
@@ -143,6 +124,7 @@ const styles = StyleSheet.create({
 	},
 	courseDescriptionContainer: {
 		marginTop: 10,
+
 	},
 	categoryContainer: {
 		backgroundColor: colors.skillsBackground,

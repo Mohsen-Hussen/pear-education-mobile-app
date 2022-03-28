@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  enrolledStatus: false,
+  enrolledStatus: true,
 };
 const isEnrolledStatusSlice = createSlice({
   name: "enrolled",

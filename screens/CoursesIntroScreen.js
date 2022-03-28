@@ -7,6 +7,7 @@ import { enrolledTrue } from "../redux/isEnrolledStatusSlice"
 import CourseIntroDetails from "../components/Courses/CourseIntroDetails";
 import CourseCurriculum from "../components/Courses/CourseCurriculum";
 import GeneralButton from "../components/General/GeneralButton";
+import VideoPlayer from "../components/General/VideoPlayer";
 
 const CoursesIntroScreen = ({ route }) => {
 	const itemSelectedId = route.params != null ? route.params.itemID : "";
@@ -20,7 +21,10 @@ const CoursesIntroScreen = ({ route }) => {
 	const isEnrolled = enrolledState.enrolledStatus;
 
 	return (
-		<Screen style={{ backgroundColor: colors.white }}>
+		<Screen style={{
+			backgroundColor: colors.white,
+		}}>
+
 			<CourseIntroDetails
 				imgSrc={courseData.image}
 				categoryName={courseData.categoryName}
@@ -28,7 +32,7 @@ const CoursesIntroScreen = ({ route }) => {
 				courseSubtitle={`${courseData.instractourName} - ${courseData.courseDutation} - ${courseData.courseLessons}`}
 				courseDescription={courseData.courseDescription}
 			/>
-			<Text> itemSelectedId= {itemSelectedId}</Text>
+			{/* <Text> itemSelectedId= {itemSelectedId}</Text> */}
 			<CourseCurriculum />
 			<View style={{ justifyContent: "flex-end", alignItems: "center" }}>
 				<GeneralButton
@@ -37,7 +41,7 @@ const CoursesIntroScreen = ({ route }) => {
 						console.log("enroll now button tapped", isEnrolled);
 					}}
 					title="Enroll Now"
-					style={{ padding: 0, display: isEnrolled ? "none" : null }}
+					style={{ padding: 2, marginVertical: 5, display: isEnrolled ? "none" : null }}
 				/>
 			</View>
 		</Screen>

@@ -11,7 +11,7 @@ const windowWidth = Dimensions.get("window").width;
 
 const CourseIntroNavigation = () => {
 	return (
-		<View style={{ flex: 1, height: "80%" }}>
+		<View style={{ flex: 1, height: "80%", zIndex: -1 }}>
 			<Tab.Navigator
 				screenOptions={{
 					tabBarLabelStyle: { fontSize: 17 },
@@ -29,7 +29,7 @@ const CourseIntroNavigation = () => {
 					name="Lessons"
 					children={() => (
 						<ScrollView>
-							<Screen style={{ backgroundColor: pearColors.white }}>
+							<Screen style={{ backgroundColor: pearColors.white, paddingTop: 10 }}>
 								<CourseIntroLessonsTab />
 							</Screen>
 						</ScrollView>
@@ -53,7 +53,7 @@ const CourseIntroNavigation = () => {
 					)}
 				/>
 			</Tab.Navigator>
-		</View>
+		</View >
 	);
 };
 

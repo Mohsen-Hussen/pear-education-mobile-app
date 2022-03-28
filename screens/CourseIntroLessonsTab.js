@@ -62,7 +62,7 @@ const CourseIntroLessonsTab = () => {
 		if (isEnrolled) {
 			return (
 				<View>
-					<AntDesign name="play" size={45} color={colors.primary} />
+					<AntDesign name="play" size={30} color={colors.primary} />
 				</View >
 			)
 		} else {
@@ -78,7 +78,7 @@ const CourseIntroLessonsTab = () => {
 			{lessonsData.map((item) => (
 				<TouchableOpacity
 					key={item.id}
-					style={{ marginBottom: 15 }}
+					style={{ marginBottom: 10 }}
 					onPress={() => console.log("video lesson tapped")}
 				>
 					<View style={styles.lessonContainer}>
@@ -89,17 +89,17 @@ const CourseIntroLessonsTab = () => {
 							}}
 						>
 							<AppText
-								size={21}
+								size={16}
 								Weight="bold"
 								marginVertical={0}
 								color={colors.black}
 							>
 								{item.title}
 							</AppText>
-							<AppText size={15} marginVertical={0} color={colors.medium}>
+							<AppText size={14} marginVertical={0} color={colors.medium}>
 								{item.subTitle}
 							</AppText>
-							<View style={[styles.lessonDivider, { backgroundColor: isEnrolled ? colors.primary : colors.grayLight,}]}></View>
+							<View style={[styles.lessonDivider, { backgroundColor: isEnrolled ? colors.primary : colors.grayLight, }]}></View>
 						</View>
 						<View>
 							<AppText size={15} marginVertical={0} color={colors.medium}>
@@ -125,16 +125,14 @@ const styles = StyleSheet.create({
 	lessonDivider: {
 		width: "100%",
 		height: 5,
-
 		borderRadius: 10,
 		marginBottom: 20,
 	},
 	lockIconContainer: {
 		backgroundColor: colors.lessonsLock,
-		padding: 10,
-		width: 60,
-		height: 60,
-		borderRadius: 30,
+		width: 50,
+		height: 50,
+		borderRadius: 50,
 		justifyContent: "center",
 		alignItems: "center",
 	},
