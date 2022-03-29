@@ -30,7 +30,7 @@ const DrawerNavigator = () => {
 					headerTitle: (props) => ( // App Logo
 						<View style={{ justifyContent: "center", alignItems: "center", width: "100%", flexDirection: "row" }}>
 							<Image
-								style={{ width: 100, height: 30, }}
+								style={{ width: 100, height: 25, marginLeft: 30 }}
 								source={require('../assets/logopear.png')}
 								resizeMode='contain'
 							/>
