@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     bottom: 0,
-    left: -20,
+    left: 0,
+
     zIndex: 100,
     width: windowWidth,
     height: windowHeight / 1.2,
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   },
   video: {
     alignSelf: 'center',
-    width: 320,
+    width: windowWidth / 1.2,
     height: 200,
   },
 })

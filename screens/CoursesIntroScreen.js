@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import colors from "../config/pearColors";
 import Screen from "../components/General/Screen";
 import { enrolledTrue } from "../redux/isEnrolledStatusSlice"
+import { closeVideo } from "../redux/openVideoSlice"
 import CourseIntroDetails from "../components/Courses/CourseIntroDetails";
 import CourseCurriculum from "../components/Courses/CourseCurriculum";
 import GeneralButton from "../components/General/GeneralButton";
@@ -16,14 +17,16 @@ const CoursesIntroScreen = ({ route }) => {
 	// console.log(courseData);
 	// console.log(courseData.id);
 	// console.log(itemSelectedId);
-	const dispatch = useDispatch();
 	const enrolledState = useSelector((state) => state.enrolled);
 	const isEnrolled = enrolledState.enrolledStatus;
-
+	const dispatch = useDispatch();
+	const VideoState = useSelector((state) => state.openVideo);
+	console.log(VideoState)
 	return (
 		<Screen style={{
 			backgroundColor: colors.white,
 		}}>
+			{VideoState.showVideo ? <VideoPlayer url={VideoState.uri} onPress={() => { dispatch(closeVideo()) }} /> : null}
 
 			<CourseIntroDetails
 				imgSrc={courseData.image}

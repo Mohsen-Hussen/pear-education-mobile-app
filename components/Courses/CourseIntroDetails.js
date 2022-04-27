@@ -16,6 +16,8 @@ import { Video, AVPlaybackStatus } from 'expo-av';
 import pearColors from "../../config/pearColors";
 import VideoPlayer from "../General/VideoPlayer";
 
+import { openVideo } from "../../redux/openVideoSlice"
+import { useSelector, useDispatch } from "react-redux";
 
 const CourseIntroDetails = ({
 	imgSrc,
@@ -24,12 +26,15 @@ const CourseIntroDetails = ({
 	courseSubtitle,
 	courseDescription,
 }) => {
-	const [open, setOpen] = useState(false)
+	const VideoState = useSelector((state) => state.openVideo);
+	const dispatch = useDispatch();
+	// const [open, setOpen] = useState(false)
 
 	return (
 		<View >
-			{open ? <VideoPlayer url="http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" onPress={() => { setOpen(false) }} /> : null}
-			{/* {open ? <VideoPlayer vidurl={require("../../assets/pearImages/abotreka.mp4")} onPress={() => { setOpen(false) }} /> : null} */}
+			{/* {open ? <VideoPlayer url="http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" onPress={() => { setOpen(false) }} /> : null}
+			{open ? <VideoPlayer vidurl={require("../../assets/pearImages/abotreka.mp4")} onPress={() => { setOpen(false) }} /> : null}
+ */}
 
 
 
@@ -39,7 +44,8 @@ const CourseIntroDetails = ({
 			<View style={styles.courseDetailesContainer}>
 				<TouchableOpacity
 					onPress={() => {
-						setOpen(true)
+						dispatch(openVideo("http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"));
+						console.log(VideoState)
 					}}
 					activeOpacity={0.8}
 					style={styles.iconContainer}

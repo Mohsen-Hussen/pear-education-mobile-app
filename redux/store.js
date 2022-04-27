@@ -7,6 +7,7 @@ import courseCardInfoReducer from "./courseCardInfoSlice";
 import loadingReducer from "./loadingSlice";
 import loginReducer from "./userLoginStatus";
 import enrolledReducer from "./isEnrolledStatusSlice";
+import videoReducer from "./openVideoSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     loading: loadingReducer,
     login: loginReducer,
     enrolled: enrolledReducer,
+    openVideo: videoReducer,
   },
 });
 
