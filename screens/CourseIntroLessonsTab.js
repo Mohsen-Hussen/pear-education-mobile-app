@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 import {
 	StyleSheet,
 	View,
@@ -11,12 +11,15 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import colors from "../config/pearColors";
 import AppText from "../components/General/AppText";
 
+import { openVideo } from "../redux/openVideoSlice"
+
 const lessonsData = [
 	{
 		id: 1,
 		title: "01.Introduction",
 		subTitle: "Mentor:Ahmed Selem",
 		duration: "5:12",
+		uri: "http://techslides.com/demos/sample-videos/small.mp4",
 	},
 	{
 		id: 2,
@@ -24,6 +27,7 @@ const lessonsData = [
 		title: "02.Hello Friends",
 		subTitle: "Mentor:Ahmed Selem",
 		duration: "2:22",
+		uri: "	https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4",
 	},
 	{
 		id: 3,
@@ -57,32 +61,38 @@ const CourseIntroLessonsTab = () => {
 	//get enrolled status from redux
 	const globalState = useSelector((state) => state.enrolled);
 	const isEnrolled = globalState.enrolledStatus;
+	const VideoState = useSelector((state) => state.openVideo);
+	const dispatch = useDispatch();
 	// function to toggle icon lesson from play to lock 
-	const ToggleIcon = () => {
+	const ToggleIcon = ({ uri }) => {
 		if (isEnrolled) {
 			return (
-				<View>
+				<TouchableOpacity
+					onPress={() => {
+						dispatch(openVideo(uri));
+					}}
+				>
 					<AntDesign name="play" size={30} color={colors.primary} />
-				</View >
+				</TouchableOpacity >
 			)
 		} else {
 			return (
-				<View style={styles.lockIconContainer}>
+				<TouchableOpacity style={styles.lockIconContainer}>
 					<FontAwesome5 name="lock" size={30} color={colors.medium} />
-				</View>
+				</TouchableOpacity>
 			)
 		}
 	}
 	return (
 		<>
 			{lessonsData.map((item) => (
-				<TouchableOpacity
+				<View
 					key={item.id}
 					style={{ marginBottom: 10 }}
-					onPress={() => console.log("video lesson tapped")}
+
 				>
 					<View style={styles.lessonContainer}>
-						{ToggleIcon()}
+						{ToggleIcon({ uri: item.uri })}
 						<View
 							style={{
 								width: windowWidth / 1.9,
@@ -107,7 +117,7 @@ const CourseIntroLessonsTab = () => {
 							</AppText>
 						</View>
 					</View>
-				</TouchableOpacity>
+				</View>
 			)
 			)}
 		</>

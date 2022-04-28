@@ -11,17 +11,17 @@ import GeneralButton from "../components/General/GeneralButton";
 import VideoPlayer from "../components/General/VideoPlayer";
 
 const CoursesIntroScreen = ({ route }) => {
-	const itemSelectedId = route.params != null ? route.params.itemID : "";
+	// const itemSelectedId = route.params != null ? route.params.itemID : 1;
+	const itemSelectedId = 2;
 	const globalState = useSelector((state) => state.courseCardInfo);
 	const courseData = globalState.courseData.find(course => course.id === itemSelectedId);
-	// console.log(courseData);
-	// console.log(courseData.id);
-	// console.log(itemSelectedId);
+	console.log(courseData);
+	console.log(itemSelectedId);
 	const enrolledState = useSelector((state) => state.enrolled);
 	const isEnrolled = enrolledState.enrolledStatus;
 	const dispatch = useDispatch();
 	const VideoState = useSelector((state) => state.openVideo);
-	console.log(VideoState)
+
 	return (
 		<Screen style={{
 			backgroundColor: colors.white,
@@ -34,6 +34,7 @@ const CoursesIntroScreen = ({ route }) => {
 				courseTitle={courseData.courseName}
 				courseSubtitle={`${courseData.instractourName} - ${courseData.courseDutation} - ${courseData.courseLessons}`}
 				courseDescription={courseData.courseDescription}
+				IntroVideo={courseData.IntroVideo}
 			/>
 			{/* <Text> itemSelectedId= {itemSelectedId}</Text> */}
 			<CourseCurriculum />

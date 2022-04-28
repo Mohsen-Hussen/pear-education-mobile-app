@@ -101,9 +101,9 @@ const InstructorDetails = ({ navigation, route }) => {
 	return (
 		<Screen style={{ backgroundColor: pearColors.light }}>
 			<ScrollView>
-				<AppText Weight="bold" size="20">
+				{/* <AppText Weight="bold" size="20">
 					Instructor Id = {selectedId}
-				</AppText>
+				</AppText> */}
 				<InstructorCard {...Instructor}></InstructorCard>
 				<AppText Weight="bold" size="20">
 					My Courses ({courseData.length})

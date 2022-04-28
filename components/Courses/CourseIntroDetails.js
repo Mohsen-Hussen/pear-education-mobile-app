@@ -25,6 +25,7 @@ const CourseIntroDetails = ({
 	courseTitle,
 	courseSubtitle,
 	courseDescription,
+	IntroVideo
 }) => {
 	const VideoState = useSelector((state) => state.openVideo);
 	const dispatch = useDispatch();
@@ -44,8 +45,7 @@ const CourseIntroDetails = ({
 			<View style={styles.courseDetailesContainer}>
 				<TouchableOpacity
 					onPress={() => {
-						dispatch(openVideo("http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"));
-						console.log(VideoState)
+						dispatch(openVideo(IntroVideo));
 					}}
 					activeOpacity={0.8}
 					style={styles.iconContainer}

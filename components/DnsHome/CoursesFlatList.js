@@ -34,7 +34,7 @@ const CoursesFlatList = ({ navigation }) => {
 				renderItem={({ item }) => (
 					<TouchableOpacity
 						onPress={() =>
-							navigation.navigate(routes.COURSE_DETAILS, { itemID: item.id })
+							navigation.navigate(routes.COURSE_DETAILS, { itemID: item.ID })
 						}
 					>
 						<View style={[styles.TouchableOpacityContainer]}>
